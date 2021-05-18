@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Main{% endblock %}
+
+{% block content %}
+<p>Hello <b>{{ user }}</b> what do you want to do?</p>
+{% for a in my_list %}
+	<li>{{ a }} </li>
+{% endfor %}
+{% endblock %}

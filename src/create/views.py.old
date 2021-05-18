@@ -1,0 +1,63 @@
+from django.http import HttpResponse
+from django.shortcuts import render
+
+from create.models import CreateReqModel
+#from create.forms import CreateReqForm
+#from create.forms import DateForm
+from django.views.generic import CreateView
+
+#from create.forms import CreateReq
+
+#def create_page(request):
+#	create_title = "Beamtime Create New Request"
+#	context = {"title": create_title}
+#	context = {}
+#	if request.user.is_authenticated:
+#		context = {"title": create_title}
+
+#		form = ReqDataForm(request.POST or None)
+#		if form.is_valid():
+#			form.save()
+
+#	context['formreq'] = form
+#	return render(request, "create.html", context)
+
+#        context = {"title": create_title}
+#    return render(request, "create.html", context)
+
+#def form_view(request_iter):
+#def CreateReq_view(request_iter):
+#	form = CreateReq()
+#	return  render(request_iter, 'create.html', {"form": form})
+
+
+
+class CreateReqView(CreateView):
+    model = CreateReqModel
+    fields = ("Project_Code",
+	    "Pac_Rate",
+            "Partrec_Contact_Name",
+            "Partrec_Contact_Email",
+            "Previous_Experiment",
+            "Status",
+            "Project_Title",
+            "Spokesperson_Name",
+            "Spokesperson_Adress",
+            "Spokesperson_Phonenumber",
+            "Spokesperson_Email",
+            "Collaborator_Name",
+            "Collaborator_Nationality",
+            "Collaborator_Home_Institute",
+            "Shifts",
+            "Ion_Spiecies",
+            "Energy",
+            "Flux",
+            "Start_Date",
+            "End_Date",
+            "Requiered_Equipment",
+            "Special_Requirements",
+            "Special_Safty_Pocedures",
+            "Lab_Support_Requirements",
+            "Funded",
+            "Summery",
+)
