@@ -101,17 +101,12 @@
         {{ form.End_Date|as_crispy_field }}
       </div>
      </div>
-     <div class="row">
+     <div class="justify-content-center">
         <div class="col-6">
           {{ form.Different_Beams|as_crispy_field }}
         </div>
-     </div>
-        <div class="col-6">
-          {{ form.Shifts|as_crispy_field }}
-          {{ form.Ion_Species|as_crispy_field }}
-          {{ form.Energy|as_crispy_field }}
-          {{ form.Flux|as_crispy_field }}
-        </div>
+    </div>
+     <div class="row">
         <div class="col-6" id="hidden1">
           {{ form.Shifts|as_crispy_field }}
           {{ form.Ion_Species|as_crispy_field }}
@@ -119,6 +114,20 @@
           {{ form.Flux|as_crispy_field }}
         </div>
         <div class="col-6" id="hidden2">
+          {{ form.Shifts|as_crispy_field }}
+          {{ form.Ion_Species|as_crispy_field }}
+          {{ form.Energy|as_crispy_field }}
+          {{ form.Flux|as_crispy_field }}
+        </div>
+      </div>
+        <div class="row">
+        <div class="col-6"  id="hidden3">
+          {{ form.Shifts|as_crispy_field }}
+          {{ form.Ion_Species|as_crispy_field }}
+          {{ form.Energy|as_crispy_field }}
+          {{ form.Flux|as_crispy_field }}
+        </div>
+        <div class="col-6"  id="hidden4">
           {{ form.Shifts|as_crispy_field }}
           {{ form.Ion_Species|as_crispy_field }}
           {{ form.Energy|as_crispy_field }}
@@ -141,29 +150,39 @@
   </form>
 <br>
 <script type="text/javascript">
-    $('#hidden1').css({
-       'display': 'none'
-    });
     $('#hidden2').css({
        'display': 'none'
     });
+    $('#hidden3').css({
+       'display': 'none'
+    });
+    $('#hidden4').css({
+       'display': 'none'
+    });
     $('#id_Different_Beams').on('change', function() {
-       var a = $(this).val();
-       if (a === '1') {
+       if ($(this).val() == '2') {
           $('#hidden1').show();
-          $('#hidden2').hide();
-       }
-       else if ($(this).val() == '2') {
-           $('#hidden1').show();
-           $('#hidden2').show();
+          $('#hidden2').show();
+          $('#hidden3').hide();
+          $('#hidden4').hide();
        }
        else if ($(this).val() == '3') {
-           $('#hidden1').hide();
-           $('#hidden2').show();
+          $('#hidden1').show();
+          $('#hidden2').show();
+          $('#hidden3').show();
+          $('#hidden4').hide();
+       }
+       else if ($(this).val() == '4') {
+          $('#hidden1').show();
+          $('#hidden2').show();
+          $('#hidden3').show();
+          $('#hidden4').show();
        }
        else {
-           $('#hidden1').hide();
-           $('#hidden2').hide();
+          $('#hidden1').show();
+          $('#hidden2').hide();
+          $('#hidden3').hide();
+          $('#hidden4').hide();
        }
     });
 </script>

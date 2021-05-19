@@ -49,7 +49,6 @@ class CreateBeamRequestModel(models.Model):
 	XENON = 'Xe'
 	LEAD = 'Pb'
 
-
 	ION_CHOICES = [
 		(SELECT, ('Select Ion species')),
 		(HYDROGEN, ('H or P')),
@@ -69,6 +68,28 @@ class CreateBeamRequestModel(models.Model):
 		(XENON, ('Xe')),
 		(LEAD, ('Pb')),
 	]
+
+	ION_ENERGY_CHOICES = [ 
+	('H', (('THIRTYFOUR', '34 MeV'), ('FORTY', '40 MeV'), ('FORTYTHREE', '43 MeV'),	('FORTYFIVE', '45 MeV'), ('FIFTY', '50 MeV'), ('FIFTYFIVE', '55 MeV'), ('SIXTY', '60 MeV'), ('SIXTYSIXHALVE', '66.5 MeV'), ('EIGHTY', '80 MeV'), ('EIGHTYFIVE', '85 MeV'), ('NINETY', '90 MeV'),('HUNDREDTWNTY', '120 MeV'),('HUNDREDTHIRTYFIVE', '135 MeV'), ('HUNDREDFIFTY', '150 MeV'), ('HUNDREDSEVENTY', '170 MeV'), ('HUNDREDEIGHTY', '180 MeV'), ('HUNDREDNINETY', '190 MeV'), )),
+	('He', (('FOURTEENTHIRTYTHREE', '14.33 MeV'), ('EIGHTEEN', '18 MeV'), ('THIRTY', '30 MeV'), ('THIRTYFOUR', '34 MeV'), ('FORTY', '40 MeV'), ('FORTYTHREE', '43 MeV'), ('FORTYFIVE', '45 MeV'), ('FIFTY', '50 MeV'), ('FIFTYFIVE', '55 MeV'), ('FIFTYNINE', '59 MeV'), ('SIXTY', '60 MeV'), ('SIXTYSIXHALVE', '66.5 MeV'), ('EIGHTY', '80 MeV'), ('EIGHTYTHREE', '83 MeV'), ('EIGHTYFIVE', '85 MeV'), ('EIGHTYSEVEN', '87 MeV'), ('NINETY', '90 MeV'), )),
+	('Li', (('EIGHT', '8 MeV'),	('THIRTEENEIGHT', '13.8 MeV'), )),
+	('B', (('EIGHTEENHALVE', '18.5 MeV'), )),
+	('C', (('EIGHT', '8 MeV'), ('FOURTEENTHIRTYTHREE', '14.33 MeV'), ('EIGHTEEN', '18 MeV'), ('TWNETYFIVE', '25 MeV'), ('TWENTYTWOSEVEN', '22.7 MeV'), ('THIRTY', '30 MeV'), ('THIRTYFOUR', '34 MeV'), ('FORTY', '40 MeV'), ('FORTYTHREE', '43 MeV'), ('FORTYFIVE', '45 MeV'), ('FIFTY', '50 MeV'), ('FIFTYFIVE', '55 MeV'), ('SIXTY', '60 MeV'), ('SIXTYSIXHALVE', '66.5 MeV'), ('EIGHTY', '80 MeV'), ('EIGHTYFIVE', '85 MeV'), ('NINETY', '90 MeV'), )),
+	('N', (('SEVEN', '7 MeV'), ('TEN', '10 MeV'), ('TWELVE', '12 MeV'), )),
+	('O', (('EIGHT', '8 MeV'), ('FOURTEENTHIRTYTHREE', '14.33 MeV'), ('EIGHTEEN', '18 MeV'), ('THIRTY', '30 MeV'), ('THIRTYFOUR', '34 MeV'), ('FORTY', '40 MeV'), ('FORTYTHREE', '43 MeV'), ('FORTYFIVE', '45 MeV'), ('FIFTY', '50 MeV'), ('FIFTYFIVE', '55 MeV'), ('SIXTY', '60 MeV'), ('SIXTYSIXHALVE', '66.5 MeV'), ('EIGHTY', '80 MeV'), ('EIGHTYFIVE', '85 MeV'), ('NINETY', '90 MeV'), )),
+	('F', (('TEN', '10 MeV'), ('TENHALVE', '10.5 MeV'), ('FORTYTHREE', '43 MeV'), )),
+	('Ne', (('TEN', '10 MeV'), ('TWENTY', '20 MeV'), ('TWENTYTHREE', '23 MeV'), ('TWENTYTHREETHREE', '23.3 MeV'), ('THIRTY', '30 MeV'), ('THIRTYFOUR', '34 MeV'), ('FORTY', '40 MeV'), ('FORTYTHREE', '43 MeV'), ('FORTYFIVE', '45 MeV'), ('FIFTY', '50 MeV'), ('FIFTYFIVE', '55 MeV'), ('SIXTY', '60 MeV'), ('SIXTYSIXHALVE', '66.5 MeV'), ('EIGHTY', '80 MeV'), ('EIGHTYFIVE', '85 MeV'), ('NINETY', '90 MeV'), )),
+	('Na', (('THIRTYTWO', '32 MeV'), )),
+	('Mg', (('THIRTY', '30 MeV'), ('FIFTYFIVE', '55 MeV'), )),
+	('Ar', (('EIGHT', '8 MeV'), ('THIRTY', '30 MeV'), ('SIXTY', '60 MeV'),)),
+	('Ca', (('FORTYFIVE', '45 MeV'), )),
+	('Kr', (('TWNETYFIVE', '25 MeV'), )),
+	('Xe', (('EIGHT', '8 MeV'), )),
+	('Pb', (('EIGHT', '8 MeV'), ('EIGHTHALVE', '8.5 MeV'), ('NINEHALVE', '9.5 MeV'), ('ELEVENTHREE', '11.3 MeV'), )),
+    ]
+	
+
+
 
 	#Energy choices
 	SELECT = 'Select'
@@ -137,8 +158,8 @@ class CreateBeamRequestModel(models.Model):
 	Collaborator_Home_Institute = models.TextField(blank = True)
 	Different_Beams = models.IntegerField(choices=DIFBEAMS_CHOICES, default='1')
 	Shifts = models.IntegerField(choices=SHIFTS_CHOICES, default='1')
-	Ion_Species = models.CharField(max_length=20, choices=ION_CHOICES, default='SELECT')
-	Energy = models.CharField(max_length=20, choices=ENERGY_CHOICES, default='SELECT')
+	Ion_Species = models.CharField(max_length=20, choices=ION_CHOICES, default='H')
+	Energy = models.CharField(max_length=20, choices=ION_ENERGY_CHOICES, default='SELECT')
 	Flux = models.CharField(max_length=20, blank = True)
 	Start_Date = models.DateTimeField(blank = True)
 	End_Date = models.DateTimeField(blank = True)
@@ -149,10 +170,3 @@ class CreateBeamRequestModel(models.Model):
 	Funded = models.CharField(max_length=20, blank = True)
 	Summary = models.TextField(blank = True)
 
-#	def __str__(self):
-#		return self.title
-#choices=INTEGER_CHOICES, default='1', blank = True
-
-# first_n=forms.CharField(widget=forms.TextInput(
-#    attrs={'class':'form-control','placeholder':'First Name'})
-#    ,required=True,max_length=30)
