@@ -22,7 +22,7 @@ from beamrequest.views import (
     beam_request_retrieve_page,
     beam_request_update_page,
     beam_request_delete_page,
-
+    load_energys,
 )
 
 #from create.views import CreateReqView
@@ -38,6 +38,8 @@ urlpatterns = [
    path('admin/', admin.site.urls, name='admin'),
 #	path('create/', CreateReqView.as_view(), name='create'),
 #	path('create/', views.CreateReq_view, name='create'),
+
+path('load-energys/', load_energys, name='load_energys'),
 
 ]
 #from .views import (

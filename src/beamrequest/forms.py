@@ -5,7 +5,7 @@ from django.forms import TextInput
 from bootstrap_datepicker_plus import DatePickerInput, DateTimePickerInput
 
 #import my models
-from .models import CreateBeamRequestModel
+from .models import CreateBeamRequestModel, IonSpecies, Energys
 
 #creating a form
 class CreateBeamRequestForm(forms.ModelForm):
@@ -86,3 +86,7 @@ class CreateBeamRequestForm(forms.ModelForm):
 			}
 			),
 		}
+
+	def __init__(self, *args, **kwargs):
+		super().__init__(*args, **kwargs)
+		self.fields['Energy'].queryset = Energys.objects.none()

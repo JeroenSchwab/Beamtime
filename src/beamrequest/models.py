@@ -1,5 +1,19 @@
 from django.db import models
 
+class IonSpecies(models.Model):
+	name = models.CharField(max_length=10)
+
+	def __str__(self):
+		return self.name
+
+
+class Energys(models.Model):
+	Ion_Species = models.ForeignKey(IonSpecies, on_delete=models.CASCADE)
+	name = models.CharField(max_length=50)
+
+	def __str__(self):
+		return self.name
+		
 # Create your models here.
 class CreateBeamRequestModel(models.Model):
 
@@ -24,10 +38,10 @@ class CreateBeamRequestModel(models.Model):
 		(QUEUED, ('Queued')),
 	]
 
-    #different beam choices (1 to 10)
-	DIFBEAMS_CHOICES = [tuple([x,x]) for x in range(1,11)]
+    #different beam choices (1 to 4)
+	DIFBEAMS_CHOICES = [tuple([x,x]) for x in range(1,5)]
 
-	#shift choices (1 to 16)
+	#shift choices (1 to 16 is max a week)
 	SHIFTS_CHOICES = [tuple([x,x]) for x in range(1,17)]
 
 	#Ion_Species choices
@@ -88,8 +102,6 @@ class CreateBeamRequestModel(models.Model):
 	('Pb', (('EIGHT', '8 MeV'), ('EIGHTHALVE', '8.5 MeV'), ('NINEHALVE', '9.5 MeV'), ('ELEVENTHREE', '11.3 MeV'), )),
     ]
 	
-
-
 
 	#Energy choices
 	SELECT = 'Select'
@@ -158,8 +170,10 @@ class CreateBeamRequestModel(models.Model):
 	Collaborator_Home_Institute = models.TextField(blank = True)
 	Different_Beams = models.IntegerField(choices=DIFBEAMS_CHOICES, default='1')
 	Shifts = models.IntegerField(choices=SHIFTS_CHOICES, default='1')
-	Ion_Species = models.CharField(max_length=20, choices=ION_CHOICES, default='H')
-	Energy = models.CharField(max_length=20, choices=ION_ENERGY_CHOICES, default='SELECT')
+#	Ion_Species = models.CharField(max_length=20, choices=ION_CHOICES, default='H')
+#	Energy = models.CharField(max_length=20, choices=ION_ENERGY_CHOICES, default='SELECT')
+	Ion_Species = models.ForeignKey(IonSpecies, on_delete=models.SET_NULL, null=True)
+	Energy = models.ForeignKey(Energys, on_delete=models.SET_NULL, null=True)
 	Flux = models.CharField(max_length=20, blank = True)
 	Start_Date = models.DateTimeField(blank = True)
 	End_Date = models.DateTimeField(blank = True)
