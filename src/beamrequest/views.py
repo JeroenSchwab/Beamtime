@@ -53,5 +53,5 @@ def beam_request_delete_page(request):
 
 def load_energys(request):
     ionspecies_id = request.GET.get('energy')
-    energys = Energys.objects.filter(ionspecies_id=ionspecies_id).order_by('name')
+    energys = Energys.objects.filter(ion_species_id=ionspecies_id).order_by('name')
     return render(request, 'energys_dropdown_list_options.html', {'energys': energys})
