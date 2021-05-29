@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import CreateBeamRequestModel
+from .models import CreateBeamRequestModel,IonSpecies, Energys
 from .forms import CreateBeamRequestForm
 
 # Create your views here.
@@ -24,7 +24,7 @@ def beam_request_create_page(request):
        if form.is_valid():
          form.save()
 #         obj = CreateBeamRequest.objects.create(**form.cleaned_data)
-         form = CreateBeamRequestForm()
+         form = CreateBeamRequestForm
        context = {
            "title": page_title,
            "form": form
@@ -52,6 +52,6 @@ def beam_request_delete_page(request):
     return render(request, template_name, context)
 
 def load_energys(request):
-    ionspecies_id = request.GET.get('ionspeciesId')
-    energys = Energys.objects.filter(Ion_Species_id=ionspecies_id).order_by('name')
+    ionspecies_id = request.GET.get('Ion_Species_id')
+    energys = Energys.objects.filter(Ion_Species_id=ionspecies_id).order_by('-name')
     return render(request, 'energys_dropdown_list_options.html', {'energys': energys})

@@ -38,6 +38,7 @@ urlpatterns = [
    path('admin/', admin.site.urls, name='admin'),
 #	path('create/', CreateReqView.as_view(), name='create'),
 #	path('create/', views.CreateReq_view, name='create'),
+#   path('load-energys/<int:Ion_Species_id>', load_energys, name='load_energys'),
    path('load-energys/', load_energys, name='load_energys'),
 
 ]

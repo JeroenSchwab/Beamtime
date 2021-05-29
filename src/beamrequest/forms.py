@@ -90,3 +90,12 @@ class CreateBeamRequestForm(forms.ModelForm):
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
 		self.fields['Energy'].queryset = Energys.objects.none()
+
+		if 'Ion_Species' in self.data:
+			try:
+				ionspeciesid = int(self.data.get('Ion_Species_id'))
+				self.fields['Energy'].queryset = Energy.objects.filter(Ion_Species_id=ionspeciesid).order_by('name')
+			except (ValueError, TypeError):
+				pass  # invalid input from the client; ignore and fallback to empty City queryset
+		elif self.instance.pk:
+			self.fields['Energy'].queryset = self.instance.Ion_Species.Energy_set.order_by('name')
