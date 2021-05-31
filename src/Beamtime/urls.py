@@ -13,44 +13,22 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+import debug_toolbar
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 
-from beamrequest.views import (
-    beam_request_search_page,
-    beam_request_create_page,
-    beam_request_retrieve_page,
-    beam_request_update_page,
-    beam_request_delete_page,
-    load_energys,
-)
-
-#from create.views import CreateReqView
-#from create.views import CreateReq
-#from create import views
-
-urlpatterns = [
-   path('searche/', beam_request_search_page, name='search'),
-   path('create/', beam_request_create_page, name='create'),
-   path('retrieve/', beam_request_retrieve_page, name='retrieve'),
-   path('update/', beam_request_update_page, name='update'),
-   path('delete/', beam_request_delete_page, name='delete'),
-   path('admin/', admin.site.urls, name='admin'),
-#	path('create/', CreateReqView.as_view(), name='create'),
-#	path('create/', views.CreateReq_view, name='create'),
-#   path('load-energys/<int:Ion_Species_id>', load_energys, name='load_energys'),
-   path('load-energys/', load_energys, name='load_energys'),
-
-]
-#from .views import (
-#	main_page,
-#	create_page,
-#	update_page
+#from beamrequest.views import (
+#    beam_request_create_page,
+#    load_energys,
 #)
 
-#urlpatterns = [
-#    path('', main_page),
-#    path('create/', create_page),
-#    path('update/', update_page),
-#    path('admin/', admin.site.urls),
-#]
+urlpatterns = [
+#   path('create/', beam_request_create_page, name='create'),
+   path('beamrequest/', include('beamrequest.urls')),
+   path('admin/', admin.site.urls, name='admin'),
+
+#   path('load-energys/', load_energys, name='load_energys'),
+   #for debugging
+   path('__debug__/', include(debug_toolbar.urls)),
+
+   ]

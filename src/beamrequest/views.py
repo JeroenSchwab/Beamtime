@@ -8,18 +8,19 @@ from .forms import CreateBeamRequestForm
 
 #Search/List view
 def beam_request_search_page(request):
+    page_title = 'List/Search page'
+    qs = CreateBeamRequestModel.objects.all() # queryset -> list of python objects
     template_name = 'beam_request_search.html'
-    context = {'object_list': []}
+    context = {'title': page_title, 'object_list': qs}
     return render(request, template_name, context)
 
 #Create view
 def beam_request_create_page(request):
-
     page_title = 'Create new Request'
     template_name = 'beam_request_create.html'
     context = {'title': page_title}
     if request.user.is_authenticated:
-#      if request.method=='POST':
+#      if request.method == 'POST':
        form = CreateBeamRequestForm(request.POST or None)
        if form.is_valid():
          form.save()
@@ -33,25 +34,29 @@ def beam_request_create_page(request):
     else:
        return render(request, 'login.html')
 
-#Retrieve view
-def beam_request_retrieve_page(request):
-    template_name = 'beam_request_retrieve.html'
-    context = {'form': ''}
+#Retrieve view show 1 object/details
+def beam_request_detail_page(request):
+    page_title = 'Detail page'
+    template_name = 'beam_request_detail.html'
+    context = {'title': page_title, 'form': ''}
     return render(request, template_name, context)
 
 #Update view
 def beam_request_update_page(request):
+    page_title = 'Updates Request'
     template_name = 'beam_request_update.html'
     context = {'form': ''}
     return render(request, template_name, context)
 
 #Delete view
 def beam_request_delete_page(request):
+    page_title = 'Delete Request'
     template_name = 'beam_request_delete.html'
     context = {'form': ''}
     return render(request, template_name, context)
 
+#load the energys dropdown hrml
 def load_energys(request):
     ionspecies_id = request.GET.get('Ion_Species_id')
-    energys = Energys.objects.filter(Ion_Species_id=ionspecies_id).order_by('-name')
+    energys = Energys.objects.filter(Ion_Species_id=ionspecies_id).order_by('energy')
     return render(request, 'energys_dropdown_list_options.html', {'energys': energys})
