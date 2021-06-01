@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'bootstrap_datepicker_plus',
     'crispy_forms',
+    'smart_selects', #dependant selectbox
 
     #debugging
     'debug_toolbar',

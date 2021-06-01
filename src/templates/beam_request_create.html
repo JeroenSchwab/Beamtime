@@ -9,7 +9,8 @@
 {% block title %}{{title }}{% endblock %}
 
 {% block content %}
-  <form method="post" id="BeamRequestForm" data-energys-url="{% url 'load_energys' %}" novalidate>
+<!--  <form method="post" id="BeamRequestForm" data-energys-url="{% url 'load_energys' %}" novalidate> -->
+  <form method="post" novalidate>
     {% csrf_token %}
     
     <br><br>
@@ -186,7 +187,7 @@
        }
     });
 </script>
-
+<!--
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script>
     $("#id_Ion_Species").change(function () {
@@ -205,4 +206,5 @@
 
     });
   </script>
+-->
 {% endblock %}

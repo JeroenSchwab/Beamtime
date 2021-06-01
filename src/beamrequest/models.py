@@ -1,18 +1,24 @@
 from django.db import models
+from smart_selects.db_fields import ChainedForeignKey
+
 
 class IonSpecies(models.Model):
-	ionspecie = models.CharField(max_length=10)
+#	ionspecie = models.CharField(max_length=10)
+	Name = models.CharField(max_length=10)
+
 
 	def __str__(self):
-		return self.ionspecie
-
+#		return self.ionspecie
+		return self.Name
 
 class Energys(models.Model):
 	Ion_Species = models.ForeignKey(IonSpecies, on_delete=models.CASCADE)
-	energy = models.CharField(max_length=50)
+	Name = models.CharField(max_length=50)
 
 	def __str__(self):
-		return self.energy
+#		return self.energy
+		return self.Name
+
 		
 # Create your models here.
 class CreateBeamRequestModel(models.Model):
@@ -66,7 +72,8 @@ class CreateBeamRequestModel(models.Model):
 #	Ion_Species = models.CharField(max_length=20, choices=ION_CHOICES, default='H')
 #	Energy = models.CharField(max_length=20, choices=ION_ENERGY_CHOICES, default='SELECT')
 	Ion_Species = models.ForeignKey(IonSpecies, on_delete=models.SET_NULL, null=True)
-	Energy = models.ForeignKey(Energys, on_delete=models.SET_NULL, null=True)
+#	Energy = models.ForeignKey(Energys, on_delete=models.SET_NULL, null=True)
+	Energy = ChainedForeignKey(Energys, chained_field="Ion_Species", chained_model_field="Ion_Species",	show_all=False,	auto_choose=True, sort=True, null=True)
 	Flux = models.CharField(max_length=20, blank = True)
 	Start_Date = models.DateTimeField(blank = True)
 	End_Date = models.DateTimeField(blank = True)
