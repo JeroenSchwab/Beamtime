@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .models import CreateBeamRequestModel,IonSpecies, Energys
+from .models import CreateBeamRequestModel, IonSpecies, Energys
 from .forms import CreateBeamRequestForm
 
 # Create your views here.
@@ -55,8 +55,8 @@ def beam_request_delete_page(request):
     context = {'form': ''}
     return render(request, template_name, context)
 
-#load the energys dropdown hrml
-def load_energys(request):
-    ionspecies_id = request.GET.get('Ion_Species_id')
-    energys = Energys.objects.filter(Ion_Species_id=ionspecies_id).order_by('energy')
-    return render(request, 'energys_dropdown_list_options.html', {'energys': energys})
+
+
+
+
+
