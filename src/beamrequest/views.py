@@ -54,9 +54,3 @@ def beam_request_delete_page(request):
     template_name = 'beam_request_delete.html'
     context = {'form': ''}
     return render(request, template_name, context)
-
-
-
-
-
-

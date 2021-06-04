@@ -67,22 +67,22 @@ class CreateBeamRequestForm(forms.ModelForm):
 			'Summary':forms.Textarea(attrs={'rows':5, 'cols':500, 'class':'form-control','placeholder':'What are the steps in this experiment?'}),
 
 			'Start_Date': DateTimePickerInput(
-			options = {
-                       "format": "DD/MM/YYYY HH:mm", # moment date-time format
+				options = {
+                       "format": "YYYY-MM-DD HH:mm", # moment date-time format
                        "showClose": True,
                        "showClear": True,
                        "showTodayButton": True,
-#                      "sideBySide": True,
+                    "sideBySide": True,
                       }
             ),
 
 			'End_Date': DateTimePickerInput(
-			options = {
-						"format": "DD/MM/YYYY HH:mm", # moment date-time format
+				options = {
+						"format": "YYYY-MM-DD HH:mm", # moment date-time format
 						"showClose": True,
 						"showClear": True,
 						"showTodayButton": True,
-#						"sideBySide": True,
+						"sideBySide": True,
 			}
 			),
 		}

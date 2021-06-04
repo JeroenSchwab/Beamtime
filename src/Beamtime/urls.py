@@ -17,18 +17,13 @@ import debug_toolbar
 from django.contrib import admin
 from django.urls import include, path
 
-#from beamrequest.views import (
-#    beam_request_create_page,
-#    load_energys,
-#)
-
 urlpatterns = [
    path('chaining/', include('smart_selects.urls')), #depandant selectbox
 #   path('create/', beam_request_create_page, name='create'),
-   path('beamrequest/', include('beamrequest.urls')),
+   path('', include('beamrequest.urls')),
    path('admin/', admin.site.urls, name='admin'),
 
-#   path('load-energys/', load_energys, name='load_energys'),
+
    #for debugging
    path('__debug__/', include(debug_toolbar.urls)),
 

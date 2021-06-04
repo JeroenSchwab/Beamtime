@@ -47,7 +47,7 @@ INSTALLED_APPS = [
 
     #third party apps
     'bootstrap4',
-    'bootstrap_datepicker_plus',
+    'bootstrap_datepicker_plus', #datepicker
     'crispy_forms',
     'smart_selects', #dependant selectbox
 
@@ -59,9 +59,9 @@ INSTALLED_APPS = [
 ]
 
 #BOOTSTRAP settings
-BOOTSTRAP4 = {
-    'include_jquery': True,
-}
+#BOOTSTRAP4 = {
+#    'include_jquery': True,
+#}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -71,6 +71,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
     #for debugging
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
@@ -155,7 +156,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
     
-
 DEBUG_TOOLBAR_PANELS = [
 #    'debug_toolbar.panels.history.HistoryPanel',
 #    'debug_toolbar.panels.versions.VersionsPanel',

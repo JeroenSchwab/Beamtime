@@ -22,3 +22,42 @@ views.py
 #    ionspecies_id = request.GET.get('Ion_Species_id')
 #    energys = Energys.objects.filter(Ion_Species_id=ionspecies_id).order_by('energy')
 #    return render(request, 'energys_dropdown_list_options.html', {'energys': energys})
+
+
+urls.py Beamtime
+
+#   path('load-energys/', load_energys, name='load_energys'),
+
+urls.py beamrequest
+
+#    load_energys,
+
+#   path('load-energys/', load_energys, name='load_energys'),
+
+
+
+beamrequest create .html
+
+<!--  <form method="post" id="BeamRequestForm" data-energys-url="{% url 'load_energys' %}" novalidate> -->
+
+
+<!--
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+    $("#id_Ion_Species").change(function () {
+      var url = $("#BeamRequestForm").attr("data-energys-url");  // get the url of the `load_cities` view
+      var ionspeciesId = $(this).val();     // get the selected country ID from the HTML input
+
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+        data: {
+          'Ion_Species_id': ionspeciesId       // add the country id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_cities` view function
+          $("#id_Energy").html(data);  // replace the contents of the city input with the data that came from the server
+        }
+      });
+
+    });
+  </script>
+-->
