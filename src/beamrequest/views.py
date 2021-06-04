@@ -20,7 +20,7 @@ def beam_request_create_page(request):
     template_name = 'beam_request_create.html'
     context = {'title': page_title}
     if request.user.is_authenticated:
-#      if request.method == 'POST':
+#      if request.method == "POST":
        form = CreateBeamRequestForm(request.POST or None)
        if form.is_valid():
          form.save()
