@@ -18,21 +18,23 @@ def beam_request_search_page(request):
 def beam_request_create_page(request):
     page_title = 'Create new Request'
     template_name = 'beam_request_create.html'
-    context = {'title': page_title}
-    if request.user.is_authenticated:
+#    context = {"title": page_title, "form": form}
+#    context = {'title': page_title}
+
+#    if request.user.is_authenticated:
 #      if request.method == "POST":
-       form = CreateBeamRequestForm(request.POST or None)
-       if form.is_valid():
-         form.save()
-#         obj = CreateBeamRequest.objects.create(**form.cleaned_data)
-         form = CreateBeamRequestForm
-       context = {
-           "title": page_title,
-           "form": form
-       }
-       return render(request, template_name, context)
-    else:
-       return render(request, 'login.html')
+    form = CreateBeamRequestForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        print(form.cleaned_data)
+        form = CreateBeamRequestForm()
+#    page_title = 'Create new Request'
+#    template_name = 'beam_request_create.html'
+    context = {"title": page_title, "form": form}
+#            context = {"title": page_title, "form": form}
+    return render(request, template_name, context)
+#    else:
+#       return render(request, 'login.html')
 
 #Retrieve view show 1 object/details
 def beam_request_detail_page(request):

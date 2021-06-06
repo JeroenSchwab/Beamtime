@@ -59,6 +59,7 @@ class CreateBeamRequestForm(forms.ModelForm):
 			'Collaborator_Name':forms.TextInput(attrs={'class':'form-control','placeholder':'The name(s) of the collaborator(s)'}),
 			'Collaborator_Nationality':forms.TextInput(attrs={'class':'form-control','placeholder':'The nationality of the collaborator(s)'}),
 			'Collaborator_Home_Institute':forms.TextInput(attrs={'class':'form-control','placeholder':'The institute of the collaborator(s)'}),
+			'Flux':forms.TextInput(attrs={'class':'form-control','placeholder':'The flux needed'}),
 			'Requiered_Equipment':forms.Textarea(attrs={'rows':5, 'cols':500, 'class':'form-control','placeholder':'Is there any extra equipment requiered for the experiment?'}),
 			'Special_Requirements':forms.Textarea(attrs={'rows':5, 'cols':500, 'class':'form-control','placeholder':'Are there any special requierements needed?'}),
 			'Special_Safety_Procedures':forms.Textarea(attrs={'rows':5, 'cols':500, 'class':'form-control','placeholder':'Are there any special safety procedures that we should know?'}),
