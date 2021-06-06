@@ -61,3 +61,10 @@ beamrequest create .html
     });
   </script>
 -->
+
+
+
+models.py
+
+# Ion_Species = models.CharField(max_length=20, choices=ION_CHOICES, default='H')
+# Energy = models.CharField(max_length=20, choices=ION_ENERGY_CHOICES, default='SELECT')
