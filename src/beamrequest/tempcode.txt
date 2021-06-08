@@ -38,6 +38,69 @@ urls.py beamrequest
 
 beamrequest create .html
 
+
+   <div class="col-6" id="hidden2">
+          {{ form.Shifts|as_crispy_field }}
+          {{ form.Ion_Species|as_crispy_field }}
+          {{ form.Energy|as_crispy_field }}
+          {{ form.Flux|as_crispy_field }}
+        </div>
+      </div>
+        <div class="row">
+        <div class="col-6"  id="hidden3">
+          {{ form.Shifts|as_crispy_field }}
+          {{ form.Ion_Species|as_crispy_field }}
+          {{ form.Energy|as_crispy_field }}
+          {{ form.Flux|as_crispy_field }}
+        </div>
+        <div class="col-6"  id="hidden4">
+          {{ form.Shifts|as_crispy_field }}
+          {{ form.Ion_Species|as_crispy_field }}
+          {{ form.Energy|as_crispy_field }}
+          {{ form.Flux|as_crispy_field }}
+        </div>
+      </div>
+      
+
+  <script type="text/javascript">
+    $('#hidden2').css({
+       'display': 'none'
+    });
+    $('#hidden3').css({
+       'display': 'none'
+    });
+    $('#hidden4').css({
+       'display': 'none'
+    });
+    $('#id_Different_Beams').on('change', function() {
+       if ($(this).val() == '2') {
+          $('#hidden1').show();
+          $('#hidden2').show();
+          $('#hidden3').hide();
+          $('#hidden4').hide();
+       }
+       else if ($(this).val() == '3') {
+          $('#hidden1').show();
+          $('#hidden2').show();
+          $('#hidden3').show();
+          $('#hidden4').hide();
+       }
+       else if ($(this).val() == '4') {
+          $('#hidden1').show();
+          $('#hidden2').show();
+          $('#hidden3').show();
+          $('#hidden4').show();
+       }
+       else {
+          $('#hidden1').show();
+          $('#hidden2').hide();
+          $('#hidden3').hide();
+          $('#hidden4').hide();
+       }
+    });
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 <!--  <form method="post" id="BeamRequestForm" data-energys-url="{% url 'load_energys' %}" novalidate> -->
 
 
