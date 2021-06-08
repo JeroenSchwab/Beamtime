@@ -23,7 +23,6 @@ urlpatterns = [
    path('', include('beamrequest.urls')),
    path('admin/', admin.site.urls, name='admin'),
 
-
    #for debugging
    path('__debug__/', include(debug_toolbar.urls)),
 

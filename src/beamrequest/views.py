@@ -1,3 +1,7 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
+from django.http import Http404, HttpResponse
+
 from django.shortcuts import render
 
 from .models import CreateBeamRequestModel, IonSpecies, Energys
@@ -14,41 +18,39 @@ def beam_request_search_page(request):
     context = {'title': page_title, 'object_list': qs}
     return render(request, template_name, context)
 
+#@login_required
+@staff_member_required
 #Create view
 def beam_request_create_page(request):
     page_title = 'Create new Request'
     template_name = 'beam_request_create.html'
-#    context = {"title": page_title, "form": form}
-#    context = {'title': page_title}
 
-#    if request.user.is_authenticated:
-#      if request.method == "POST":
     form = CreateBeamRequestForm(request.POST or None)
     if form.is_valid():
         print(form.cleaned_data)
         form.save()
-        
         form = CreateBeamRequestForm()
-#    page_title = 'Create new Request'
-#    template_name = 'beam_request_create.html'
     context = {"title": page_title, "form": form}
-#            context = {"title": page_title, "form": form}
+           
     return render(request, template_name, context)
-#    else:
-#       return render(request, 'login.html')
+
 
 #Retrieve view show 1 object/details
 def beam_request_detail_page(request):
     page_title = 'Detail page'
     template_name = 'beam_request_detail.html'
+
     context = {'title': page_title, 'form': ''}
     return render(request, template_name, context)
 
 #Update view
-def beam_request_update_page(request):
-    page_title = 'Updates Request'
+def beam_request_update_page(request, id):
+    obj = get_object_or_404(CreateBeamRequestModel, id = id)
+    form = CreateBeamRequestForm(request.POST or None, instance=obj)
+    if form.is_valid():
+        form.save()
     template_name = 'beam_request_update.html'
-    context = {'form': ''}
+    context = {'form': form, "title": f"Update {obj.project_name}" }
     return render(request, template_name, context)
 
 #Delete view
