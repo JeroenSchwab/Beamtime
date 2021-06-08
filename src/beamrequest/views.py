@@ -25,8 +25,9 @@ def beam_request_create_page(request):
 #      if request.method == "POST":
     form = CreateBeamRequestForm(request.POST or None)
     if form.is_valid():
-        form.save()
         print(form.cleaned_data)
+        form.save()
+        
         form = CreateBeamRequestForm()
 #    page_title = 'Create new Request'
 #    template_name = 'beam_request_create.html'
