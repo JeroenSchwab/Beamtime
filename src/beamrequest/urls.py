@@ -12,7 +12,7 @@ from .views import (
 urlpatterns = [
    path('search/', beam_request_search_page, name='search'),
    path('create/', beam_request_create_page, name='create'),
-   path('detail/', beam_request_detail_page, name='detail'),
+   path('detail/<str:Project_Code>', beam_request_detail_page, name='detail'),
    path('update/<int:id>', beam_request_update_page, name='update'),
    path('delete/', beam_request_delete_page, name='delete'),
 

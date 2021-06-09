@@ -69,17 +69,17 @@ class CreateBeamRequestForm(forms.ModelForm):
 
 			'Start_Date': DateTimePickerInput(
 				options = {
-                       "format": "YYYY-MM-DD HH:mm", # moment date-time format
-                       "showClose": True,
-                       "showClear": True,
-                       "showTodayButton": True,
-                    "sideBySide": True,
-                      }
-            ),
+          "format": "YYYY-MM-DD HH:mm", #date-time format
+          "showClose": True,
+          "showClear": True,
+          "showTodayButton": True,
+          "sideBySide": True,
+        }
+        ),
 
 			'End_Date': DateTimePickerInput(
 				options = {
-						"format": "YYYY-MM-DD HH:mm", # moment date-time format
+						"format": "YYYY-MM-DD HH:mm", #date-time format
 						"showClose": True,
 						"showClear": True,
 						"showTodayButton": True,
@@ -89,3 +89,14 @@ class CreateBeamRequestForm(forms.ModelForm):
 		}
 
 
+# Logic for raising error if end_date < start_date
+def clean_dates(self, *args, **kwargs):
+#	cleaned_data = super().clean()
+	print(dir(self))
+	start_date = self.cleaned_data.get('Start_Date')
+	end_date = self.cleaned_data.get('End_Date')
+	print(start_date)
+	print(end_date)
+	if end_date < start_date:
+			raise forms.ValidationError("End date should be greater than start date.")
+	return 

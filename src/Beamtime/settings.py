@@ -35,6 +35,7 @@ INTERNAL_IPS = [
     # ...
 ]
 
+LOGIN_URL = '/login'
 # Application definition
 
 INSTALLED_APPS = [

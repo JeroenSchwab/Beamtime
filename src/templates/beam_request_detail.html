@@ -3,6 +3,10 @@
 
 {% block content %}
 
-<h1>{{ object.title }}</h1>
-<p>{{ object.content }}</p>
+
+{% for object in object_list %}
+<h1>{{ object.Project_Code }}</h1>
+<p>{{ object.Project_Title }}</p>
+{% endfor %}
+
 {% endblock %}

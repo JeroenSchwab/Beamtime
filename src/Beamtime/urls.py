@@ -20,7 +20,7 @@ from django.urls import include, path
 urlpatterns = [
    path('chaining/', include('smart_selects.urls')), #depandant selectbox
 #   path('create/', beam_request_create_page, name='create'),
-   path('', include('beamrequest.urls')),
+   path('beamrequest/', include('beamrequest.urls')),
    path('admin/', admin.site.urls, name='admin'),
 
    #for debugging

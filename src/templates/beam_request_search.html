@@ -4,8 +4,7 @@
 {% block content %}
 
 {% for object in object_list %}
-<li>{{ object.Project_Code }}</li>
-<p>{{ object.content }}</p>
+<li><a href="/beamrequest/detail/{{ object.Project_Code }}">{{ object.Project_Code }}</a></li>
 {% endfor %}
 
 {% endblock %}

@@ -1,8 +1,10 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
+
 from django.http import Http404, HttpResponse
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
+
 
 from .models import CreateBeamRequestModel, IonSpecies, Energys
 from .forms import CreateBeamRequestForm
@@ -11,6 +13,7 @@ from .forms import CreateBeamRequestForm
 # Create Retrieve Update Delete
 
 #Search/List view
+@staff_member_required
 def beam_request_search_page(request):
     page_title = 'List/Search page'
     qs = CreateBeamRequestModel.objects.all() # queryset -> list of python objects
@@ -36,26 +39,33 @@ def beam_request_create_page(request):
 
 
 #Retrieve view show 1 object/details
-def beam_request_detail_page(request):
+def beam_request_detail_page(request, Project_Code):
     page_title = 'Detail page'
+    qs = CreateBeamRequestModel.objects.filter(Project_Code=Project_Code)
     template_name = 'beam_request_detail.html'
 
-    context = {'title': page_title, 'form': ''}
+    context = {'title': page_title, 'object_list': qs}
     return render(request, template_name, context)
 
 #Update view
+@staff_member_required
 def beam_request_update_page(request, id):
     obj = get_object_or_404(CreateBeamRequestModel, id = id)
     form = CreateBeamRequestForm(request.POST or None, instance=obj)
     if form.is_valid():
+        print(form.cleaned_data)
         form.save()
     template_name = 'beam_request_update.html'
-    context = {'form': form, "title": f"Update {obj.project_name}" }
+    context = {'form': form, "title": f"Update {obj.Project_Code}" }
     return render(request, template_name, context)
 
 #Delete view
+@staff_member_required
 def beam_request_delete_page(request):
     page_title = 'Delete Request'
     template_name = 'beam_request_delete.html'
-    context = {'form': ''}
+    if request.method == 'POPST':
+        obj = delete()
+        return redirect('/search')
+    context = {'object': obj}
     return render(request, template_name, context)
