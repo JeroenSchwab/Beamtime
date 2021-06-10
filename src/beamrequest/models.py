@@ -82,4 +82,12 @@ class CreateBeamRequestModel(models.Model):
 	Summary = models.TextField(blank = True)
 
 	def get_absolute_url(self):
-		return f"/beamrequest/detail/{Project_Code}"
+		return f"/beamrequest/{self.Project_Code}"
+
+
+	def get_edit_url(self):
+		return f"/beamrequest/{self.Project_Code}/update/"
+
+	def get_delete_url(self):
+		return f"/beamrequest/{self.Project_Code}/delete/"
+#		return f"{self.get_absolute_url}/delete/"

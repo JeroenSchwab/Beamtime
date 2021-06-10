@@ -15,7 +15,7 @@ from .forms import CreateBeamRequestForm
 #Search/List view
 @staff_member_required
 def beam_request_search_page(request):
-    page_title = 'List/Search page'
+    page_title = 'Search page'
     qs = CreateBeamRequestModel.objects.all() # queryset -> list of python objects
     template_name = 'beam_request_search.html'
     context = {'title': page_title, 'object_list': qs}
@@ -56,17 +56,19 @@ def beam_request_update_page(request, Project_Code):
     if form.is_valid():
         print(form.cleaned_data)
         form.save()
+        return redirect('/beamrequest/search/')
     template_name = 'beam_request_update.html'
-    context = {'form': form, "title": f"Update {obj.Project_Code}" }
+    context = {"title": f"Update {obj.Project_Code}", 'form': form }
     return render(request, template_name, context)
 
 #Delete view
 @staff_member_required
-def beam_request_delete_page(request):
+def beam_request_delete_page(request, Project_Code):
+    obj = get_object_or_404(CreateBeamRequestModel, Project_Code = Project_Code)
     page_title = 'Delete Request'
     template_name = 'beam_request_delete.html'
-    if request.method == 'POPST':
-        obj = delete()
-        return redirect('/search')
+    if request.method == "POST":
+        obj.delete()
+        return redirect('/beamrequest/search/')
     context = {'object': obj}
     return render(request, template_name, context)

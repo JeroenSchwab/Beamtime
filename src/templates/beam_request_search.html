@@ -6,7 +6,7 @@
 <div class="row justify-content-center">
   <div class="col-4 text-left">
     {% for object in object_list %}
-    <li><a href="/beamrequest/update/{{ object.Project_Code }}">{{ object.Project_Code }}</a></li>
+    <li><a href="{{ object.get_absolute_url }}/detail/">{{ object.Project_Code }}</a></li>
     {% endfor %}
   </div>
 </div>
