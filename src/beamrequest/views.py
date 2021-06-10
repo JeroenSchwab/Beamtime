@@ -22,8 +22,8 @@ def beam_request_search_page(request):
     return render(request, template_name, context)
 
 #@login_required
-@staff_member_required
 #Create view
+@staff_member_required
 def beam_request_create_page(request):
     page_title = 'Create new Request'
     template_name = 'beam_request_create.html'
@@ -39,9 +39,10 @@ def beam_request_create_page(request):
 
 
 #Retrieve view show 1 object/details
+@staff_member_required
 def beam_request_detail_page(request, Project_Code):
     page_title = 'Detail page'
-    qs = CreateBeamRequestModel.objects.filter(Project_Code=Project_Code)
+    qs = CreateBeamRequestModel.objects.filter(Project_Code = Project_Code)
     template_name = 'beam_request_detail.html'
 
     context = {'title': page_title, 'object_list': qs}
@@ -49,8 +50,8 @@ def beam_request_detail_page(request, Project_Code):
 
 #Update view
 @staff_member_required
-def beam_request_update_page(request, id):
-    obj = get_object_or_404(CreateBeamRequestModel, id = id)
+def beam_request_update_page(request, Project_Code):
+    obj = get_object_or_404(CreateBeamRequestModel, Project_Code = Project_Code)
     form = CreateBeamRequestForm(request.POST or None, instance=obj)
     if form.is_valid():
         print(form.cleaned_data)

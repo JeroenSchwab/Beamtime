@@ -3,8 +3,11 @@
 
 {% block content %}
 
-{% for object in object_list %}
-<li><a href="/beamrequest/detail/{{ object.Project_Code }}">{{ object.Project_Code }}</a></li>
-{% endfor %}
-
+<div class="row justify-content-center">
+  <div class="col-4 text-left">
+    {% for object in object_list %}
+    <li><a href="/beamrequest/update/{{ object.Project_Code }}">{{ object.Project_Code }}</a></li>
+    {% endfor %}
+  </div>
+</div>
 {% endblock %}
