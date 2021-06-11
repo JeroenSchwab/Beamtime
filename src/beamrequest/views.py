@@ -10,7 +10,6 @@ from .models import CreateBeamRequestModel, IonSpecies, Energys
 from .forms import CreateBeamRequestForm
 
 # Create your views here.
-# Create Retrieve Update Delete
 
 #Search/List view
 @staff_member_required

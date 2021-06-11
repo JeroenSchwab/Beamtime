@@ -26,8 +26,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <script src="/static/bootstrap_datepicker_plus/js/datepicker-widget.js"></script>
 
-    {% block extrahead %}
-    {% endblock %}
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -42,20 +40,23 @@
  
   <title>Beamtime - {% block title %}{% endblock %}</title>
   </head>
-  <body><br><br>
+  <body>
+    {% include 'header.html' %}
+    {% include 'navbar_main.html' %}
+
   	<div class='container-fluid'>
   		<div class='row'>
   			<div class='col-6 mx-auto'>
     			<center>
 			<h1>{{title}}</h1>
 			{% block content %}
-				Imput from content in .html files
+				
 			{% endblock %}
 			</center>
     		</div>
 		</div>
 	</div>
-
+{% include 'footer.html' %}
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper 

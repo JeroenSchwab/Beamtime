@@ -35,8 +35,8 @@ INTERNAL_IPS = [
     # ...
 ]
 
-LOGIN_URL = '/login'
-# Application definition
+LOGIN_REDIRECT_URL = 'main'
+LOGOUT_REDIRECT_URL = 'main'
 
 INSTALLED_APPS = [
     'django.contrib.admin',

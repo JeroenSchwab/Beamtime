@@ -17,12 +17,19 @@ import debug_toolbar
 from django.contrib import admin
 from django.urls import include, path
 
+from .views import (
+    main_page,
+  #  login_page,
+)
+
 urlpatterns = [
    path('chaining/', include('smart_selects.urls')), #depandant selectbox
 #   path('create/', beam_request_create_page, name='create'),
    path('beamrequest/', include('beamrequest.urls')),
    path('admin/', admin.site.urls, name='admin'),
-
+   path('users/', include('django.contrib.auth.urls')),
+   path('', main_page, name='main'),
+   #path('login/', login_page, name='login'),
    #for debugging
    path('__debug__/', include(debug_toolbar.urls)),
 

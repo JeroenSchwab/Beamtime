@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}Main{% endblock %}
-
 {% block content %}
-<p>Hello <b>{{ user }}</b> what do you want to do?</p>
-{% for a in my_list %}
-	<li>{{ a }} </li>
-{% endfor %}
+{% if user.is_authenticated %}
+  <p>Welcome <b>{{ user.username }}</b></p>
+<p>This site can be used to track the process from a bundle request to the delivery of the bundle to the customer.<br>
+Use the menu above to enter/view the desired data</p>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
 {% endblock %}

@@ -1,4 +1,0 @@
-<option value="">---------</option>
-{% for energy in energys %}
-<option value="{{ energy.pk }}">{{ energy.energy }}</option>
-{% endfor %}
