@@ -86,8 +86,8 @@ class CreateBeamRequestModel(models.Model):
 
 
 	def get_edit_url(self):
-		return f"/beamrequest/{self.Project_Code}/update/"
+		return f"{{self.get_absolute_url}}/update/"
 
 	def get_delete_url(self):
-		return f"/beamrequest/{self.Project_Code}/delete/"
-#		return f"{self.get_absolute_url}/delete/"
+#		return f"/beamrequest/{self.Project_Code}/delete/"
+		return f"{self.get_absolute_url}/delete/"

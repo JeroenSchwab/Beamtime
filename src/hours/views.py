@@ -11,14 +11,6 @@ from .forms import CreateBeamRequestForm
 
 # Create your views here.
 
-#home page
-def beam_request_home_page(request):
-    page_title = 'Beam Request'
-    template_name = 'beam_request_home.html'
-    context = {"title": page_title}
-   
-    return render(request, template_name, context)
-
 #Search/List view
 @staff_member_required
 def beam_request_search_page(request):

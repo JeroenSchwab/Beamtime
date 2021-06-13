@@ -15,33 +15,23 @@
           <a class="nav-link" href="/">Home</a>
         </li>
         {% if user.is_authenticated %}
-         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Request
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="beamrequest/create">Create</a></li>
-            <li><a class="dropdown-item" href="beamrequest/search">Update</a></li>
-          </ul>
-         </li>
-         <li class="nav-item">
-          <a class="nav-link" href="beamrequest/create/">Request</a>
-         </li>
-         <li class="nav-item">
-          <a class="nav-link" href="">Hour registration</a>
-         </li>
-         <li class="nav-item">
-          <a class="nav-link" href="">Add documents</a>
-         </li>
-         <li class="nav-item">
-          <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-         </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/beamrequest/home">Requests</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/beamrequest/search">Hour registration</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/beamrequest/search">Add documents</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+          </li>
         {% else %}
-         <li class="nav-item">
-          <a class="nav-link" href="{% url 'login' %}">Log In</a>
-         </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Log In</a>
+          </li>
         {% endif %}
-
     </div>
   </div>
 </nav>

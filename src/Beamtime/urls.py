@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 from .views import (
-    main_page,
+    home_page,
   #  login_page,
 )
 
@@ -28,7 +28,8 @@ urlpatterns = [
    path('beamrequest/', include('beamrequest.urls')),
    path('admin/', admin.site.urls, name='admin'),
    path('users/', include('django.contrib.auth.urls')),
-   path('', main_page, name='main'),
+   path('', home_page, name='home'),
+#   path('hours/', include('hours.urls')),
    #path('login/', login_page, name='login'),
    #for debugging
    path('__debug__/', include(debug_toolbar.urls)),

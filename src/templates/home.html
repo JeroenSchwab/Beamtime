@@ -3,8 +3,12 @@
 {% block content %}
 {% if user.is_authenticated %}
   <p>Welcome <b>{{ user.username }}</b></p>
+{% if title is 'Beam request' %}
+  test tekst
+{% else %}
 <p>This site can be used to track the process from a bundle request to the delivery of the bundle to the customer.<br>
 Use the menu above to enter/view the desired data</p>
+{% endif %}
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">Log In</a>

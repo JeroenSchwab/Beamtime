@@ -23,3 +23,10 @@ text-align:center;
 .right {
 text-align:right;
 }
+
+@media only screen and (min-width: 960px) {
+  .dropdown-hover:hover .dropdown-hover-menu {
+    display: block;
+    margin-top: 0;
+  }
+}
