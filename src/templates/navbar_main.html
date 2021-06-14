@@ -10,23 +10,25 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-auto">
         <li class="nav-item">
           <a class="nav-link" href="/">Home</a>
         </li>
         {% if user.is_authenticated %}
+
           <li class="nav-item">
             <a class="nav-link" href="/beamrequest/home">Requests</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/beamrequest/search">Hour registration</a>
+            <a class="nav-link" href="/hours/home">Hour registration</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/beamrequest/search">Add documents</a>
+            <a class="nav-link" href="/documents.html">Add documents</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+            <a class="nav-link" href="{% url 'logout' %}">Log Out - {{ user.username }}</a>
           </li>
+        </ul>
         {% else %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'login' %}">Log In</a>

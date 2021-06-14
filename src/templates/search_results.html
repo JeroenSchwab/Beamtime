@@ -2,8 +2,8 @@
 {% block content %}
 <h1>Search Results</h1>
 <ul>
-  {% for Project_Code in object_list %}
-    <li><a href="{{ Project_Code.get_absolute_url }}/update/">{{ Project_Code.Project_Code }}</a></li>
+  {% for found in object_list %}
+    <li><a href="/beamrequest/{{ found.Project_Code}}/update/">{{ found.Project_Title }}</a></li>
   {% endfor %}
 </ul>
 {% endblock %}

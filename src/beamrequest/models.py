@@ -78,12 +78,11 @@ class CreateBeamRequestModel(models.Model):
 	Special_Requirements = models.TextField(blank = True)
 	Special_Safety_Procedures = models.TextField(blank = True)
 	Lab_Support_Requirements = models.TextField(blank = True)
-	Funded = models.CharField(max_length=20, blank = True)
+	Funded = models.TextField(blank = True)
 	Summary = models.TextField(blank = True)
 
 	def get_absolute_url(self):
 		return f"/beamrequest/{self.Project_Code}"
-
 
 	def get_edit_url(self):
 		return f"{{self.get_absolute_url}}/update/"
@@ -93,4 +92,4 @@ class CreateBeamRequestModel(models.Model):
 		return f"{self.get_absolute_url}/delete/"
 
 	def __str__(self):
-		return self.Project_Code
+		return self

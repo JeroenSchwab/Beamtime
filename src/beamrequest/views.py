@@ -20,13 +20,13 @@ def beam_request_home_page(request):
     return render(request, template_name, context)
 
 #Search/List view
-@staff_member_required
-def beam_request_search_page(request):
-    page_title = 'Search page'
-    qs = CreateBeamRequestModel.objects.all() # queryset -> list of python objects
-    template_name = 'beam_request_search.html'
-    context = {'title': page_title, 'object_list': qs}
-    return render(request, template_name, context)
+#@staff_member_required
+#def beam_request_search_page(request):
+#    page_title = 'Search page'
+#    qs = CreateBeamRequestModel.objects.all() # queryset -> list of python objects
+#    template_name = 'beam_request_search.html'
+#    context = {'title': page_title, 'object_list': qs}
+#    return render(request, template_name, context)
 
 #@login_required
 #Create view

@@ -33,7 +33,7 @@ urlpatterns = [
    path('', home_page, name='home'),
    path('search/', search_page.as_view(), name='search_page'),
    path('searchresults/', search_results_page.as_view(), name='search_results'),
-#   path('hours/', include('hours.urls')),
+   path('hours/', include('hours.urls')),
    #path('login/', login_page, name='login'),
    #for debugging
    path('__debug__/', include(debug_toolbar.urls)),

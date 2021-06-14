@@ -18,6 +18,7 @@ def home_page(request):
 class search_page(TemplateView):
     template_name = 'search.html'
 
+
 class search_results_page(ListView):
     model = CreateBeamRequestModel
     template_name = 'search_results.html'
@@ -29,16 +30,3 @@ class search_results_page(ListView):
         )
         return object_list
 
-#def hours_page(request):
-#    page_title = 'Hour registration'
-#    emplate_name = 'hours.html'
-#    context = {"tilte": page_title}
-
-#    return render(request, template_name, context)
-
-#def doc_page(request):
-#    page_title = 'Add documents'
-#    emplate_name = 'documents.html'
-#    context = {"tilte": page_title}
-
-#    return render(request, template_name, context)
