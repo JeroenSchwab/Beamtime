@@ -19,6 +19,8 @@ from django.urls import include, path
 
 from .views import (
     home_page,
+    search_page,
+    search_results_page,
   #  login_page,
 )
 
@@ -29,6 +31,8 @@ urlpatterns = [
    path('admin/', admin.site.urls, name='admin'),
    path('users/', include('django.contrib.auth.urls')),
    path('', home_page, name='home'),
+   path('search/', search_page.as_view(), name='search_page'),
+   path('searchresults/', search_results_page.as_view(), name='search_results'),
 #   path('hours/', include('hours.urls')),
    #path('login/', login_page, name='login'),
    #for debugging

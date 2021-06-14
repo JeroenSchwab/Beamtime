@@ -63,7 +63,7 @@ def beam_request_update_page(request, Project_Code):
     if form.is_valid():
         print(form.cleaned_data)
         form.save()
-        return redirect('/beamrequest/search/')
+        return redirect('/beamrequest/home/')
     template_name = 'beam_request_update.html'
     context = {"title": f"Update {obj.Project_Code}", 'form': form }
     return render(request, template_name, context)
@@ -76,6 +76,6 @@ def beam_request_delete_page(request, Project_Code):
     template_name = 'beam_request_delete.html'
     if request.method == "POST":
         obj.delete()
-        return redirect('/beamrequest/search/')
+        return redirect('/beamrequest/home/')
     context = {'object': obj}
     return render(request, template_name, context)

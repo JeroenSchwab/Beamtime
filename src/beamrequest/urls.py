@@ -11,7 +11,7 @@ from .views import (
 
 urlpatterns = [
    path('home/', beam_request_home_page, name='home'),
-   path('search/', beam_request_search_page, name='search'),
+   path('searching/', beam_request_search_page, name='searching'),
    path('create/', beam_request_create_page, name='create'),
    path('<str:Project_Code>/detail/', beam_request_detail_page, name='detail'),
    path('<str:Project_Code>/update/', beam_request_update_page, name='update'),
