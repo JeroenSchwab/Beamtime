@@ -11,9 +11,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
 @staff_member_required
-def hours_home_page(request):
-    page_title = 'Hour registration'
-    template_name = 'hours/home.html'
+def documentation_home_page(request):
+    page_title = 'Documentation'
+    template_name = 'documentation/home.html'
     context = {"tilte": page_title}
 
     return render(request, template_name, context)

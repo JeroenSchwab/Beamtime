@@ -14,26 +14,17 @@ from .forms import CreateBeamRequestForm
 #home page
 def beam_request_home_page(request):
     page_title = 'Beam Request'
-    template_name = 'beam_request_home.html'
+    template_name = 'request/home.html'
     context = {"title": page_title}
    
     return render(request, template_name, context)
-
-#Search/List view
-#@staff_member_required
-#def beam_request_search_page(request):
-#    page_title = 'Search page'
-#    qs = CreateBeamRequestModel.objects.all() # queryset -> list of python objects
-#    template_name = 'beam_request_search.html'
-#    context = {'title': page_title, 'object_list': qs}
-#    return render(request, template_name, context)
 
 #@login_required
 #Create view
 @staff_member_required
 def beam_request_create_page(request):
     page_title = 'Create new Request'
-    template_name = 'beam_request_create.html'
+    template_name = 'request/create.html'
 
     form = CreateBeamRequestForm(request.POST or None)
     if form.is_valid():
@@ -50,7 +41,7 @@ def beam_request_create_page(request):
 def beam_request_detail_page(request, Project_Code):
     page_title = 'Detail page'
     qs = CreateBeamRequestModel.objects.filter(Project_Code = Project_Code)
-    template_name = 'beam_request_detail.html'
+    template_name = 'request/detail.html'
 
     context = {'title': page_title, 'object_list': qs}
     return render(request, template_name, context)
@@ -64,7 +55,7 @@ def beam_request_update_page(request, Project_Code):
         print(form.cleaned_data)
         form.save()
         return redirect('/beamrequest/home/')
-    template_name = 'beam_request_update.html'
+    template_name = 'request/update.html'
     context = {"title": f"Update {obj.Project_Code}", 'form': form }
     return render(request, template_name, context)
 
@@ -73,7 +64,7 @@ def beam_request_update_page(request, Project_Code):
 def beam_request_delete_page(request, Project_Code):
     obj = get_object_or_404(CreateBeamRequestModel, Project_Code = Project_Code)
     page_title = 'Delete Request'
-    template_name = 'beam_request_delete.html'
+    template_name = 'request/delete.html'
     if request.method == "POST":
         obj.delete()
         return redirect('/beamrequest/home/')

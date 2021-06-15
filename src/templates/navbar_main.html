@@ -15,7 +15,6 @@
           <a class="nav-link" href="/">Home</a>
         </li>
         {% if user.is_authenticated %}
-
           <li class="nav-item">
             <a class="nav-link" href="/beamrequest/home">Requests</a>
           </li>
@@ -23,10 +22,10 @@
             <a class="nav-link" href="/hours/home">Hour registration</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/documents.html">Add documents</a>
+            <a class="nav-link" href="/documentation/home">Add documents</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}">Log Out - {{ user.username }}</a>
+            <a class="nav-link" href="{% url 'logout' %}">Log Out -> {{ user.username }}</a>
           </li>
         </ul>
         {% else %}

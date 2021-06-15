@@ -26,7 +26,11 @@ class search_results_page(ListView):
     def get_queryset(self):
         query = self.request.GET.get('q')
         object_list = CreateBeamRequestModel.objects.filter(
-            Q(Project_Code__icontains=query) | Q(Project_Title__icontains=query)
+            Q(Project_Code__icontains=query) | Q(Project_Title__icontains=query) | Q(Spokesperson_Name__icontains=query)
         )
         return object_list
+
+#    def get_action(self):
+#        action = self.request.GET.get('action')
+#        return action
 

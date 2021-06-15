@@ -1,9 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
+
+<br>{{ action }}<br>
+<form action="{% url 'search_results' %}" method="get">
+  <input name="q" type="text" placeholder="Search...">
+  <button type="submit" class="btn btn-success">Search</button>
+</form>
+
 <h1>Search Results</h1>
 <ul>
+  <br>{{ action }}<br>
   {% for found in object_list %}
-    <li><a href="/beamrequest/{{ found.Project_Code}}/update/">{{ found.Project_Title }}</a></li>
+    <li><a href="/beamrequest/{{ found.Project_Code}}/update/">Id: {{ found.Project_Code }} - Title: {{ found.Project_Title }} - Spokesperson: {{ found.Spokesperson_Name }}</a></li>
+  {% empty %}
+    <li>Sorry nothing found. <a href="/search/edit/">try again</a></li>
   {% endfor %}
 </ul>
 {% endblock %}

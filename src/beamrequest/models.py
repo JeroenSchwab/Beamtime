@@ -92,4 +92,4 @@ class CreateBeamRequestModel(models.Model):
 		return f"{self.get_absolute_url}/delete/"
 
 	def __str__(self):
-		return self
+		return self.Project_Code

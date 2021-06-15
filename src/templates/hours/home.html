@@ -1,9 +1,10 @@
+<!-- hours home.html -->
 {% extends "base.html" %}
 
 {% block content %}
 {% if user.is_authenticated %}
   <p>Welcome <b>{{ user.username }}</b></p>
-<p>This is the page to add documents</p>
+<p>This is the hour registration page</p>
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">Log In</a>
