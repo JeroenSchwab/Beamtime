@@ -11,7 +11,7 @@
 <ul>
   <br>{{ action }}<br>
   {% for found in object_list %}
-    <li><a href="/beamrequest/{{ found.Project_Code}}/update/">Id: {{ found.Project_Code }} - Title: {{ found.Project_Title }} - Spokesperson: {{ found.Spokesperson_Name }}</a></li>
+    <li><a href="/beamrequest/{{ found.Project_Code}}/{{ action }}/">Id: {{ found.Project_Code }} - Title: {{ found.Project_Title }} - Spokesperson: {{ found.Spokesperson_Name }}</a></li>
   {% empty %}
     <li>Sorry nothing found. <a href="/search/edit/">try again</a></li>
   {% endfor %}

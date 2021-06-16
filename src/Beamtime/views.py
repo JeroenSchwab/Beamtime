@@ -16,8 +16,11 @@ def home_page(request):
     return render(request, template_name, context)
 
 class search_page(TemplateView):
+#    page_title = 'Search'
     template_name = 'search.html'
-
+#    context = {"title": page_title}
+    
+#    return render(request, template_name, context)
 
 class search_results_page(ListView):
     model = CreateBeamRequestModel

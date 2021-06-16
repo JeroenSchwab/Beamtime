@@ -57,6 +57,8 @@ INSTALLED_APPS = [
 
     #my apps
     'beamrequest',
+    'documentation',
+    'hours',
 ]
 
 #BOOTSTRAP settings

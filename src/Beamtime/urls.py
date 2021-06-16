@@ -31,7 +31,7 @@ urlpatterns = [
    path('admin/', admin.site.urls, name='admin'),
    path('users/', include('django.contrib.auth.urls')),
    path('', home_page, name='home'),
-   path('search/<str:action>/', search_page.as_view(), name='search_page'),
+   path('<str:action>/search/', search_page.as_view(), name='search_page'),
    path('searchresults/', search_results_page.as_view(), name='search_results'),
    path('hours/', include('hours.urls')),
    path('documentation/', include('documentation.urls')),

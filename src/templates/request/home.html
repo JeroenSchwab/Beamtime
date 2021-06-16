@@ -6,8 +6,8 @@
   <p>Welcome <b>{{ user.username }}</b> what would you like to do?</p><br>
 
 <p><a href="/beamrequest/create/" class="btn btn-success">New Request</a></p><br>
-<p><a href="/search/edit/" class="btn btn-primary">Edit Request</a></p><br>
-<p><a href="/search/" class="btn btn-danger">Delete Request</a></p><br>
+<p><a href="/edit/search/" class="btn btn-primary">Edit Request</a></p><br>
+<p><a href="/delete/search/" class="btn btn-danger">Delete Request</a></p><br>
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">Log In</a>

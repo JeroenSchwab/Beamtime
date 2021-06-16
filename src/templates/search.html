@@ -2,7 +2,7 @@
 
 {% block content %}
 <br>{{ action }}<br>
-<form action="{% url 'search_results' %}" method="get">
+<form action="{% url 'search_results' %}" method="get">{#% url 'search_results' %#}
   <input name="q" type="text" placeholder="Search...">
   <button type="submit" class="btn btn-success">Search</button>
 </form>
