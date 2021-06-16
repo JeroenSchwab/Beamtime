@@ -1,0 +1,14 @@
+{% extends 'documentation/create.html' %}
+{% block replace %}
+<CENTER>
+<div class="jumbotron">
+  <h1 class="display-4">Welcome to DataFlair<br>Hello {{ user_pr.fname }}</h1>
+  <p class="lead">its an awesome profile picture</p>
+  <hr class="my-4">
+  <img src="{{ add_fl.file.url }}" class="image_responsive" height="100px" width="100px">
+  <p>
+    {{ add_fl.file.url }}<BR>
+   You have learned some awesome technologies like {{ user_pr.technologies }}</p>
+</div>
+</CENTER>
+{% endblock %}

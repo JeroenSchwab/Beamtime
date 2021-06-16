@@ -1,19 +1,16 @@
-{% extends "base.html" %}
-{% block content %}
+<br>
 
-<br>{{ action }}<br>
-<form action="{% url 'search_results' %}" method="get">
-  <input name="q" type="text" placeholder="Search...">
-  <button type="submit" class="btn btn-success">Search</button>
-</form>
-
+{% if submitbutton == 'Search' and request.GET.q != '' %}
+{% if results %}
 <h1>Search Results</h1>
 <ul>
-  <br>{{ action }}<br>
-  {% for found in object_list %}
-    <li><a href="/beamrequest/{{ found.Project_Code}}/{{ action }}/">Id: {{ found.Project_Code }} - Title: {{ found.Project_Title }} - Spokesperson: {{ found.Spokesperson_Name }}</a></li>
-  {% empty %}
-    <li>Sorry nothing found. <a href="/search/edit/">try again</a></li>
+  <br><br>
+   {% for result in results %}
+    <li><a href="/beamrequest/{{ result.Project_Code}}/{{ action }}/">Id: {{ result.Project_Code }} - Title: {{ result.Project_Title }} - Spokesperson: {{ result.Spokesperson_Name }}</a></li>
+  
   {% endfor %}
+{% else %}
+    <li>Sorry nothing found. Try again</li>
 </ul>
-{% endblock %}
+{% endif %}
+{% endif %}
