@@ -5,6 +5,8 @@
 {% if user.is_authenticated %}
   <p>Welcome <b>{{ user.username }}</b></p>
 <p>This is the page to add documents</p>
+<p><a href="/documentation/upload/" class="btn btn-success">Add file</a></p><br>
+
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">Log In</a>

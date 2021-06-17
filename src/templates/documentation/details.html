@@ -2,13 +2,10 @@
 {% block replace %}
 <CENTER>
 <div class="jumbotron">
-  <h1 class="display-4">Welcome to DataFlair<br>Hello {{ user_pr.fname }}</h1>
-  <p class="lead">its an awesome profile picture</p>
+  <h1 class="display-4">The file has been uploaded.</h1>
   <hr class="my-4">
-  <img src="{{ add_fl.file.url }}" class="image_responsive" height="100px" width="100px">
-  <p>
-    {{ add_fl.file.url }}<BR>
-   You have learned some awesome technologies like {{ user_pr.technologies }}</p>
-</div>
+  <!-- <img src="{{ add_fl.file.url }}" class="image_responsive" height="100px" width="100px"> -->
+  <p>    {{ add_fl.file.url }} </p>
+   </div>
 </CENTER>
 {% endblock %}
