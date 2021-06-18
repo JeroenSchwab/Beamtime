@@ -7,5 +7,5 @@ class Add_file_form(forms.ModelForm):
         model = Add_file_model
         fields = [
         'file',
-        'Project_Id'
+        'Project_Code',
         ]

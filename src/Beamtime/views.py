@@ -41,7 +41,7 @@ def home_page(request):
 def search_page(request):
     page_title = 'Search page'
     template_name = 'search.html'
-    action = 'delete'
+    act = 'update'
 
     if request.method == 'GET':
       query = request.GET.get('q')
@@ -56,7 +56,7 @@ def search_page(request):
 #        ) # queryset -> list of python objects
 
 #        context = {'title': page_title, 'object_list': object_list, 'submitbutton': submitbutton }
-        context = {'title': page_title, 'results': results, 'submitbutton': submitbutton, 'action': action }
+        context = {'title': page_title, 'results': results, 'submitbutton': submitbutton, "action": act}
         return render(request, template_name, context)
       else:
         context = {'title': page_title}
