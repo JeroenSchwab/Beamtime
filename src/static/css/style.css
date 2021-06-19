@@ -30,3 +30,7 @@ text-align:right;
     margin-top: 0;
   }
 }
+
+.Error_Messages {
+  color: red;
+}

@@ -12,7 +12,9 @@
 
 	<form method="post" novalidate>
 		{% csrf_token %}
-		
+			{% for error in form.non_field_errors %}
+    			{{error}}
+			{% endfor %}
 		<br><br>
 		<b>Internal contact information</b>
 		<hr class="divider"></hr>
@@ -98,8 +100,8 @@
 			<div class="col-6">
 			 {{ form.Start_Date|as_crispy_field }}
 			</div>
-		  <div class="col-6">
-				{{ form.End_Date|as_crispy_field }}
+		    <div class="col-6">
+			 {{ form.End_Date|as_crispy_field }}
 			</div>
 		</div>
 		<div class="justify-content-center">

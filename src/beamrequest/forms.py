@@ -1,6 +1,9 @@
 from django import forms
 from django.forms import TextInput
 
+# validation errors for dates
+from django.core.exceptions import ValidationError
+
 #import the date/time picker
 from bootstrap_datepicker_plus import DatePickerInput, DateTimePickerInput
 
@@ -90,13 +93,15 @@ class CreateBeamRequestForm(forms.ModelForm):
 
 
 # Logic for raising error if end_date < start_date
-def clean_dates(self, *args, **kwargs):
-	cleaned_data = super().clean()
-	print(dir(self))
-	start_date = self.cleaned_data.get('Start_Date')
-	end_date = self.cleaned_data.get('End_Date')
-	print(start_date)
-	print(end_date)
-	if end_date < start_date:
+	def clean(self): #*args, **kwargs):
+		cleaned_data = super().clean()
+#		print(dir(self))
+#		print(cleaned_data)
+		start_date = cleaned_data.get("Start_Date")
+		end_date = cleaned_data.get("End_Date")
+#		print(start_date)
+#		print(end_date)
+		if end_date < start_date:
+			#raise forms.ValidationError({"End_Date": "End date should be greater than start date."})
 			raise forms.ValidationError("End date should be greater than start date.")
-	return 
+		return cleaned_data
