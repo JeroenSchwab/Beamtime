@@ -25,7 +25,7 @@
             <a class="nav-link" href="/documentation/home">Documents</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}">Log Out -> {{ user.username }}</a>
+            <a class="nav-link" href="{% url 'logout' %}">Log Out - {{ user.username }}</a>
           </li>
         </ul>
         {% else %}

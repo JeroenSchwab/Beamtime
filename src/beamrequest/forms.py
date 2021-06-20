@@ -103,5 +103,5 @@ class CreateBeamRequestForm(forms.ModelForm):
 #		print(end_date)
 		if end_date < start_date:
 			#raise forms.ValidationError({"End_Date": "End date should be greater than start date."})
-			raise forms.ValidationError("End date should be greater than start date.")
+			raise forms.ValidationError("End date should be later than start date.")
 		return cleaned_data

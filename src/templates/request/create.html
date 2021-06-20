@@ -12,9 +12,11 @@
 
 	<form method="post" novalidate>
 		{% csrf_token %}
+		<div class="Error_Messages">
 			{% for error in form.non_field_errors %}
-    			{{error}}
+    			{{ error }}
 			{% endfor %}
+		</div>
 		<br><br>
 		<b>Internal contact information</b>
 		<hr class="divider"></hr>

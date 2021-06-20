@@ -41,11 +41,11 @@ def home_page(request):
 def search_page(request):
     page_title = 'Search page'
     template_name = 'search.html'
-    act = 'update'
+    act = request.GET.get('act')#'update'
 
     if request.method == 'GET':
       query = request.GET.get('q')
-
+      act = request.GET.get('act')
       submitbutton = request.GET.get('submit')
 
       if query is not None:
