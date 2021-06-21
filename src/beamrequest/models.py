@@ -50,8 +50,6 @@ class CreateBeamRequestModel(models.Model):
 	#shift choices (1 to 16 is max a week)
 	SHIFTS_CHOICES = [tuple([x,x]) for x in range(1,17)]
 
-
-
 	#fields of the model
 	Project_Code = models.CharField(unique=True, max_length=20, blank = True)
 	Pac_Rate = models.CharField(max_length=10, blank = True)
@@ -68,7 +66,8 @@ class CreateBeamRequestModel(models.Model):
 	Collaborator_Nationality = models.TextField(blank = True)
 	Collaborator_Home_Institute = models.TextField(blank = True)
 	Different_Beams = models.IntegerField(choices=DIFBEAMS_CHOICES, default='1')
-	Shifts = models.IntegerField(choices=SHIFTS_CHOICES, default='1')
+#	Shifts = models.IntegerField(choices=SHIFTS_CHOICES, default='1')
+	Hours = models.IntegerField(default='1')
 	Ion_Species = models.ForeignKey(IonSpecies, on_delete=models.CASCADE)
 	Energy = ChainedForeignKey(Energys, chained_field="Ion_Species", chained_model_field="Ion_Species",	show_all=False,	auto_choose=True)
 	Flux = models.CharField(max_length=50, blank = True, null = True)

@@ -1,12 +1,98 @@
 <!-- hours home.html -->
 {% extends "base.html" %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 {% if user.is_authenticated %}
-  <p>Welcome <b>{{ user.username }}</b></p>
-<p>This is the hour registration page</p>
+  <form method="post" novalidate>
+    {% csrf_token %}
+
+    <div class="row">
+      <div class="col-1">
+       {{ form.Year|as_crispy_field }}
+      </div>
+      <div class="col-1">
+       {{ form.Week|as_crispy_field }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        Monday
+        <hr class="divider"></hr>
+        {{ form.Day_Shift_Monday|as_crispy_field }}
+        {{ form.Evening_Shift_Monday|as_crispy_field }}
+        {{ form.Night_Shift_Monday|as_crispy_field }}
+      </div>
+
+      <div class="col-2">
+        Tuesday
+        <hr class="divider"></hr>
+       {{ form.Day_Shift_Tuesday|as_crispy_field }}
+       {{ form.Evening_Shift_Tuesday|as_crispy_field }}
+       {{ form.Night_Shift_Tuesday|as_crispy_field }}
+      </div>
+
+      <div class="col-2">
+        Wednesday
+        <hr class="divider"></hr>
+       {{ form.Day_Shift_Wednesday|as_crispy_field }}
+       {{ form.Evening_Shift_Wednesday|as_crispy_field }}
+       {{ form.Night_Shift_Wednesday|as_crispy_field }}
+      </div>
+
+      <div class="col-2">
+        Thursday
+        <hr class="divider"></hr>
+       {{ form.Day_Shift_Thursday|as_crispy_field }}
+       {{ form.Evening_Shift_Thursday|as_crispy_field }}
+       {{ form.Night_Shift_Thursday|as_crispy_field }}
+      </div>
+
+      <div class="col-2">
+        Friday
+        <hr class="divider"></hr>
+       {{ form.Day_Shift_Friday|as_crispy_field }}
+       {{ form.Evening_Shift_Friday|as_crispy_field }}
+       {{ form.Night_Shift_Friday|as_crispy_field }}
+      </div>
+
+      <div class="col-2">
+        Saturday
+        <hr class="divider"></hr>
+       {{ form.Day_Shift_Saturday|as_crispy_field }}
+       {{ form.Evening_Shift_Saturday|as_crispy_field }}
+       {{ form.Night_Shift_Saturday|as_crispy_field }}
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <button type="submit" class="btn btn-success">Save Hours</button>
+    </div>
+  </form>
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">Log In</a>
 {% endif %}
 {% endblock %}
+
+<!--
+  Day = models.DateField(blank = True, null=True)
+  Day_Shift = models.CharField(max_length=50, blank = True, null=True)
+  Evening_shift = models.CharField(max_length=50, blank = True, null=True)
+  Night_Shift = models.CharField(max_length=50, blank = True, null=True)
+  Beam = models.CharField(max_length=50, blank = True, null=True)
+  Source = models.CharField(max_length=50, blank = True, null=True)
+  Customer = models.CharField(max_length=50, blank = True, null=True)
+  Prjoect_Code = models.CharField(max_length=50, blank = True, null=True)
+  Scheduled_Hours = models.CharField(max_length=50, blank = True, null=True)
+  Delivered_Hours = models.CharField(max_length=50, blank = True, null=True)
+  No_Operators = models.CharField(max_length=50, blank = True, null=True)
+  Notes_Monday = models.TextField(blank = True, null=True)
+  Notes_Tuesday = models.TextField(blank = True, null=True)
+  Notes_Wednesday = models.TextField(blank = True, null=True)
+  Notes_Thursday = models.TextField(blank = True, null=True)
+  Notes_Friday = models.TextField(blank = True, null=True)
+  Notes_Saturday = models.TextField(blank = True, null=True)
+  -->

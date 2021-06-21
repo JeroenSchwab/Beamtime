@@ -1,11 +1,20 @@
 from django.db import models
+import datetime
+from django.core.validators import MaxValueValidator, MinValueValidator
 
+def current_year():
+    return datetime.date.today().year
 
+def max_value_current_year(value):
+    return MaxValueValidator(current_year())(value)
+
+def current_week():
+    return datetime.date.today().isocalendar()[1]
 
 # Create your models here.
-class HourRegistration(models.Model):
+class HourRegistrationModel(models.Model):
 
-	Spent_Time choices
+	#Spent Time choices
 	SELECT			= 'Select'
 	WOAK			= 'Woak'
 	PLANNED			= 'Planned standby'
@@ -34,25 +43,44 @@ class HourRegistration(models.Model):
 		(OTHER_ERROR, ('Other error')),
 	]
 
-	Year = models.DateField(blank = True, null=True)
-	Week = models.DateField(blank = True, null=True)
-	Day = 
-	Day_Shift = 
-	Evening_shift = 
-	Night_Shift = 
-	Beam = 
-	Source = 
-	Customer = 
-	Prjoect_Code = 
-	Scheduled_Hours = 
-	Delivered_Hours = 
-	No_Operators = 
-	Notes_Monday
-	Notes_Tuesday
-	Notes_Wednesday
-	Notes_Thursday
-	Notes_Friday
-	Notes_Saturday
-	Woak, Planned standby, Unused BOT hours, Beam development, Calibrations, Error general, Error RF, Error EMC1, Error foeldi, Error cryo
+	#week choices (1 to 52)
+	WEEK_CHOICES = [tuple([x,x]) for x in range(1,53)]
+
+	#Year = models.IntegerField(('year'), validators=[MinValueValidator(2020), max_value_current_year]) #models.DateField(blank = True, null=True)
+	Year = models.PositiveIntegerField(default=current_year(), validators=[MinValueValidator(2020), max_value_current_year])
+	Week = models.IntegerField(choices=WEEK_CHOICES, default=current_week())
+	Day = models.DateField(blank = True, null=True)
+	Day_Shift_Monday = models.CharField(max_length=50, blank = True, null=True)
+	Day_Shift_Tuesday = models.CharField(max_length=50, blank = True, null=True)
+	Day_Shift_Wednesday = models.CharField(max_length=50, blank = True, null=True)
+	Day_Shift_Thursday = models.CharField(max_length=50, blank = True, null=True)
+	Day_Shift_Friday = models.CharField(max_length=50, blank = True, null=True)
+	Day_Shift_Saturday = models.CharField(max_length=50, blank = True, null=True)
+	Evening_Shift_Monday = models.CharField(max_length=50, blank = True, null=True)
+	Evening_Shift_Tuesday = models.CharField(max_length=50, blank = True, null=True)
+	Evening_Shift_Wednesday = models.CharField(max_length=50, blank = True, null=True)
+	Evening_Shift_Thursday = models.CharField(max_length=50, blank = True, null=True)
+	Evening_Shift_Friday = models.CharField(max_length=50, blank = True, null=True)
+	Evening_Shift_Saturday = models.CharField(max_length=50, blank = True, null=True)
+	Night_Shift_Monday = models.CharField(max_length=50, blank = True, null=True)
+	Night_Shift_Tuesday = models.CharField(max_length=50, blank = True, null=True)
+	Night_Shift_Wednesday = models.CharField(max_length=50, blank = True, null=True)
+	Night_Shift_Thursday = models.CharField(max_length=50, blank = True, null=True)
+	Night_Shift_Friday = models.CharField(max_length=50, blank = True, null=True)
+	Night_Shift_Saturday = models.CharField(max_length=50, blank = True, null=True)
+	Beam = models.CharField(max_length=50, blank = True, null=True)
+	Source = models.CharField(max_length=50, blank = True, null=True)
+	Customer = models.CharField(max_length=50, blank = True, null=True)
+	Prjoect_Code = models.CharField(max_length=50, blank = True, null=True)
+	Scheduled_Hours = models.CharField(max_length=50, blank = True, null=True)
+	Delivered_Hours = models.CharField(max_length=50, blank = True, null=True)
+	No_Operators = models.CharField(max_length=50, blank = True, null=True)
+	Notes_Monday = models.TextField(blank = True, null=True)
+	Notes_Tuesday = models.TextField(blank = True, null=True)
+	Notes_Wednesday = models.TextField(blank = True, null=True)
+	Notes_Thursday = models.TextField(blank = True, null=True)
+	Notes_Friday = models.TextField(blank = True, null=True)
+	Notes_Saturday = models.TextField(blank = True, null=True)
+	
 
 
