@@ -11,6 +11,12 @@ def max_value_current_year(value):
 def current_week():
     return datetime.date.today().isocalendar()[1]
 
+class Operators(models.Model):
+	Name = models.CharField(max_length=50)
+
+	def __str__(self):
+		return self.Name
+
 # Create your models here.
 class HourRegistrationModel(models.Model):
 

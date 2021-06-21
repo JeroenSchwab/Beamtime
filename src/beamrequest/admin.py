@@ -7,3 +7,4 @@ admin.site.register(CreateBeamRequestModel)
 admin.site.register(IonSpecies)
 admin.site.register(Energys)
 
+
