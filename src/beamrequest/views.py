@@ -35,6 +35,26 @@ def beam_request_create_page(request):
            
     return render(request, template_name, context)
 
+#    def generatescripts(request):
+#    if request.method == 'POST':
+#        Steps = request.POST.getlist('Step')
+#        Results = request.POST.getlist('Result')
+#        Descriptions = request.POST.getlist('Description')
+
+#        # FIXME: number of each field should equal
+#        c = min([len(Steps), len(Results), len(Descriptions)])
+#        for i in range(c):
+#            # create a form instance and populate it with data from the request:
+#            form = GenerateScriptsForm({'Step': Steps[i], 'Result': Results[i], 'Description': Descriptions[i]})
+#            # check whether it's valid:
+#            if form.is_valid():
+#                form.save()
+#        return HttpResponseRedirect('/thanks/')
+
+#    else:
+#        form = GenerateScriptsForm()
+
+#    return render(request, 'page/generatescripts.html', {'form': form})
 
 #Retrieve view show 1 object/details
 @staff_member_required
@@ -70,3 +90,5 @@ def beam_request_delete_page(request, Project_Code):
         return redirect('/beamrequest/home/')
     context = {'object': obj}
     return render(request, template_name, context)
+
+
