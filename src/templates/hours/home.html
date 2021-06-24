@@ -21,9 +21,24 @@
       <div class="col-2">
         Monday
         <hr class="divider"></hr>
-        {{ form.Day_Shift_Monday|as_crispy_field }}
-        {{ form.Evening_Shift_Monday|as_crispy_field }}
-        {{ form.Night_Shift_Monday|as_crispy_field }}
+        Day:
+        <select name="Day_Shift_Monday" id="Day_Shift_Monday">
+          {% for Operator in object_list %}
+            <option value={{Operator}}>{{Operator}}</li>
+          {% endfor %}
+        </select><br>
+        Evening: 
+        <select name="Evening_Shift_Monday" id="Evening_Shift_Monday">
+          {% for Operator in object_list %}
+            <option value={{Operator}}>{{Operator}}</li>
+          {% endfor %}
+        </select><br>
+        Night:
+        <select name="Night_Shift_Monday" id="Night_Shift_Monday">
+          {% for Operator in object_list %}
+            <option value={{Operator}}>{{Operator}}</li>
+          {% endfor %}
+        </select>
       </div>
 
       <div class="col-2">

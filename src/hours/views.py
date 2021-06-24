@@ -9,6 +9,7 @@ from .models import HourRegistrationModel
 from .forms import HourRegistrationForm
 
 from beamrequest.models import CreateBeamRequestModel
+from .models import Operators
 #from .forms import CreateBeamRequestForm
 
 # Create your views here.
@@ -16,12 +17,13 @@ from beamrequest.models import CreateBeamRequestModel
 def hours_home_page(request):
     page_title = 'Hour registration'
     template_name = 'hours/home.html'
-    
+    qs = Operators.objects.all()
+
     form = HourRegistrationForm(request.POST or None)
     if form.is_valid():
         print(form.cleaned_data)
         form.save()
         form = HourRegistrationForm()
-    context = {"title": page_title, "form": form}
+    context = {"title": page_title, "form": form, 'object_list': qs}
     
     return render(request, template_name, context)
