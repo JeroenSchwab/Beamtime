@@ -49,6 +49,19 @@ class HourRegistrationModel(models.Model):
 		(OTHER_ERROR, ('Other error')),
 	]
 
+	#Sources choices
+	SELECT = 'Select'
+	CUSP = 'CUSP'
+	AECR = 'AECR'
+	SNG = 'SNG'
+
+	SOURCE_CHOICES = [
+		(SELECT, ('Select a source')),
+		(CUSP, ('CUSP')),
+		(AECR, ('AECR')),
+		(SNG, ('SNG')),
+	]
+
 	#week choices (1 to 52)
 	WEEK_CHOICES = [tuple([x,x]) for x in range(1,53)]
 
@@ -62,20 +75,23 @@ class HourRegistrationModel(models.Model):
 	Day_Shift_Thursday = models.CharField(max_length=50, blank = True, null=True)
 	Day_Shift_Friday = models.CharField(max_length=50, blank = True, null=True)
 	Day_Shift_Saturday = models.CharField(max_length=50, blank = True, null=True)
+	Day_Shift_Sunday = models.CharField(max_length=50, blank = True, null=True)
 	Evening_Shift_Monday = models.CharField(max_length=50, blank = True, null=True)
 	Evening_Shift_Tuesday = models.CharField(max_length=50, blank = True, null=True)
 	Evening_Shift_Wednesday = models.CharField(max_length=50, blank = True, null=True)
 	Evening_Shift_Thursday = models.CharField(max_length=50, blank = True, null=True)
 	Evening_Shift_Friday = models.CharField(max_length=50, blank = True, null=True)
 	Evening_Shift_Saturday = models.CharField(max_length=50, blank = True, null=True)
+	Evening_Shift_Sunday = models.CharField(max_length=50, blank = True, null=True)
 	Night_Shift_Monday = models.CharField(max_length=50, blank = True, null=True)
 	Night_Shift_Tuesday = models.CharField(max_length=50, blank = True, null=True)
 	Night_Shift_Wednesday = models.CharField(max_length=50, blank = True, null=True)
 	Night_Shift_Thursday = models.CharField(max_length=50, blank = True, null=True)
 	Night_Shift_Friday = models.CharField(max_length=50, blank = True, null=True)
 	Night_Shift_Saturday = models.CharField(max_length=50, blank = True, null=True)
+	Night_Shift_Sunday = models.CharField(max_length=50, blank = True, null=True)
 	Beam = models.CharField(max_length=50, blank = True, null=True)
-	Source = models.CharField(max_length=50, blank = True, null=True)
+	Source = models.CharField(max_length=25, choices=SOURCE_CHOICES, default='SELECT')
 	Customer = models.CharField(max_length=50, blank = True, null=True)
 	Prjoect_Code = models.CharField(max_length=50, blank = True, null=True)
 	Scheduled_Hours = models.CharField(max_length=50, blank = True, null=True)

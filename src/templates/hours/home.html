@@ -18,70 +18,229 @@
     </div>
 
     <div class="row">
-      <div class="col-2">
+      <div class="col-1">
+        Shifts
+        <hr class="divider"></hr>
+        <div>
+          Day
+        </div>
+        <div>
+          Evening
+        </div>
+        <div>
+          Night
+        </div>
+      </div>
+
+      <div class="col-1">
         Monday
         <hr class="divider"></hr>
-        Day:
+        <div>
         <select name="Day_Shift_Monday" id="Day_Shift_Monday">
+          <li><option value="None" selected>None</li></option>
           {% for Operator in object_list %}
-            <option value={{Operator}}>{{Operator}}</li>
+            <li><option value={{Operator}}>{{Operator}}</li></option>
           {% endfor %}
-        </select><br>
-        Evening: 
+        </select>
+        </div>
+        <div> 
         <select name="Evening_Shift_Monday" id="Evening_Shift_Monday">
+          <li><option value="None" selected>None</li></option>
           {% for Operator in object_list %}
-            <option value={{Operator}}>{{Operator}}</li>
+            <li><option value={{Operator}}>{{Operator}}</li></option>
           {% endfor %}
-        </select><br>
-        Night:
+        </select>
+        </div>
+        <div>
         <select name="Night_Shift_Monday" id="Night_Shift_Monday">
+          <li><option value="None" selected>None</li></option>
           {% for Operator in object_list %}
-            <option value={{Operator}}>{{Operator}}</li>
+            <li><option value={{Operator}}>{{Operator}}</li></option>
+          {% endfor %}
+        </select>
+        </div>
+      </div>
+
+      <div class="col-1">
+        Tuesday
+        <hr class="divider"></hr>
+        <div>
+        <select name="Day_Shift_Tuesday" id="Day_Shift_Tuesday">
+          <li><option value="None" selected>None</li></option>
+          {% for Operator in object_list %}
+            <li><option value={{Operator}}>{{Operator}}</li></option>
+          {% endfor %}
+        </select>
+        </div>
+        <div>
+        <select name="Evening_Shift_Tuesday" id="Evening_Shift_Tuesday">
+          <li><option value="None" selected>None</li></option>
+          {% for Operator in object_list %}
+            <li><option value={{Operator}}>{{Operator}}</li></option>
+          {% endfor %}
+        </select>
+        </div>
+        <div>
+        <select name="Night_Shift_Tuesday" id="Night_Shift_Tuesday">
+          <li><option value="None" selected>None</li></option>
+          {% for Operator in object_list %}
+            <li><option value={{Operator}}>{{Operator}}</li></option>
+          {% endfor %}
+        </select>
+        </div>
+      </div>
+
+      <div class="col-1">
+        Wednesday
+        <hr class="divider"></hr>
+        <div>
+        <select name="Day_Shift_Wednesday" id="Day_Shift_Wednesday">
+          <li><option value="None" selected>None</li></option>
+          {% for Operator in object_list %}
+            <li><option value={{Operator}}>{{Operator}}</li></option>
+          {% endfor %}
+        </select>
+        </div>
+        <div> 
+        <select name="Evening_Shift_Wednesday" id="Evening_Shift_Wednesday">
+          <li><option value="None" selected>None</li></option>
+          {% for Operator in object_list %}
+            <li><option value={{Operator}}>{{Operator}}</li></option>
+          {% endfor %}
+        </select>
+        </div>
+        <div>
+        <select name="Night_Shift_Wednesday" id="Night_Shift_Wednesday">
+          <li><option value="None" selected>None</li></option>
+          {% for Operator in object_list %}
+            <li><option value={{Operator}}>{{Operator}}</li></option>
           {% endfor %}
         </select>
       </div>
-
-      <div class="col-2">
-        Tuesday
-        <hr class="divider"></hr>
-       {{ form.Day_Shift_Tuesday|as_crispy_field }}
-       {{ form.Evening_Shift_Tuesday|as_crispy_field }}
-       {{ form.Night_Shift_Tuesday|as_crispy_field }}
       </div>
 
-      <div class="col-2">
-        Wednesday
-        <hr class="divider"></hr>
-       {{ form.Day_Shift_Wednesday|as_crispy_field }}
-       {{ form.Evening_Shift_Wednesday|as_crispy_field }}
-       {{ form.Night_Shift_Wednesday|as_crispy_field }}
-      </div>
-
-      <div class="col-2">
+      <div class="col-1">
         Thursday
         <hr class="divider"></hr>
-       {{ form.Day_Shift_Thursday|as_crispy_field }}
-       {{ form.Evening_Shift_Thursday|as_crispy_field }}
-       {{ form.Night_Shift_Thursday|as_crispy_field }}
+        <div>
+        <select name="Day_Shift_Thursday" id="Day_Shift_Thursday">
+          <li><option value="None" selected>None</li></option>
+          {% for Operator in object_list %}
+            <li><option value={{Operator}}>{{Operator}}</li></option>
+          {% endfor %}
+        </select>
+        </div>
+        <div> 
+        <select name="Evening_Shift_Thursday" id="Evening_Shift_Thursday">
+          <li><option value="None" selected>None</li></option>
+          {% for Operator in object_list %}
+            <li><option value={{Operator}}>{{Operator}}</li></option>
+          {% endfor %}
+        </select>
+        </div>
+        <div>
+        <select name="Night_Shift_Thursday" id="Night_Shift_Thursday">
+          <li><option value="None" selected>None</li></option>
+          {% for Operator in object_list %}
+            <li><option value={{Operator}}>{{Operator}}</li></option>
+          {% endfor %}
+        </select>
+        </div>
       </div>
 
-      <div class="col-2">
+      <div class="col-1">
         Friday
         <hr class="divider"></hr>
-       {{ form.Day_Shift_Friday|as_crispy_field }}
-       {{ form.Evening_Shift_Friday|as_crispy_field }}
-       {{ form.Night_Shift_Friday|as_crispy_field }}
+        <div>
+        <select name="Day_Shift_Friday" id="Day_Shift_Friday">
+          <li><option value="None" selected>None</li></option>
+          {% for Operator in object_list %}
+            <li><option value={{Operator}}>{{Operator}}</li></option>
+          {% endfor %}
+        </select>
+        </div>
+        <div> 
+        <select name="Evening_Shift_Friday" id="Evening_Shift_Friday">
+          <li><option value="None" selected>None</li></option>
+          {% for Operator in object_list %}
+            <li><option value={{Operator}}>{{Operator}}</li></option>
+          {% endfor %}
+        </select>
+        </div>
+        <div>
+        <select name="Night_Shift_Friday" id="Night_Shift_Friday">
+          <li><option value="None" selected>None</li></option>
+          {% for Operator in object_list %}
+            <li><option value={{Operator}}>{{Operator}}</li></option>
+          {% endfor %}
+        </select>
+        </div>
       </div>
 
-      <div class="col-2">
+      <div class="col-1">
         Saturday
         <hr class="divider"></hr>
-       {{ form.Day_Shift_Saturday|as_crispy_field }}
-       {{ form.Evening_Shift_Saturday|as_crispy_field }}
-       {{ form.Night_Shift_Saturday|as_crispy_field }}
+        <div>
+        <select name="Day_Shift_Saturday" id="Day_Shift_Saturday">
+          <li><option value="None" selected>None</li></option>
+          {% for Operator in object_list %}
+            <li><option value={{Operator}}>{{Operator}}</li></option>
+          {% endfor %}
+        </select>
+       </div>
+       <div>
+       <select name="Evening_Shift_Saturday" id="Evening_Shift_Saturday">
+          <li><option value="None" selected>None</li></option>
+          {% for Operator in object_list %}
+            <li><option value={{Operator}}>{{Operator}}</li></option>
+          {% endfor %}
+        </select>
+        </div>
+        <div>
+        <select name="Night_Shift_Saturday" id="Night_Shift_Saturday">
+          <li><option value="None" selected>None</li></option>
+          {% for Operator in object_list %}
+            <li><option value={{Operator}}>{{Operator}}</li></option>
+          {% endfor %}
+        </select>
+        </div>
+      </div>
+
+      <div class="col-1">
+        Sunday
+        <hr class="divider"></hr>
+        <div>
+        <select name="Day_Shift_Sunday" id="Day_Shift_Sunday">
+          <li><option value="None" selected>None</li></option>
+          {% for Operator in object_list %}
+          <li><option value={{Operator}}>{{Operator}}</li></option>
+          {% endfor %}
+        </select>
+       </div>
+       <div>
+       <select name="Evening_Shift_Sunday" id="Evening_Shift_Sunday">
+          <li><option value="None" selected>None</li></option>
+          {% for Operator in object_list %}
+          <li><option value={{Operator}}>{{Operator}}</li></option>
+          {% endfor %}
+        </select>
+        </div>
+        <div>
+        <select name="Night_Shift_Sunday" id="Night_Shift_Sunday">
+          <li><option value="None" selected>None</li></option>
+          {% for Operator in object_list %}
+          <li><option value={{Operator}}>{{Operator}}</li></option>
+          {% endfor %}
+        </select>
+        </div>
       </div>
     </div>
-
+    <div class="row">
+      <div class="col-1">
+        {{ form.Source|as_crispy_field }}
+      </div>
+    </div>
+    <br><br>
     <div class="row justify-content-center">
       <button type="submit" class="btn btn-success">Save Hours</button>
     </div>
