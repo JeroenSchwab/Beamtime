@@ -1,3 +1,4 @@
+<!-- request update.html -->
 {% extends 'base.html' %}
 
 {% load crispy_forms_tags %}
@@ -108,13 +109,13 @@
 		</div>
 		<div class="justify-content-center">
 			<div class="col-6">
-  			{{ form.Different_Beams|as_crispy_field }}
+  			 {{ form.Different_Beams|as_crispy_field }}
  			</div>
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-6">
-	  		{{ form.Shifts|as_crispy_field }}
-		  	{{ form.Ion_Species|as_crispy_field }}
+	  		  {{ form.Hours|as_crispy_field }}
+		  	  {{ form.Ion_Species|as_crispy_field }}
 			  {{ form.Energy|as_crispy_field }}
 			  {{ form.Flux|as_crispy_field }}
 			</div>

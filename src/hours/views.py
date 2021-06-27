@@ -13,10 +13,21 @@ from .models import Operators
 #from .forms import CreateBeamRequestForm
 
 # Create your views here.
-@staff_member_required
+
+#home page
 def hours_home_page(request):
     page_title = 'Hour registration'
     template_name = 'hours/home.html'
+    context = {"title": page_title}
+   
+    return render(request, template_name, context)
+
+
+#cfreate page    
+@staff_member_required
+def hours_create_page(request):
+    page_title = 'Hour registration'
+    template_name = 'hours/create.html'
     qs = Operators.objects.all()
 
     form = HourRegistrationForm(request.POST or None)
@@ -27,3 +38,4 @@ def hours_home_page(request):
     context = {"title": page_title, "form": form, 'object_list': qs}
     
     return render(request, template_name, context)
+

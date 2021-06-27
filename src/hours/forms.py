@@ -23,7 +23,6 @@ class HourRegistrationForm(forms.ModelForm):
 		fields = [
 			'Year',
 			'Week',
-			'Day',
 			'Day_Shift_Monday',
 			'Day_Shift_Tuesday',
 			'Day_Shift_Wednesday',
@@ -45,8 +44,20 @@ class HourRegistrationForm(forms.ModelForm):
 			'Night_Shift_Friday',
 			'Night_Shift_Saturday',
 			'Night_Shift_Sunday',
-			'Beam',
-			'Source',
+			'Beam_Monday',
+			'Beam_Tuesday',
+			'Beam_Wednesday',
+			'Beam_Thursday',
+			'Beam_Friday',
+			'Beam_Saturday',
+			'Beam_Sunday',
+			'Source_Monday',
+			'Source_Tuesday',
+			'Source_Wednesday',
+			'Source_Thursday',
+			'Source_Friday',
+			'Source_Saterday',
+			'Source_Sunday',
 			'Customer',
 			'Prjoect_Code',
 			'Scheduled_Hours',
@@ -59,3 +70,5 @@ class HourRegistrationForm(forms.ModelForm):
 			'Notes_Friday',
 			'Notes_Saturday',	
 		]
+
+	
