@@ -19,6 +19,42 @@ class Operators(models.Model):
 	def __str__(self):
 		return self.Name
 
+class Monday(models.Model):
+	#Sources choices
+	SELECT = 'Select'
+	CUSP = 'CUSP'
+	AECR = 'AECR'
+	SNG = 'SNG'
+
+	SOURCE_CHOICES = [
+		(SELECT, ('Select a source')),
+		(CUSP, ('CUSP')),
+		(AECR, ('AECR')),
+		(SNG, ('SNG')),
+	]
+
+	#week choices (1 to 52)
+	WEEK_CHOICES = [tuple([x,x]) for x in range(1,53)]
+
+#	Year = models.ManyToManyField(HourRegistrationModel)
+#	Year = models.PositiveIntegerField(default=current_year(), validators=[MinValueValidator(2020), max_value_current_year])
+#	Week = models.IntegerField(choices=WEEK_CHOICES, default=current_week())
+#	Week = models.ManyToManyField(HourRegistrationModel)
+	Day_Shift = models.CharField(max_length=50, blank = True, null=True)
+	Evening_Shift = models.CharField(max_length=50, blank = True, null=True)
+	Night_Shift = models.CharField(max_length=50, blank = True, null=True)
+	Beam = models.CharField(max_length=50, blank = True, null=True)
+	Source = models.CharField(max_length=25, choices=SOURCE_CHOICES, default='SELECT')
+	Customer = models.CharField(max_length=50, blank = True, null=True)
+	Prjoect_Code = models.CharField(max_length=50, blank = True, null=True)
+	Scheduled_Hours = models.CharField(max_length=50, blank = True, null=True)
+	Delivered_Hours = models.CharField(max_length=50, blank = True, null=True)
+	No_Operators = models.CharField(max_length=50, blank = True, null=True)
+	Notes = models.TextField(blank = True, null=True)
+
+	def __str__(self):
+		return self.Name
+
 # Create your models here.
 class HourRegistrationModel(models.Model):
 
@@ -70,6 +106,7 @@ class HourRegistrationModel(models.Model):
 	#Year = models.IntegerField(('year'), validators=[MinValueValidator(2020), max_value_current_year]) #models.DateField(blank = True, null=True)
 	Year = models.PositiveIntegerField(default=current_year(), validators=[MinValueValidator(2020), max_value_current_year])
 	Week = models.IntegerField(choices=WEEK_CHOICES, default=current_week())
+	Monday = models.ForeignKey(Monday, on_delete=models.CASCADE, blank = True, null=True)
 	Day_Shift_Monday = models.CharField(max_length=50, blank = True, null=True)
 	Day_Shift_Tuesday = models.CharField(max_length=50, blank = True, null=True)
 	Day_Shift_Wednesday = models.CharField(max_length=50, blank = True, null=True)
@@ -117,44 +154,10 @@ class HourRegistrationModel(models.Model):
 	Notes_Friday = models.TextField(blank = True, null=True)
 	Notes_Saturday = models.TextField(blank = True, null=True)
 
-	def __str__(self):
-		return self.Week
+#	def __str__(self):
+#		return self.Week
 
-class Monday(models.Model):
-	#Sources choices
-	SELECT = 'Select'
-	CUSP = 'CUSP'
-	AECR = 'AECR'
-	SNG = 'SNG'
 
-	SOURCE_CHOICES = [
-		(SELECT, ('Select a source')),
-		(CUSP, ('CUSP')),
-		(AECR, ('AECR')),
-		(SNG, ('SNG')),
-	]
-
-	#week choices (1 to 52)
-	WEEK_CHOICES = [tuple([x,x]) for x in range(1,53)]
-
-	Year = models.ManyToManyField(HourRegistrationModel)
-#	Year = models.PositiveIntegerField(default=current_year(), validators=[MinValueValidator(2020), max_value_current_year])
-	Week = models.IntegerField(choices=WEEK_CHOICES, default=current_week())
-#	Week = models.ManyToManyField(HourRegistrationModel)
-	Day_Shift = models.CharField(max_length=50, blank = True, null=True)
-	Evening_Shift = models.CharField(max_length=50, blank = True, null=True)
-	Night_Shift = models.CharField(max_length=50, blank = True, null=True)
-	Beam = models.CharField(max_length=50, blank = True, null=True)
-	Source = models.CharField(max_length=25, choices=SOURCE_CHOICES, default='SELECT')
-	Customer = models.CharField(max_length=50, blank = True, null=True)
-	Prjoect_Code = models.CharField(max_length=50, blank = True, null=True)
-	Scheduled_Hours = models.CharField(max_length=50, blank = True, null=True)
-	Delivered_Hours = models.CharField(max_length=50, blank = True, null=True)
-	No_Operators = models.CharField(max_length=50, blank = True, null=True)
-	Notes = models.TextField(blank = True, null=True)
-
-	def __str__(self):
-		return self.Name
 
 
 	

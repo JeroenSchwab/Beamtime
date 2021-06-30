@@ -16,8 +16,8 @@ class Monday(forms.ModelForm):
 		model = Monday
 
 		fields = [
-			'Year',
-			'Week',
+#			'Year',
+#			'Week',
 			'Day_Shift',
 			'Evening_Shift',
 			'Night_Shift',
@@ -45,6 +45,7 @@ class HourRegistrationForm(forms.ModelForm):
 		fields = [
 			'Year',
 			'Week',
+			'Monday',
 			'Day_Shift_Monday',
 			'Day_Shift_Tuesday',
 			'Day_Shift_Wednesday',
