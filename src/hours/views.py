@@ -39,3 +39,45 @@ def hours_create_page(request):
     
     return render(request, template_name, context)
 
+
+
+
+# class PrimaryForm(ModelForm):
+#        class Meta:
+#            model = Primary
+#
+#    class BForm(ModelForm):
+#        class Meta:
+#            model = B
+#            exclude = ('primary',)
+#
+#    class CForm(ModelForm):
+#         class Meta:
+#            model = C
+#            exclude = ('primary',)
+#
+#    def generateView(request):
+#        if request.method == 'POST': # If the form has been submitted...
+#            primary_form = PrimaryForm(request.POST, prefix = "primary")
+#            b_form = BForm(request.POST, prefix = "b")
+#            c_form = CForm(request.POST, prefix = "c")
+#            if primary_form.is_valid() and b_form.is_valid() and c_form.is_valid(): # All validation rules pass
+#                    print "all validation passed"
+#                    primary = primary_form.save()
+#                    b_form.cleaned_data["primary"] = primary
+#                    b = b_form.save()
+#                    c_form.cleaned_data["primary"] = primary
+#                    c = c_form.save()
+#                    return HttpResponseRedirect("/viewer/%s/" % (primary.name))
+#            else:
+#                    print "failed"
+#
+#        else:
+#            primary_form = PrimaryForm(prefix = "primary")
+#            b_form = BForm(prefix = "b")
+#            c_form = Form(prefix = "c")
+#     return render_to_response('multi_model.html', {
+#     'primary_form': primary_form,
+#     'b_form': b_form,
+#     'c_form': c_form,
+#      })#

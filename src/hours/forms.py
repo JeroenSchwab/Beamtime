@@ -10,26 +10,7 @@ from django.core.exceptions import ValidationError
 #import my models
 from .models import HourRegistrationModel, Monday
 
-class Monday(forms.ModelForm):
-	
-	class Meta:
-		model = Monday
 
-		fields = [
-#			'Year',
-#			'Week',
-			'Day_Shift',
-			'Evening_Shift',
-			'Night_Shift',
-			'Beam',
-			'Source',
-			'Customer',
-			'Prjoect_Code',
-			'Scheduled_Hours',
-			'Delivered_Hours',
-			'No_Operators',
-			'Notes',
-		]
 			
 		
 #creating a form
@@ -46,6 +27,12 @@ class HourRegistrationForm(forms.ModelForm):
 			'Year',
 			'Week',
 			'Monday',
+			'Tuesday',
+			'Wednesday',
+			'Thursday',
+			'Friday',
+			'Saturday',
+			'Sunday',
 			'Day_Shift_Monday',
 			'Day_Shift_Tuesday',
 			'Day_Shift_Wednesday',
@@ -94,4 +81,24 @@ class HourRegistrationForm(forms.ModelForm):
 			'Notes_Saturday',	
 		]
 
+class Monday(forms.ModelForm):
 	
+	class Meta:
+		model = Monday
+#		exclude = ('HourRegistrationModel',)
+
+		fields = [
+#			'Year',
+#			'Week',
+			'Day_Shift',
+			'Evening_Shift',
+			'Night_Shift',
+			'Beam',
+			'Source',
+			'Customer',
+			'Prjoect_Code',
+			'Scheduled_Hours',
+			'Delivered_Hours',
+			'No_Operators',
+			'Notes',
+		]

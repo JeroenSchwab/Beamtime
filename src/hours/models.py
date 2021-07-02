@@ -20,6 +20,7 @@ class Operators(models.Model):
 		return self.Name
 
 class Monday(models.Model):
+
 	#Sources choices
 	SELECT = 'Select'
 	CUSP = 'CUSP'
@@ -52,8 +53,189 @@ class Monday(models.Model):
 	No_Operators = models.CharField(max_length=50, blank = True, null=True)
 	Notes = models.TextField(blank = True, null=True)
 
-	def __str__(self):
-		return self.Name
+#	def __str__(self):
+#		return self.Name
+
+class Tuesday(models.Model):
+
+	#Sources choices
+	SELECT = 'Select'
+	CUSP = 'CUSP'
+	AECR = 'AECR'
+	SNG = 'SNG'
+
+	SOURCE_CHOICES = [
+		(SELECT, ('Select a source')),
+		(CUSP, ('CUSP')),
+		(AECR, ('AECR')),
+		(SNG, ('SNG')),
+	]
+
+	Day_Shift = models.CharField(max_length=50, blank = True, null=True)
+	Evening_Shift = models.CharField(max_length=50, blank = True, null=True)
+	Night_Shift = models.CharField(max_length=50, blank = True, null=True)
+	Beam = models.CharField(max_length=50, blank = True, null=True)
+	Source = models.CharField(max_length=25, choices=SOURCE_CHOICES, default='SELECT')
+	Customer = models.CharField(max_length=50, blank = True, null=True)
+	Prjoect_Code = models.CharField(max_length=50, blank = True, null=True)
+	Scheduled_Hours = models.CharField(max_length=50, blank = True, null=True)
+	Delivered_Hours = models.CharField(max_length=50, blank = True, null=True)
+	No_Operators = models.CharField(max_length=50, blank = True, null=True)
+	Notes = models.TextField(blank = True, null=True)
+
+#	def __str__(self):
+#		return self.Name
+
+class Wednesday(models.Model):
+
+	#Sources choices
+	SELECT = 'Select'
+	CUSP = 'CUSP'
+	AECR = 'AECR'
+	SNG = 'SNG'
+
+	SOURCE_CHOICES = [
+		(SELECT, ('Select a source')),
+		(CUSP, ('CUSP')),
+		(AECR, ('AECR')),
+		(SNG, ('SNG')),
+	]
+
+	Day_Shift = models.CharField(max_length=50, blank = True, null=True)
+	Evening_Shift = models.CharField(max_length=50, blank = True, null=True)
+	Night_Shift = models.CharField(max_length=50, blank = True, null=True)
+	Beam = models.CharField(max_length=50, blank = True, null=True)
+	Source = models.CharField(max_length=25, choices=SOURCE_CHOICES, default='SELECT')
+	Customer = models.CharField(max_length=50, blank = True, null=True)
+	Prjoect_Code = models.CharField(max_length=50, blank = True, null=True)
+	Scheduled_Hours = models.CharField(max_length=50, blank = True, null=True)
+	Delivered_Hours = models.CharField(max_length=50, blank = True, null=True)
+	No_Operators = models.CharField(max_length=50, blank = True, null=True)
+	Notes = models.TextField(blank = True, null=True)
+
+#	def __str__(self):
+#		return self.Name
+
+class Thursday(models.Model):
+
+	#Sources choices
+	SELECT = 'Select'
+	CUSP = 'CUSP'
+	AECR = 'AECR'
+	SNG = 'SNG'
+
+	SOURCE_CHOICES = [
+		(SELECT, ('Select a source')),
+		(CUSP, ('CUSP')),
+		(AECR, ('AECR')),
+		(SNG, ('SNG')),
+	]
+
+	Day_Shift = models.CharField(max_length=50, blank = True, null=True)
+	Evening_Shift = models.CharField(max_length=50, blank = True, null=True)
+	Night_Shift = models.CharField(max_length=50, blank = True, null=True)
+	Beam = models.CharField(max_length=50, blank = True, null=True)
+	Source = models.CharField(max_length=25, choices=SOURCE_CHOICES, default='SELECT')
+	Customer = models.CharField(max_length=50, blank = True, null=True)
+	Prjoect_Code = models.CharField(max_length=50, blank = True, null=True)
+	Scheduled_Hours = models.CharField(max_length=50, blank = True, null=True)
+	Delivered_Hours = models.CharField(max_length=50, blank = True, null=True)
+	No_Operators = models.CharField(max_length=50, blank = True, null=True)
+	Notes = models.TextField(blank = True, null=True)
+
+#	def __str__(self):
+#		return self.Name
+
+class Friday(models.Model):
+
+	#Sources choices
+	SELECT = 'Select'
+	CUSP = 'CUSP'
+	AECR = 'AECR'
+	SNG = 'SNG'
+
+	SOURCE_CHOICES = [
+		(SELECT, ('Select a source')),
+		(CUSP, ('CUSP')),
+		(AECR, ('AECR')),
+		(SNG, ('SNG')),
+	]
+
+	Day_Shift = models.CharField(max_length=50, blank = True, null=True)
+	Evening_Shift = models.CharField(max_length=50, blank = True, null=True)
+	Night_Shift = models.CharField(max_length=50, blank = True, null=True)
+	Beam = models.CharField(max_length=50, blank = True, null=True)
+	Source = models.CharField(max_length=25, choices=SOURCE_CHOICES, default='SELECT')
+	Customer = models.CharField(max_length=50, blank = True, null=True)
+	Prjoect_Code = models.CharField(max_length=50, blank = True, null=True)
+	Scheduled_Hours = models.CharField(max_length=50, blank = True, null=True)
+	Delivered_Hours = models.CharField(max_length=50, blank = True, null=True)
+	No_Operators = models.CharField(max_length=50, blank = True, null=True)
+	Notes = models.TextField(blank = True, null=True)
+
+#	def __str__(self):
+#		return self.Name
+
+class Saturday(models.Model):
+
+	#Sources choices
+	SELECT = 'Select'
+	CUSP = 'CUSP'
+	AECR = 'AECR'
+	SNG = 'SNG'
+
+	SOURCE_CHOICES = [
+		(SELECT, ('Select a source')),
+		(CUSP, ('CUSP')),
+		(AECR, ('AECR')),
+		(SNG, ('SNG')),
+	]
+
+	Day_Shift = models.CharField(max_length=50, blank = True, null=True)
+	Evening_Shift = models.CharField(max_length=50, blank = True, null=True)
+	Night_Shift = models.CharField(max_length=50, blank = True, null=True)
+	Beam = models.CharField(max_length=50, blank = True, null=True)
+	Source = models.CharField(max_length=25, choices=SOURCE_CHOICES, default='SELECT')
+	Customer = models.CharField(max_length=50, blank = True, null=True)
+	Prjoect_Code = models.CharField(max_length=50, blank = True, null=True)
+	Scheduled_Hours = models.CharField(max_length=50, blank = True, null=True)
+	Delivered_Hours = models.CharField(max_length=50, blank = True, null=True)
+	No_Operators = models.CharField(max_length=50, blank = True, null=True)
+	Notes = models.TextField(blank = True, null=True)
+
+#	def __str__(self):
+#		return self.Name
+
+class Sunday(models.Model):
+
+	#Sources choices
+	SELECT = 'Select'
+	CUSP = 'CUSP'
+	AECR = 'AECR'
+	SNG = 'SNG'
+
+	SOURCE_CHOICES = [
+		(SELECT, ('Select a source')),
+		(CUSP, ('CUSP')),
+		(AECR, ('AECR')),
+		(SNG, ('SNG')),
+	]
+
+	Day_Shift = models.CharField(max_length=50, blank = True, null=True)
+	Evening_Shift = models.CharField(max_length=50, blank = True, null=True)
+	Night_Shift = models.CharField(max_length=50, blank = True, null=True)
+	Beam = models.CharField(max_length=50, blank = True, null=True)
+	Source = models.CharField(max_length=25, choices=SOURCE_CHOICES, default='SELECT')
+	Customer = models.CharField(max_length=50, blank = True, null=True)
+	Prjoect_Code = models.CharField(max_length=50, blank = True, null=True)
+	Scheduled_Hours = models.CharField(max_length=50, blank = True, null=True)
+	Delivered_Hours = models.CharField(max_length=50, blank = True, null=True)
+	No_Operators = models.CharField(max_length=50, blank = True, null=True)
+	Notes = models.TextField(blank = True, null=True)
+
+#	def __str__(self):
+#		return self.Name
+
 
 # Create your models here.
 class HourRegistrationModel(models.Model):
@@ -107,6 +289,12 @@ class HourRegistrationModel(models.Model):
 	Year = models.PositiveIntegerField(default=current_year(), validators=[MinValueValidator(2020), max_value_current_year])
 	Week = models.IntegerField(choices=WEEK_CHOICES, default=current_week())
 	Monday = models.ForeignKey(Monday, on_delete=models.CASCADE, blank = True, null=True)
+	Tuesday = models.ForeignKey(Tuesday, on_delete=models.CASCADE, blank = True, null=True)
+	Wednesday = models.ForeignKey(Wednesday, on_delete=models.CASCADE, blank = True, null=True)
+	Thursday = models.ForeignKey(Thursday, on_delete=models.CASCADE, blank = True, null=True)
+	Friday = models.ForeignKey(Friday, on_delete=models.CASCADE, blank = True, null=True)
+	Saturday = models.ForeignKey(Saturday, on_delete=models.CASCADE, blank = True, null=True)
+	Sunday = models.ForeignKey(Sunday, on_delete=models.CASCADE, blank = True, null=True)
 	Day_Shift_Monday = models.CharField(max_length=50, blank = True, null=True)
 	Day_Shift_Tuesday = models.CharField(max_length=50, blank = True, null=True)
 	Day_Shift_Wednesday = models.CharField(max_length=50, blank = True, null=True)
