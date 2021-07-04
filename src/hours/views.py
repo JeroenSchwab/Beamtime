@@ -5,11 +5,11 @@ from django.http import Http404, HttpResponse
 
 from django.shortcuts import render, get_object_or_404, redirect
 
-from .models import HourRegistrationModel
-from .forms import HourRegistrationForm
+from .models import HourRegistrationModel, Operators, Monday, Tuesday
+from .forms import HourRegistrationForm, Monday, Tuesday
 
 from beamrequest.models import CreateBeamRequestModel
-from .models import Operators
+
 #from .forms import CreateBeamRequestForm
 
 # Create your views here.
@@ -23,21 +23,50 @@ def hours_home_page(request):
     return render(request, template_name, context)
 
 
-#cfreate page    
+#create page    
+#@staff_member_required
+#def hours_create_page(request):
+#    page_title = 'Hour registration'
+#    template_name = 'hours/create.html'
+#    qs = Operators.objects.all()
+
+#    form = HourRegistrationForm(request.POST or None)
+#    if form.is_valid():
+#        print(form.cleaned_data)
+#        form.save()
+#        form = HourRegistrationForm()
+#    context = {"title": page_title, "form": form, 'object_list': qs}
+    
+#    return render(request, template_name, context)
+
+
 @staff_member_required
 def hours_create_page(request):
     page_title = 'Hour registration'
     template_name = 'hours/create.html'
     qs = Operators.objects.all()
+  
+    if request.method == 'POST': # If the form has been submitted...
+            hourregistration_form = HourRegistrationForm(request.POST, prefix = "hourregistration")
+            monday_form = Monday(request.POST, prefix = "monday")
+#            tuesday_form = Tuesday(request.POST, prefix = "tuesday")
+            if hourregistration_form.is_valid() and monday_form.is_valid():# and tuesday_form.is_valid(): # All validation rules pass
+                    print ("all validation passed")
+                    hourregistration = hourregistration_form.save()
+                    monday_form.cleaned_data["hourregistration"] = hourregistration
+                    monday = monday_form.save()
+#                    tuesday_form.cleaned_data["hourregistration"] = hourregistration
+#                    tuesday = tuesday_form.save()
+#                    return HttpResponseRedirect("/viewer/%s/" % (hourregistration.name))
+            else:
+                    print ("failed")
 
-    form = HourRegistrationForm(request.POST or None)
-    if form.is_valid():
-        print(form.cleaned_data)
-        form.save()
-        form = HourRegistrationForm()
-    context = {"title": page_title, "form": form, 'object_list': qs}
-    
-    return render(request, template_name, context)
+    else:
+        hourregistration_form = HourRegistrationForm(prefix = "hourregistration")
+        monday_form = Monday(prefix = "monday")
+#        tuesday_form = Tuesday(prefix = "tuesday")
+    return render(request, 'hours/create.html', {'form': hourregistration_form, 'monday_form': monday_form, 'object_list': qs}) # 'tuesday_form': tuesday_form,
+
 
 
 
@@ -80,4 +109,4 @@ def hours_create_page(request):
 #     'primary_form': primary_form,
 #     'b_form': b_form,
 #     'c_form': c_form,
-#      })#
+#      })

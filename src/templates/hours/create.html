@@ -36,7 +36,7 @@
         Monday
         <hr class="divider"></hr>
         <div>
-        <select name="Day_Shift_Monday" id="Day_Shift_Monday">
+        <select name="monday-Day_Shift" id="monday-Day_Shift">
           <li><option value="None" selected>None</li></option>
           {% for Operator in object_list %}
             <li><option value={{Operator}}>{{Operator}}</li></option>
@@ -44,7 +44,7 @@
         </select>
         </div>
         <div> 
-        <select name="Evening_Shift_Monday" id="Evening_Shift_Monday">
+        <select name="monday-Evening_Shift" id="monday-Evening_Shift">
           <li><option value="None" selected>None</li></option>
           {% for Operator in object_list %}
             <li><option value={{Operator}}>{{Operator}}</li></option>
@@ -52,7 +52,7 @@
         </select>
         </div>
         <div>
-        <select name="Night_Shift_Monday" id="Night_Shift_Monday">
+        <select name="monday-Night_Shift" id="monday-Night_Shift">
           <li><option value="None" selected>None</li></option>
           {% for Operator in object_list %}
             <li><option value={{Operator}}>{{Operator}}</li></option>
@@ -236,10 +236,18 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-1">
-        {{ form.Source_Monday|as_crispy_field }}
+      <div class="col-6">
+        {{ monday_form.Beam|as_crispy_field }}
+        {{ monday_form.Source|as_crispy_field }}
+        {{ monday_form.Customer|as_crispy_field }}
+        {{ monday_form.Prjoect_Code|as_crispy_field }}
+        {{ monday_form.Scheduled_Hours|as_crispy_field }}
+        {{ monday_form.Delivered_Hours|as_crispy_field }}
+        {{ monday_form.No_Operators|as_crispy_field }}
+        {{ monday_form.Notes|as_crispy_field }}
       </div>
     </div>
+  </div>
     <br><br>
     <div class="row justify-content-center">
       <button type="submit" class="btn btn-success">Save Hours</button>
