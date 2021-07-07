@@ -18,49 +18,74 @@
     </div>
 
     <div class="row">
+      <div class="col-12">
+        <b>Monday</b>
+        <hr class="divider"></hr>
+      </div>
+    </div>
+    <div class="row">
       <div class="col-1">
         Shifts
         <hr class="divider"></hr>
-        <div>
-          Day
-        </div>
-        <div>
-          Evening
-        </div>
-        <div>
-          Night
-        </div>
+      <div>
+        Day
       </div>
-
-      <div class="col-1">
-        Monday
-        <hr class="divider"></hr>
-        <div>
+      <div>
+        Evening
+      </div>
+      <div>
+        Night
+      </div>
+      </div>
+    <div class="col-1">
+      Operator
+      <hr class="divider"></hr>
+      <div>
         <select name="monday-Day_Shift" id="monday-Day_Shift">
           <li><option value="None" selected>None</li></option>
           {% for Operator in object_list %}
             <li><option value={{Operator}}>{{Operator}}</li></option>
           {% endfor %}
         </select>
-        </div>
-        <div> 
+      </div>
+      <div> 
         <select name="monday-Evening_Shift" id="monday-Evening_Shift">
           <li><option value="None" selected>None</li></option>
           {% for Operator in object_list %}
             <li><option value={{Operator}}>{{Operator}}</li></option>
           {% endfor %}
         </select>
-        </div>
-        <div>
+      </div>
+      <div>
         <select name="monday-Night_Shift" id="monday-Night_Shift">
           <li><option value="None" selected>None</li></option>
           {% for Operator in object_list %}
             <li><option value={{Operator}}>{{Operator}}</li></option>
           {% endfor %}
         </select>
-        </div>
       </div>
+    </div>
 
+    <div class="col-5">
+      {{ monday_form.Beam|as_crispy_field }}
+      {{ monday_form.Source|as_crispy_field }}
+    </div>
+    <div class="col-5">
+      {{ monday_form.Customer|as_crispy_field }}
+      {{ monday_form.Prjoect_Code|as_crispy_field }}
+      
+    </div>
+  </div>
+{{ monday_form.Scheduled_Hours|as_crispy_field }}
+      {{ monday_form.Delivered_Hours|as_crispy_field }}
+      {{ monday_form.No_Operators|as_crispy_field }}
+      {{ monday_form.Notes|as_crispy_field }}
+</div></div>
+
+
+
+<br><br><br>
+<div class="row">
       <div class="col-1">
         Tuesday
         <hr class="divider"></hr>
@@ -235,18 +260,7 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-6">
-        {{ monday_form.Beam|as_crispy_field }}
-        {{ monday_form.Source|as_crispy_field }}
-        {{ monday_form.Customer|as_crispy_field }}
-        {{ monday_form.Prjoect_Code|as_crispy_field }}
-        {{ monday_form.Scheduled_Hours|as_crispy_field }}
-        {{ monday_form.Delivered_Hours|as_crispy_field }}
-        {{ monday_form.No_Operators|as_crispy_field }}
-        {{ monday_form.Notes|as_crispy_field }}
-      </div>
-    </div>
+
   </div>
     <br><br>
     <div class="row justify-content-center">

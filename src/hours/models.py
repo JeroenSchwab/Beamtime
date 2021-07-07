@@ -2,7 +2,7 @@ from django.db import models
 from smart_selects.db_fields import ChainedForeignKey, ForeignKey
 import datetime
 from django.core.validators import MaxValueValidator, MinValueValidator
-from beamrequest.models import CreateBeamRequestModel
+from beamrequest.models import CreateBeamRequestModel, IonSpecies
 
 def current_year():
     return datetime.date.today().year
@@ -44,10 +44,10 @@ class Monday(models.Model):
 	Day_Shift = models.CharField(max_length=50, blank = True, null=True)
 	Evening_Shift = models.CharField(max_length=50, blank = True, null=True)
 	Night_Shift = models.CharField(max_length=50, blank = True, null=True)
-	Beam = models.CharField(max_length=50, blank = True, null=True)
+	Beam = models.ForeignKey(IonSpecies, on_delete=models.CASCADE, blank = True, null=True) #models.CharField(max_length=50, blank = True, null=True)
 	Source = models.CharField(max_length=25, choices=SOURCE_CHOICES, default='SELECT')
 	Customer = models.CharField(max_length=50, blank = True, null=True)
-	Prjoect_Code = models.CharField(max_length=50, blank = True, null=True)
+	Prjoect_Code = models.ForeignKey(CreateBeamRequestModel, on_delete=models.CASCADE, blank = True, null=True) #models.CharField(max_length=50, blank = True, null=True)
 	Scheduled_Hours = models.CharField(max_length=50, blank = True, null=True)
 	Delivered_Hours = models.CharField(max_length=50, blank = True, null=True)
 	No_Operators = models.CharField(max_length=50, blank = True, null=True)

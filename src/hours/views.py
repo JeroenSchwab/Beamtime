@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 
-from django.http import Http404, HttpResponse
+from django.http import Http404, HttpResponse, HttpResponseRedirect
 
 from django.shortcuts import render, get_object_or_404, redirect
 
@@ -57,6 +57,7 @@ def hours_create_page(request):
                     monday = monday_form.save()
 #                    tuesday_form.cleaned_data["hourregistration"] = hourregistration
 #                    tuesday = tuesday_form.save()
+                    return HttpResponseRedirect("/hours/home")
 #                    return HttpResponseRedirect("/viewer/%s/" % (hourregistration.name))
             else:
                     print ("failed")
