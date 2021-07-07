@@ -5,38 +5,42 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-  <form method="post" novalidate>
-    {% csrf_token %}
+<form method="post" novalidate>
+{% csrf_token %}
 
-    <div class="row">
-      <div class="col-1">
-       {{ form.Year|as_crispy_field }}
-      </div>
-      <div class="col-1">
-       {{ form.Week|as_crispy_field }}
-      </div>
+  <div class="row">
+    <div class="col-2">
+      {{ form.Year|as_crispy_field }}
     </div>
+    <div class="col-2">
+      {{ form.Week|as_crispy_field }}
+    </div>
+    <div class="col-8">
+      
+    </div>
+  </div>
 
-    <div class="row">
-      <div class="col-12">
-        <b>Monday</b>
-        <hr class="divider"></hr>
-      </div>
+  <div class="row">
+    <div class="col-12">
+      <b>Monday</b>
+      <hr class="divider"></hr>
     </div>
-    <div class="row">
-      <div class="col-1">
-        Shifts
-        <hr class="divider"></hr>
-      <div>
-        Day
-      </div>
-      <div>
-        Evening
-      </div>
-      <div>
-        Night
-      </div>
-      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-1">
+      Shifts
+      <hr class="divider"></hr>
+    <div>
+      Day
+    </div>
+    <div>
+      Evening
+    </div>
+    <div>
+      Night
+    </div>
+    </div>
     <div class="col-1">
       Operator
       <hr class="divider"></hr>
@@ -73,76 +77,171 @@
     <div class="col-5">
       {{ monday_form.Customer|as_crispy_field }}
       {{ monday_form.Prjoect_Code|as_crispy_field }}
-      
     </div>
   </div>
-{{ monday_form.Scheduled_Hours|as_crispy_field }}
+  <div class="row">
+    <div class="col-6">
+      {{ monday_form.Scheduled_Hours|as_crispy_field }}
       {{ monday_form.Delivered_Hours|as_crispy_field }}
+    </div>
+    <div class="col-6">
       {{ monday_form.No_Operators|as_crispy_field }}
       {{ monday_form.Notes|as_crispy_field }}
-</div></div>
-
+    </div>
+  </div>
 
 
 <br><br><br>
-<div class="row">
-      <div class="col-1">
-        Tuesday
-        <hr class="divider"></hr>
-        <div>
-        <select name="Day_Shift_Tuesday" id="Day_Shift_Tuesday">
-          <li><option value="None" selected>None</li></option>
-          {% for Operator in object_list %}
-            <li><option value={{Operator}}>{{Operator}}</li></option>
-          {% endfor %}
-        </select>
-        </div>
-        <div>
-        <select name="Evening_Shift_Tuesday" id="Evening_Shift_Tuesday">
-          <li><option value="None" selected>None</li></option>
-          {% for Operator in object_list %}
-            <li><option value={{Operator}}>{{Operator}}</li></option>
-          {% endfor %}
-        </select>
-        </div>
-        <div>
-        <select name="Night_Shift_Tuesday" id="Night_Shift_Tuesday">
-          <li><option value="None" selected>None</li></option>
-          {% for Operator in object_list %}
-            <li><option value={{Operator}}>{{Operator}}</li></option>
-          {% endfor %}
-        </select>
-        </div>
-      </div>
 
-      <div class="col-1">
-        Wednesday
-        <hr class="divider"></hr>
-        <div>
-        <select name="Day_Shift_Wednesday" id="Day_Shift_Wednesday">
-          <li><option value="None" selected>None</li></option>
-          {% for Operator in object_list %}
-            <li><option value={{Operator}}>{{Operator}}</li></option>
-          {% endfor %}
-        </select>
-        </div>
-        <div> 
-        <select name="Evening_Shift_Wednesday" id="Evening_Shift_Wednesday">
-          <li><option value="None" selected>None</li></option>
-          {% for Operator in object_list %}
-            <li><option value={{Operator}}>{{Operator}}</li></option>
-          {% endfor %}
-        </select>
-        </div>
-        <div>
-        <select name="Night_Shift_Wednesday" id="Night_Shift_Wednesday">
+  <div class="row">
+    <div class="col-12">
+      <b>Tuesday</b>
+      <hr class="divider"></hr>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-1">
+      Shifts
+      <hr class="divider"></hr>
+    <div>
+      Day
+    </div>
+    <div>
+      Evening
+    </div>
+    <div>
+      Night
+    </div>
+    </div>
+    <div class="col-1">
+      Operator
+      <hr class="divider"></hr>
+      <div>
+        <select name="tuesday-Day_Shift" id="tuesday-Day_Shift">
           <li><option value="None" selected>None</li></option>
           {% for Operator in object_list %}
             <li><option value={{Operator}}>{{Operator}}</li></option>
           {% endfor %}
         </select>
       </div>
+      <div> 
+        <select name="tuesday-Evening_Shift" id="tuesday-Evening_Shift">
+          <li><option value="None" selected>None</li></option>
+          {% for Operator in object_list %}
+            <li><option value={{Operator}}>{{Operator}}</li></option>
+          {% endfor %}
+        </select>
       </div>
+      <div>
+        <select name="tuesday-Night_Shift" id="tuesday-Night_Shift">
+          <li><option value="None" selected>None</li></option>
+          {% for Operator in object_list %}
+            <li><option value={{Operator}}>{{Operator}}</li></option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+    <div class="col-5">
+      {{ tuesday_form.Beam|as_crispy_field }}
+      {{ tuesday_form.Source|as_crispy_field }}
+    </div>
+    <div class="col-5">
+      {{ tuesday_form.Customer|as_crispy_field }}
+      {{ tuesday_form.Prjoect_Code|as_crispy_field }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      {{ tuesday_form.Scheduled_Hours|as_crispy_field }}
+      {{ tuesday_form.Delivered_Hours|as_crispy_field }}
+    </div>
+    <div class="col-6">
+      {{ tuesday_form.No_Operators|as_crispy_field }}
+      {{ tuesday_form.Notes|as_crispy_field }}
+    </div>
+  </div>
+</div>
+</div>
+
+<br><br><br>
+
+  <div class="row">
+    <div class="col-12">
+      <b>Wednesday</b>
+      <hr class="divider"></hr>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-1">
+      Shifts
+      <hr class="divider"></hr>
+    <div>
+      Day
+    </div>
+    <div>
+      Evening
+    </div>
+    <div>
+      Night
+    </div>
+    </div>
+    <div class="col-1">
+      Operator
+      <hr class="divider"></hr>
+      <div>
+        <select name="wednesday-Day_Shift" id="wednesday-Day_Shift">
+          <li><option value="None" selected>None</li></option>
+          {% for Operator in object_list %}
+            <li><option value={{Operator}}>{{Operator}}</li></option>
+          {% endfor %}
+        </select>
+      </div>
+      <div> 
+        <select name="wednesday-Evening_Shift" id="wednesday-Evening_Shift">
+          <li><option value="None" selected>None</li></option>
+          {% for Operator in object_list %}
+            <li><option value={{Operator}}>{{Operator}}</li></option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <select name="wednesday-Night_Shift" id="wednesday-Night_Shift">
+          <li><option value="None" selected>None</li></option>
+          {% for Operator in object_list %}
+            <li><option value={{Operator}}>{{Operator}}</li></option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+    <div class="col-5">
+      {{ wednesday_form.Beam|as_crispy_field }}
+      {{ wednesday_form.Source|as_crispy_field }}
+    </div>
+    <div class="col-5">
+      {{ wednesday_form.Customer|as_crispy_field }}
+      {{ wednesday_form.Prjoect_Code|as_crispy_field }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      {{ wednesday_form.Scheduled_Hours|as_crispy_field }}
+      {{ wednesday_form.Delivered_Hours|as_crispy_field }}
+    </div>
+    <div class="col-6">
+      {{ wednesday_form.No_Operators|as_crispy_field }}
+      {{ wednesday_form.Notes|as_crispy_field }}
+    </div>
+  </div>
+</div>
+</div>
+
+<br><br><br>
+
+  
 
       <div class="col-1">
         Thursday
@@ -261,7 +360,6 @@
       </div>
     </div>
 
-  </div>
     <br><br>
     <div class="row justify-content-center">
       <button type="submit" class="btn btn-success">Save Hours</button>

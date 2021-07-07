@@ -289,7 +289,7 @@ class HourRegistrationModel(models.Model):
 	Year = models.PositiveIntegerField(default=current_year(), validators=[MinValueValidator(2020), max_value_current_year])
 	Week = models.IntegerField(choices=WEEK_CHOICES, default=current_week())
 	Monday = models.ForeignKey(Monday, on_delete=models.CASCADE, blank = True, null=True)
-#	Tuesday = models.ForeignKey(Tuesday, on_delete=models.CASCADE, blank = True, null=True)
+	Tuesday = models.ForeignKey(Tuesday, on_delete=models.CASCADE, blank = True, null=True)
 #	Wednesday = models.ForeignKey(Wednesday, on_delete=models.CASCADE, blank = True, null=True)
 #	Thursday = models.ForeignKey(Thursday, on_delete=models.CASCADE, blank = True, null=True)
 #	Friday = models.ForeignKey(Friday, on_delete=models.CASCADE, blank = True, null=True)

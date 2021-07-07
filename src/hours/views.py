@@ -5,7 +5,7 @@ from django.http import Http404, HttpResponse, HttpResponseRedirect
 
 from django.shortcuts import render, get_object_or_404, redirect
 
-from .models import HourRegistrationModel, Operators, Monday, Tuesday
+from .models import HourRegistrationModel, Operators, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
 from .forms import HourRegistrationForm, Monday, Tuesday
 
 from beamrequest.models import CreateBeamRequestModel
@@ -49,14 +49,22 @@ def hours_create_page(request):
     if request.method == 'POST': # If the form has been submitted...
             hourregistration_form = HourRegistrationForm(request.POST, prefix = "hourregistration")
             monday_form = Monday(request.POST, prefix = "monday")
-#            tuesday_form = Tuesday(request.POST, prefix = "tuesday")
-            if hourregistration_form.is_valid() and monday_form.is_valid():# and tuesday_form.is_valid(): # All validation rules pass
+            tuesday_form = Tuesday(request.POST, prefix = "tuesday")
+            wednesday_form = Wednesday(request.POST, prefix = "wednesday")
+
+            if hourregistration_form.is_valid() and monday_form.is_valid() and tuesday_form.is_valid() and wednesday_form.is_valid(): # All validation rules pass
                     print ("all validation passed")
                     hourregistration = hourregistration_form.save()
+
                     monday_form.cleaned_data["hourregistration"] = hourregistration
                     monday = monday_form.save()
-#                    tuesday_form.cleaned_data["hourregistration"] = hourregistration
-#                    tuesday = tuesday_form.save()
+
+                    tuesday_form.cleaned_data["hourregistration"] = hourregistration
+                    tuesday = tuesday_form.save()
+
+                    wednesday_form.cleaned_data["hourregistration"] = hourregistration
+                    wednesday = wednesday_form.save()
+
                     return HttpResponseRedirect("/hours/home")
 #                    return HttpResponseRedirect("/viewer/%s/" % (hourregistration.name))
             else:
@@ -65,10 +73,9 @@ def hours_create_page(request):
     else:
         hourregistration_form = HourRegistrationForm(prefix = "hourregistration")
         monday_form = Monday(prefix = "monday")
-#        tuesday_form = Tuesday(prefix = "tuesday")
-    return render(request, 'hours/create.html', {'form': hourregistration_form, 'monday_form': monday_form, 'object_list': qs}) # 'tuesday_form': tuesday_form,
-
-
+        tuesday_form = Tuesday(prefix = "tuesday")
+        wednesday_form = Wednesday(prefix = "wednesday")
+    return render(request, 'hours/create.html', {'form': hourregistration_form, 'monday_form': monday_form, 'tuesday_form': tuesday_form, 'wednesday_form': wednesday_form, 'object_list': qs})
 
 
 

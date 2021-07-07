@@ -129,7 +129,7 @@ class Wednesday(forms.ModelForm):
 	
 	class Meta:
 		model = Wednesday
-#		exclude = ('HourRegistrationModel',)
+		exclude = ('HourRegistrationModel',)
 
 		fields = [
 #			'Year',
