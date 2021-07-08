@@ -27,8 +27,8 @@ class HourRegistrationForm(forms.ModelForm):
 			'Year',
 			'Week',
 			'Monday',
-#			'Tuesday',
-#			'Wednesday',
+			'Tuesday',
+			'Wednesday',
 #			'Thursday',
 #			'Friday',
 #			'Saturday',
@@ -129,7 +129,7 @@ class Wednesday(forms.ModelForm):
 	
 	class Meta:
 		model = Wednesday
-		exclude = ('HourRegistrationModel',)
+		exclude = ('hourregistration',)
 
 		fields = [
 #			'Year',

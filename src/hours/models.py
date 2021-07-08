@@ -54,7 +54,7 @@ class Monday(models.Model):
 	Notes = models.TextField(blank = True, null=True)
 
 #	def __str__(self):
-#		return self.Name
+#		return self.Id
 
 class Tuesday(models.Model):
 
@@ -290,7 +290,7 @@ class HourRegistrationModel(models.Model):
 	Week = models.IntegerField(choices=WEEK_CHOICES, default=current_week())
 	Monday = models.ForeignKey(Monday, on_delete=models.CASCADE, blank = True, null=True)
 	Tuesday = models.ForeignKey(Tuesday, on_delete=models.CASCADE, blank = True, null=True)
-#	Wednesday = models.ForeignKey(Wednesday, on_delete=models.CASCADE, blank = True, null=True)
+	Wednesday = models.ForeignKey(Wednesday, on_delete=models.CASCADE, blank = True, null=True)
 #	Thursday = models.ForeignKey(Thursday, on_delete=models.CASCADE, blank = True, null=True)
 #	Friday = models.ForeignKey(Friday, on_delete=models.CASCADE, blank = True, null=True)
 #	Saturday = models.ForeignKey(Saturday, on_delete=models.CASCADE, blank = True, null=True)
