@@ -8,7 +8,7 @@ from django.core.exceptions import ValidationError
 #from bootstrap_datepicker_plus import DatePickerInput, DateTimePickerInput
 
 #import my models
-from .models import HourRegistrationModel, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+from .models import HourRegistrationModel, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day
 
 
 			
@@ -29,10 +29,10 @@ class HourRegistrationForm(forms.ModelForm):
 			'Monday',
 			'Tuesday',
 			'Wednesday',
-#			'Thursday',
-#			'Friday',
-#			'Saturday',
-#			'Sunday',
+			'Thursday',
+			'Friday',
+			'Saturday',
+			'Sunday',
 #			'Day_Shift_Monday',
 #			'Day_Shift_Tuesday',
 #			'Day_Shift_Wednesday',
@@ -85,7 +85,7 @@ class Monday(forms.ModelForm):
 	
 	class Meta:
 		model = Monday
-		exclude = ('hourregistration',)
+#		exclude = ('hourregistration',)
 
 		fields = [
 #			'Year',
@@ -96,7 +96,7 @@ class Monday(forms.ModelForm):
 			'Beam',
 			'Source',
 			'Customer',
-			'Prjoect_Code',
+			'Project_Code',
 			'Scheduled_Hours',
 			'Delivered_Hours',
 			'No_Operators',
@@ -107,7 +107,7 @@ class Tuesday(forms.ModelForm):
 	
 	class Meta:
 		model = Tuesday
-		exclude = ('hourregistration',)
+#		exclude = ('hourregistration',)
 
 		fields = [
 #			'Year',
@@ -118,7 +118,7 @@ class Tuesday(forms.ModelForm):
 			'Beam',
 			'Source',
 			'Customer',
-			'Prjoect_Code',
+			'Project_Code',
 			'Scheduled_Hours',
 			'Delivered_Hours',
 			'No_Operators',
@@ -129,7 +129,7 @@ class Wednesday(forms.ModelForm):
 	
 	class Meta:
 		model = Wednesday
-		exclude = ('hourregistration',)
+#		exclude = ('hourregistration',)
 
 		fields = [
 #			'Year',
@@ -140,7 +140,7 @@ class Wednesday(forms.ModelForm):
 			'Beam',
 			'Source',
 			'Customer',
-			'Prjoect_Code',
+			'Project_Code',
 			'Scheduled_Hours',
 			'Delivered_Hours',
 			'No_Operators',
@@ -151,7 +151,7 @@ class Thursday(forms.ModelForm):
 	
 	class Meta:
 		model = Thursday
-#		exclude = ('HourRegistrationModel',)
+#		exclude = ('hourregistration',)
 
 		fields = [
 #			'Year',
@@ -162,7 +162,7 @@ class Thursday(forms.ModelForm):
 			'Beam',
 			'Source',
 			'Customer',
-			'Prjoect_Code',
+			'Project_Code',
 			'Scheduled_Hours',
 			'Delivered_Hours',
 			'No_Operators',
@@ -173,7 +173,7 @@ class Friday(forms.ModelForm):
 	
 	class Meta:
 		model = Friday
-#		exclude = ('HourRegistrationModel',)
+#		exclude = ('hourregistration',)
 
 		fields = [
 #			'Year',
@@ -184,7 +184,7 @@ class Friday(forms.ModelForm):
 			'Beam',
 			'Source',
 			'Customer',
-			'Prjoect_Code',
+			'Project_Code',
 			'Scheduled_Hours',
 			'Delivered_Hours',
 			'No_Operators',
@@ -195,7 +195,7 @@ class Saturday(forms.ModelForm):
 	
 	class Meta:
 		model = Saturday
-#		exclude = ('HourRegistrationModel',)
+#		exclude = ('hourregistration',)
 
 		fields = [
 #			'Year',
@@ -206,7 +206,7 @@ class Saturday(forms.ModelForm):
 			'Beam',
 			'Source',
 			'Customer',
-			'Prjoect_Code',
+			'Project_Code',
 			'Scheduled_Hours',
 			'Delivered_Hours',
 			'No_Operators',
@@ -217,7 +217,7 @@ class Sunday(forms.ModelForm):
 	
 	class Meta:
 		model = Sunday
-#		exclude = ('HourRegistrationModel',)
+#		exclude = ('hourregistration',)
 
 		fields = [
 #			'Year',
@@ -228,7 +228,7 @@ class Sunday(forms.ModelForm):
 			'Beam',
 			'Source',
 			'Customer',
-			'Prjoect_Code',
+			'Project_Code',
 			'Scheduled_Hours',
 			'Delivered_Hours',
 			'No_Operators',

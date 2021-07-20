@@ -1,9 +1,10 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import HourRegistrationModel, Operators, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+from .models import HourRegistrationModel, Operators, Source, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
 
 admin.site.register(Operators)
+admin.site.register(Source)
 admin.site.register(HourRegistrationModel)
 admin.site.register(Monday)
 admin.site.register(Tuesday)

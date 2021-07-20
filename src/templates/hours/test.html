@@ -1,0 +1,17 @@
+<!-- hours test.html -->
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ formset.as_p }}
+    <input type="submit" value="Submit">
+</form>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %}
