@@ -335,10 +335,10 @@
     </div>
   </div>
 
-{% for day in days_list %}
+{#% for day in days_list %#}
     <div class="row">
     <div class="col-12">
-      <b>{{ day }}</b>
+      <b>{#{ day }#}</b>
       <hr class="divider"></hr>
     </div>
   </div>
@@ -346,33 +346,33 @@
   <div class="row">
     <div class="col-2">
       <div>
-        {{ day }}{{form.Day_Shift }}
+        {#{ day }}{{form.Day_Shift }#}
       </div>
       <div> 
-        {{ sunday_form.Evening_Shift|as_crispy_field }}
+        {#{ sunday_form.Evening_Shift|as_crispy_field }#}
       </div>
       <div>
-        {{ sunday_form.Night_Shift|as_crispy_field }}
+        {#{ sunday_form.Night_Shift|as_crispy_field }#}
       </div>
     </div>
 
     <div class="col-5">
-      {{ sunday_form.Beam|as_crispy_field }}
-      {{ sunday_form.Source|as_crispy_field }}
-      {{ sunday_form.Scheduled_Hours|as_crispy_field }}      
+      {#{ sunday_form.Beam|as_crispy_field }#}
+      {#{ sunday_form.Source|as_crispy_field }#}
+      {#{ sunday_form.Scheduled_Hours|as_crispy_field }#}      
     </div>
     <div class="col-5">
-      {{ sunday_form.Customer|as_crispy_field }}
-      {{ sunday_form.Project_Code|as_crispy_field }}
-      {{ sunday_form.Delivered_Hours|as_crispy_field }}      
+      {#{ sunday_form.Customer|as_crispy_field }#}
+      {#{ sunday_form.Project_Code|as_crispy_field }#}
+      {#{ sunday_form.Delivered_Hours|as_crispy_field }#}      
     </div>
   </div>
   <div class="row">
     <div class="col-6">
-      {{ sunday_form.Notes|as_crispy_field }}
+      {#{ sunday_form.Notes|as_crispy_field }#}
     </div>
   </div>
-{% endfor %}
+{#% endfor %#}
 
     <br><br>
     <div class="row justify-content-center">

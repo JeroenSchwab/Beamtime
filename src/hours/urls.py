@@ -4,7 +4,7 @@ from .views import (
     hours_create_page,
     hours_home_page,
     formset_view,
-    #hours_detail_page,
+    hours_test_page,
     #hours_update_page,
     #hours_delete_page,
 )

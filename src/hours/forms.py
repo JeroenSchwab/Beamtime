@@ -8,7 +8,7 @@ from django.core.exceptions import ValidationError
 #from bootstrap_datepicker_plus import DatePickerInput, DateTimePickerInput
 
 #import my models
-from .models import HourRegistrationModel, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day
+from .models import HourRegistrationModel, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, HourRegModel
 
 
 			
@@ -233,4 +233,22 @@ class Sunday(forms.ModelForm):
 			'Delivered_Hours',
 			'No_Operators',
 			'Notes',
+		]
+
+
+### test erea
+
+class HourRegForm(forms.ModelForm):
+
+	# create meta class
+	class Meta:
+
+		# specify model to be used
+		model = HourRegModel
+
+		# specify fields to be used
+		fields = [
+			'Year',
+			'Week',
+			'Day',
 		]

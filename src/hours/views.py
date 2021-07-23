@@ -5,8 +5,8 @@ from django.http import Http404, HttpResponse, HttpResponseRedirect
 
 from django.shortcuts import render, get_object_or_404, redirect
 
-from .models import HourRegistrationModel, Operators, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day
-from .forms import HourRegistrationForm, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day
+from .models import HourRegistrationModel, Operators, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, HourRegModel
+from .forms import HourRegistrationForm, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday, Day, HourRegForm
 
 from django.forms import modelformset_factory
 from beamrequest.models import CreateBeamRequestModel
@@ -153,11 +153,56 @@ def hours_create_page(request):
 #     'c_form': c_form,
 #      })
 
+
+#### test erea
+
+@staff_member_required
+def hours_test_page(request):
+    page_title = 'Hour registration'
+    template_name = 'hours/test.html'
+    operators = Operators.objects.all()
+#    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    DayFormSet = modelformset_factory(Day, fields =['Day_Shift', 'Evening_Shift', 'Night_Shift', 'Beam', 'Source', 'Customer', 'Project_Code', 'Scheduled_Hours', 'Delivered_Hours', 'Notes'], extra = 7)
+    formset = DayFormSet(prefix='weekday')  
+
+    if request.method == 'POST': # If the form has been submitted...
+            hourreg_form = HourRegForm(request.POST, prefix = "hourregistration")
+            
+            DayFormSet = modelformset_factory(Day, fields =['Day_Shift', 'Evening_Shift', 'Night_Shift', 'Beam', 'Source', 'Customer', 'Project_Code', 'Scheduled_Hours', 'Delivered_Hours', 'Notes'], extra = 7)
+            formset = DayFormSet(prefix='weekday')
+#            day_form = Day(request.POST, prefix = "sunday")
+
+            if hourreg_form.is_valid() and day_form.is_valid(): #and tuesday_form.is_valid() and wednesday_form.is_valid() and thursday_form.is_valid() and friday_form.is_valid() and saturday_form.is_valid() and sunday_form.is_valid(): # All validation rules pass
+                    print ("all validation passed")
+                    hourreg = hourreg_form.save()
+
+
+#                    day_form.cleaned_data["hourregistration"] = hourregistration
+#                    day = day_form.save()                    
+
+                    return HttpResponseRedirect("/hours/home")
+#                    return HttpResponseRedirect("/viewer/%s/" % (hourregistration.name))
+            else:
+                    print ("failed")
+
+    else:
+        hourreg_form = HourRegForm(prefix = "hourregistration")
+#        day_form = Day(prefix = "sunday")
+#        context['formset']= formset
+
+    return render(request, 'hours/create.html', {
+        'form': hourreg_form,
+    #    'day_form': day_form,
+        'operators_list': operators,
+#        'days_list': days,
+        'formset': formset,
+        })
+
 def formset_view(request):
     context ={}
   
     # creating a formset
-    DayFormSet = modelformset_factory(Day, fields =['Year', 'Week', 'Day_Shift', 'Evening_Shift', 'Night_Shift', 'Beam', 'Source', 'Customer', 'Project_Code', 'Scheduled_Hours', 'Delivered_Hours', 'Notes'], extra = 7)
+    DayFormSet = modelformset_factory(Day, fields =['Day_Shift', 'Evening_Shift', 'Night_Shift', 'Beam', 'Source', 'Customer', 'Project_Code', 'Scheduled_Hours', 'Delivered_Hours', 'Notes'], extra = 7)
     formset = DayFormSet(prefix='weekday')
       
     # Add the formset to context dictionary
