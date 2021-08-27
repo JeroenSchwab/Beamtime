@@ -1,13 +1,77 @@
 <!-- hours test.html -->
 {% extends "base.html" %}
 
-
+{% load crispy_forms_tags %}
 
 {% block content %}
 {% if user.is_authenticated %}
 <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ formset.as_p }}
+    {#{ formset.as_p }#}
+    {#{ formset.as_table }#}
+
+    {% for form in formset %}
+      <div class="row">
+        <div class="col-12">
+          <b>Monday</b>
+          <hr class="divider"></hr>
+        </div>
+      </div>
+      <div class="row">
+      <div class="col-4">
+          {{ form.Day_Shift|as_crispy_field }}
+      </div>
+      <div class="col-4">
+        {{ form.Evening_Shift|as_crispy_field }}
+      </div>
+      <div class="col-4">
+        {{ form.Night_Shift|as_crispy_field }}
+      </div>
+      </div>
+
+      <div class="row">
+      <div class="col-4">
+          {{ form.Beam|as_crispy_field }}
+      </div>
+      <div class="col-4">
+          {{ form.Source|as_crispy_field }}
+      </div>
+      <div class="col-4">
+        
+      </div>
+      </div>
+
+      <div class="row">
+      <div class="col-4">
+          {{ form.Customer|as_crispy_field }}
+      </div>
+      <div class="col-4">
+          {{ form.Project_Code|as_crispy_field }}
+      </div>
+      <div class="col-4">
+        
+      </div>
+      </div>
+
+      <div class="row">
+      <div class="col-4">
+          {{ form.Scheduled_Hours|as_crispy_field }}
+      </div>
+      <div class="col-4">
+        {{ form.Delivered_Hours|as_crispy_field }}
+      </div>
+      <div class="col-4">
+        
+      </div>
+      </div>
+
+      <div class="row">
+      <div class="col-12">
+          {{ form.Notes|as_crispy_field }}
+      </div>
+      </div>
+
+    {% endfor %}
     <input type="submit" value="Submit">
 </form>
 {% else %}
