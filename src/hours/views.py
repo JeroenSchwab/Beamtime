@@ -161,7 +161,7 @@ def hours_test_page(request):
     page_title = 'Hour registration'
     template_name = 'hours/test.html'
     operators = Operators.objects.all()
-#    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     DayFormSet = modelformset_factory(Day, fields =['Day_Shift', 'Evening_Shift', 'Night_Shift', 'Beam', 'Source', 'Customer', 'Project_Code', 'Scheduled_Hours', 'Delivered_Hours', 'Notes'], extra = 7)
     formset = DayFormSet(prefix='weekday')  
 
@@ -194,7 +194,7 @@ def hours_test_page(request):
         'form': hourreg_form,
     #    'day_form': day_form,
         'operators_list': operators,
-#        'days_list': days,
+        'days_list': days,
         'formset': formset,
         })
 

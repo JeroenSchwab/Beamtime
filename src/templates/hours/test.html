@@ -10,13 +10,16 @@
     {#{ formset.as_p }#}
     {#{ formset.as_table }#}
 
-    {% for form in formset %}
-      <div class="row">
+    {% for days in days_list %}
+    <div class="row">
         <div class="col-12">
-          <b>Monday</b>
+          <b>{{ days }}</b>
           <hr class="divider"></hr>
         </div>
       </div>
+      {% endfor %}
+    {% for form in formset %}
+      
       <div class="row">
       <div class="col-4">
           {{ form.Day_Shift|as_crispy_field }}
