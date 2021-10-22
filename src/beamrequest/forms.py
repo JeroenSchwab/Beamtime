@@ -8,7 +8,27 @@ from django.core.exceptions import ValidationError
 from bootstrap_datepicker_plus import DatePickerInput, DateTimePickerInput
 
 #import my models
-from .models import CreateBeamRequestModel, IonSpecies, Energys
+from .models import CreateBeamRequestModel, IonSpecies, Energys #, BeamModel
+
+#class BeamForm(forms.ModelForm):
+#	class Meta:
+
+#		model = BeamModel
+
+#		fields = [
+#			'Project_Code',
+#			'Hours',
+#			'Ion_Species',
+#			'Energy',
+#			'Flux',
+#		]
+#		widgets = {
+#		Project_Code = models.ForeignKey(CreateBeamRequestModel, on_delete=models.CASCADE)
+#			'Hours':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter Hours'}),
+#			Ion_Species = models.ForeignKey(IonSpecies, on_delete=models.CASCADE)
+#			Energy = ChainedForeignKey(Energys, chained_field="Ion_Species", chained_model_field="Ion_Species",	show_all=False,	auto_choose=True)
+#			'Flux':forms.TextInput(attrs={'class':'form-control','placeholder':'The flux needed'}),
+#		}
 
 #creating a form
 class CreateBeamRequestForm(forms.ModelForm):
@@ -35,7 +55,11 @@ class CreateBeamRequestForm(forms.ModelForm):
 			'Collaborator_Name',
 			'Collaborator_Nationality',
 			'Collaborator_Home_Institute',
-			'Different_Beams',
+#			'Beam_1',
+#			'Beam_2',
+#			'Beam_3',
+#			'Beam_4',
+#			'Different_Beams',
 #			'Shifts',
 			'Hours',
 			'Ion_Species',
@@ -73,11 +97,11 @@ class CreateBeamRequestForm(forms.ModelForm):
 
 			'Start_Date': DateTimePickerInput(
 				options = {
-          "format": "YYYY-MM-DD HH:mm", #date-time format
-          "showClose": True,
-          "showClear": True,
-          "showTodayButton": True,
-          "sideBySide": True,
+		          "format": "YYYY-MM-DD HH:mm", #date-time format
+		          "showClose": True,
+		          "showClear": True,
+		          "showTodayButton": True,
+		          "sideBySide": True,
         }
         ),
 

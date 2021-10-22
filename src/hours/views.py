@@ -46,7 +46,7 @@ def hours_create_page(request):
     page_title = 'Hour registration'
     template_name = 'hours/create.html'
     operators = Operators.objects.all()
-    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    #days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
   
     if request.method == 'POST': # If the form has been submitted...
             hourregistration_form = HourRegistrationForm(request.POST, prefix = "hourregistration")

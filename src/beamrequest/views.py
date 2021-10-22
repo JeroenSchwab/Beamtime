@@ -6,8 +6,8 @@ from django.http import Http404, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
 
-from .models import CreateBeamRequestModel, IonSpecies, Energys
-from .forms import CreateBeamRequestForm
+from .models import CreateBeamRequestModel, IonSpecies, Energys #, BeamModel
+from .forms import CreateBeamRequestForm #, BeamForm
 
 # Create your views here.
 
@@ -26,14 +26,30 @@ def beam_request_create_page(request):
     page_title = 'Create new Request'
     template_name = 'request/create.html'
 
-    form = CreateBeamRequestForm(request.POST or None)
-    if form.is_valid():
-        print(form.cleaned_data)
-        form.save()
+    if request.method == 'POST':
+        form = CreateBeamRequestForm(request.POST)
+#        beam = BeamForm(request.POST)
+
+#        if form.is_valid()# and beam.is_valid():
+        if form.is_valid():
+            print("all validation passed")
+            form = form.save()
+#            beam = beam.save()
+#        form = CreateBeamRequestForm()
+#        beam = BeamForm()
+        else:
+            print ("failed")
+    else:
         form = CreateBeamRequestForm()
-    context = {"title": page_title, "form": form}
+#        beam = BeamForm()
+
+    return render(request, template_name, {
+        'form': form,
+#        'beam': beam,
+})
+#    context = {"title": page_title, "form": form, "beam": beam}
            
-    return render(request, template_name, context)
+#    return render(request, template_name, context)
 
 #    def generatescripts(request):
 #    if request.method == 'POST':

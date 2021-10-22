@@ -19,7 +19,16 @@ class Energys(models.Model):
 #		return self.energy
 		return self.Name
 
-		
+#class BeamModel(models.Model):
+#	Project_Code = models.ForeignKey(CreateBeamRequestModel, on_delete=models.CASCADE)
+#	Hours = models.IntegerField(default='1')
+#	Ion_Species = models.ForeignKey(IonSpecies, on_delete=models.CASCADE)
+#	Energy = ChainedForeignKey(Energys, chained_field="Ion_Species", chained_model_field="Ion_Species",	show_all=False,	auto_choose=True)
+#	Flux = models.CharField(max_length=50, blank = True, null = True)
+
+#	def __str__(self):
+#		return self.Name
+
 # Create your models here.
 class CreateBeamRequestModel(models.Model):
 
@@ -65,11 +74,15 @@ class CreateBeamRequestModel(models.Model):
 	Collaborator_Name = models.TextField(blank = True)
 	Collaborator_Nationality = models.TextField(blank = True)
 	Collaborator_Home_Institute = models.TextField(blank = True)
-	Different_Beams = models.IntegerField(choices=DIFBEAMS_CHOICES, default='1')
+#	Beam_1 = models.ForeignKey(BeamModel, on_delete=models.CASCADE, blank = True, null=True)
+#	Beam_2 = models.ForeignKey(BeamModel, on_delete=models.CASCADE)
+#	Beam_3 = models.ForeignKey(BeamModel, on_delete=models.CASCADE)
+#	Beam_4 = models.ForeignKey(BeamModel, on_delete=models.CASCADE)
+#	Different_Beams = models.IntegerField(choices=DIFBEAMS_CHOICES, default='1')
 #	Shifts = models.IntegerField(choices=SHIFTS_CHOICES, default='1')
 	Hours = models.IntegerField(default='1')
-	Ion_Species = models.ForeignKey(IonSpecies, on_delete=models.CASCADE)
-	Energy = ChainedForeignKey(Energys, chained_field="Ion_Species", chained_model_field="Ion_Species",	show_all=False,	auto_choose=True)
+	Ion_Species = models.ForeignKey(IonSpecies, on_delete=models.CASCADE, blank = True, null=True)
+	Energy = ChainedForeignKey(Energys, chained_field="Ion_Species", chained_model_field="Ion_Species",	show_all=False,	auto_choose=True, blank = True, null=True)
 	Flux = models.CharField(max_length=50, blank = True, null = True)
 	Start_Date = models.DateTimeField(blank = True, null=True)
 	End_Date = models.DateTimeField(blank = True, null=True)
@@ -92,3 +105,5 @@ class CreateBeamRequestModel(models.Model):
 	def get_delete_url(self):
 #		return f"/beamrequest/{self.Project_Code}/delete/"
 		return f"{{self.get_absolute_url}}/delete/"
+
+
