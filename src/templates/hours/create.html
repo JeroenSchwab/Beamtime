@@ -8,373 +8,93 @@
 <form method="post" novalidate=true>
 {% csrf_token %}
 
-  <div class="row">
+  <div class="row justify-content-center">
     <div class="col-2">
-      {{ form.Year|as_crispy_field }}
+      {{ form.year|as_crispy_field }}
     </div>
     <div class="col-2">
-      {{ form.Week|as_crispy_field }}
+      {{ form.month|as_crispy_field }}
     </div>
-    <div class="col-8">
+    <div class="col-2">
+      {{ form.week|as_crispy_field }}
+    </div>
+    <div class="col-2">
+      {{ form.day|as_crispy_field }}
+    </div>
+  </div>
+
+    <br><br>
+    <b>Hours delivered</b>
+    <hr class="divider"></hr>
+
+  <div class="row justify-content-center">
+    <div class="col-2">
+      {{ form.project_code|as_crispy_field }}
+    </div>
+    <div class="col-2">
+      {{ form.hours_deliverd|as_crispy_field }}
+    </div>
+    <div class="col-2">
+      of {{ form.hours_requested|as_crispy_field }} hours requested
+    </div>
+    <div class="col-2">
       
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-12">
-      <b>Monday</b>
-      <hr class="divider"></hr>
-    </div>
-  </div>
-
-  <div class="row">
-    <!--
-    <div class="col-1">
-      Shifts
-      <hr class="divider"></hr>
-    <div>
-      Day
-    </div>
-    <div>
-      Evening
-    </div>
-    <div>
-      Night
-    </div>
-    </div>
-  -->
-    <div class="col-2">
-
-      <div>
-        {{ monday_form.Day_Shift|as_crispy_field }}
-        <!--
-        <select name="monday-Day_Shift" id="monday-Day_Shift">
-          <li><option value="None" selected>None</li></option>
-          {% for Operator in operators_list %}
-            <li><option value={{Operator}}>{{Operator}}</li></option>
-          {% endfor %}
-        </select>
-      -->
-      </div>
-      <div>
-        {{ monday_form.Evening_Shift|as_crispy_field }}
-        <!--
-        <select name="monday-Evening_Shift" id="monday-Evening_Shift">
-          <li><option value="None" selected>None</li></option>
-          {% for Operator in operators_list %}
-            <li><option value={{Operator}}>{{Operator}}</li></option>
-          {% endfor %}
-        </select>
-      -->
-      </div>
-      <div>
-        {{ monday_form.Night_Shift|as_crispy_field }}
-        <!--
-        <select name="monday-Night_Shift" id="monday-Night_Shift">
-          <li><option value="None" selected>None</li></option>
-          {% for Operator in operators_list %}
-            <li><option value={{Operator}}>{{Operator}}</li></option>
-          {% endfor %}
-        </select>
-      -->
-      </div>
-    </div>
-
-    <div class="col-5">
-      {{ monday_form.Beam|as_crispy_field }}
-      {{ monday_form.Source|as_crispy_field }}
-      {{ monday_form.Scheduled_Hours|as_crispy_field }}
-    </div>
-    <div class="col-5">
-      {{ monday_form.Customer|as_crispy_field }}
-      {{ monday_form.Project_Code|as_crispy_field }}
-      {{ monday_form.Delivered_Hours|as_crispy_field }}
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-6">
-      {{ monday_form.Notes|as_crispy_field }}
-    </div>
-  </div>
-
-
-<br><br><br>
-
-  <div class="row">
-    <div class="col-12">
-      <b>Tuesday</b>
-      <hr class="divider"></hr>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-2">
-      <div>
-        {{ tuesday_form.Day_Shift|as_crispy_field }}
-      </div>
-      <div> 
-        {{ tuesday_form.Evening_Shift|as_crispy_field }}
-      </div>
-      <div>
-        {{ tuesday_form.Night_Shift|as_crispy_field }}
-      </div>
-    </div>
-
-    <div class="col-5">
-      {{ tuesday_form.Beam|as_crispy_field }}
-      {{ tuesday_form.Source|as_crispy_field }}
-      {{ tuesday_form.Scheduled_Hours|as_crispy_field }}
-    </div>
-    <div class="col-5">
-      {{ tuesday_form.Customer|as_crispy_field }}
-      {{ tuesday_form.Project_Code|as_crispy_field }}
-      {{ tuesday_form.Delivered_Hours|as_crispy_field }}
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-6">
-      {{ tuesday_form.Notes|as_crispy_field }}
-    </div>
-  </div>
-
-<br><br><br>
-
-  <div class="row">
-    <div class="col-12">
-      <b>Wednesday</b>
-      <hr class="divider"></hr>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-2">
-      <div>
-        {{ wednesday_form.Day_Shift|as_crispy_field }}
-      </div>
-      <div> 
-        {{ wednesday_form.Evening_Shift|as_crispy_field }}
-      </div>
-      <div>
-        {{ wednesday_form.Night_Shift|as_crispy_field }}
-      </div>
-    </div>
-
-    <div class="col-5">
-      {{ wednesday_form.Beam|as_crispy_field }}
-      {{ wednesday_form.Source|as_crispy_field }}
-      {{ wednesday_form.Scheduled_Hours|as_crispy_field }}
-    </div>
-    <div class="col-5">
-      {{ wednesday_form.Customer|as_crispy_field }}
-      {{ wednesday_form.Project_Code|as_crispy_field }}
-      {{ wednesday_form.Delivered_Hours|as_crispy_field }}
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-6">
-      {{ wednesday_form.Notes|as_crispy_field }}
-    </div>
-  </div>
-
-
-<br><br><br>
-
-  <div class="row">
-    <div class="col-12">
-      <b>Thursday</b>
-      <hr class="divider"></hr>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-2">
-      <div>
-        {{ thursday_form.Day_Shift|as_crispy_field }}
-      </div>
-      <div> 
-        {{ thursday_form.Evening_Shift|as_crispy_field }}
-      </div>
-      <div>
-        {{ thursday_form.Night_Shift|as_crispy_field }}
-      </div>
-    </div>
-
-    <div class="col-5">
-      {{ thursday_form.Beam|as_crispy_field }}
-      {{ thursday_form.Source|as_crispy_field }}
-      {{ thursday_form.Scheduled_Hours|as_crispy_field }}
-    </div>
-    <div class="col-5">
-      {{ thursday_form.Customer|as_crispy_field }}
-      {{ thursday_form.Project_Code|as_crispy_field }}
-      {{ thursday_form.Delivered_Hours|as_crispy_field }}
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-6">
-      {{ thursday_form.Notes|as_crispy_field }}
-    </div>
-  </div>
-
-<br><br><br>
-
-  <div class="row">
-    <div class="col-12">
-      <b>Friday</b>
-      <hr class="divider"></hr>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-2">
-      <div>
-        {{ friday_form.Day_Shift|as_crispy_field }}
-      </div>
-      <div> 
-        {{ friday_form.Evening_Shift|as_crispy_field }}
-      </div>
-      <div>
-        {{ friday_form.Night_Shift|as_crispy_field }}
-      </div>
-    </div>
-
-    <div class="col-5">
-      {{ friday_form.Beam|as_crispy_field }}
-      {{ friday_form.Source|as_crispy_field }}
-      {{ friday_form.Scheduled_Hours|as_crispy_field }}
-    </div>
-    <div class="col-5">
-      {{ friday_form.Customer|as_crispy_field }}
-      {{ friday_form.Project_Code|as_crispy_field }}
-      {{ friday_form.Delivered_Hours|as_crispy_field }}      
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-6">
-      {{ friday_form.Notes|as_crispy_field }}
-    </div>
-  </div>
-
-<br><br><br>
-
-
-  <div class="row">
-    <div class="col-12">
-      <b>Saturday</b>
-      <hr class="divider"></hr>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-2">
-      <div>
-        {{ saturday_form.Day_Shift|as_crispy_field }}
-      </div>
-      <div> 
-        {{ saturday_form.Evening_Shift|as_crispy_field }}
-      </div>
-      <div>
-        {{ saturday_form.Night_Shift|as_crispy_field }}
-      </div>
-    </div>
-
-    <div class="col-5">
-      {{ saturday_form.Beam|as_crispy_field }}
-      {{ saturday_form.Source|as_crispy_field }}
-      {{ saturday_form.Scheduled_Hours|as_crispy_field }}      
-    </div>
-    <div class="col-5">
-      {{ saturday_form.Customer|as_crispy_field }}
-      {{ saturday_form.Project_Code|as_crispy_field }}
-      {{ saturday_form.Delivered_Hours|as_crispy_field }}      
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-6">
-      {{ saturday_form.Notes|as_crispy_field }}
-    </div>
-  </div>
-
-<br><br><br>
-
-
-    <div class="row">
-    <div class="col-12">
-      <b>Sunday</b>
-      <hr class="divider"></hr>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-2">
-      <div>
-        {{ sunday_form.Day_Shift|as_crispy_field }}
-      </div>
-      <div> 
-        {{ sunday_form.Evening_Shift|as_crispy_field }}
-      </div>
-      <div>
-        {{ sunday_form.Night_Shift|as_crispy_field }}
-      </div>
-    </div>
-
-    <div class="col-5">
-      {{ sunday_form.Beam|as_crispy_field }}
-      {{ sunday_form.Source|as_crispy_field }}
-      {{ sunday_form.Scheduled_Hours|as_crispy_field }}      
-    </div>
-    <div class="col-5">
-      {{ sunday_form.Customer|as_crispy_field }}
-      {{ sunday_form.Project_Code|as_crispy_field }}
-      {{ sunday_form.Delivered_Hours|as_crispy_field }}      
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-6">
-      {{ sunday_form.Notes|as_crispy_field }}
-    </div>
-  </div>
-
-{#% for day in days_list %#}
-    <div class="row">
-    <div class="col-12">
-      <b>{#{ day }#}</b>
-      <hr class="divider"></hr>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-2">
-      <div>
-        {#{ day }}{{form.Day_Shift }#}
-      </div>
-      <div> 
-        {#{ sunday_form.Evening_Shift|as_crispy_field }#}
-      </div>
-      <div>
-        {#{ sunday_form.Night_Shift|as_crispy_field }#}
-      </div>
-    </div>
-
-    <div class="col-5">
-      {#{ sunday_form.Beam|as_crispy_field }#}
-      {#{ sunday_form.Source|as_crispy_field }#}
-      {#{ sunday_form.Scheduled_Hours|as_crispy_field }#}      
-    </div>
-    <div class="col-5">
-      {#{ sunday_form.Customer|as_crispy_field }#}
-      {#{ sunday_form.Project_Code|as_crispy_field }#}
-      {#{ sunday_form.Delivered_Hours|as_crispy_field }#}      
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-6">
-      {#{ sunday_form.Notes|as_crispy_field }#}
-    </div>
-  </div>
-{#% endfor %#}
-
     <br><br>
+    <b>Hours spend different</b>
+    <hr class="divider"></hr>
+
+  <div class="row justify-content-center">
+    <div class="col-2">
+      {{ form.woak|as_crispy_field }}
+    </div>
+    <div class="col-2">
+      {{ form.planned|as_crispy_field }}
+    </div>
+    <div class="col-2">
+      {{ form.unused|as_crispy_field }}
+    </div>
+    <div class="col-2">
+      {{ form.defelopment|as_crispy_field }}
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-2">
+      {{ form.calibration|as_crispy_field }}
+    </div>
+    <div class="col-2">
+      {{ form.general_error|as_crispy_field }}
+    </div>
+    <div class="col-2">
+      {{ form.rf_error|as_crispy_field }}
+    </div>
+    <div class="col-2">
+      {{ form.emc1_error|as_crispy_field }}
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-2">
+      {{ form.foeldi_error|as_crispy_field }}
+    </div>
+    <div class="col-2">
+      {{ form.cryo_error|as_crispy_field }}
+    </div>
+    <div class="col-2">
+      {{ form.other_error|as_crispy_field }}
+    </div>
+    <div class="col-2">
+      
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-8">
+       {{ form.notes|as_crispy_field }}
+    </div>
+  </div>
+
+<br><br>
     <div class="row justify-content-center">
       <button type="submit" class="btn btn-success">Save Hours</button>
     </div>

@@ -4,7 +4,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.http import Http404, HttpResponse
 
 from django.shortcuts import render, get_object_or_404, redirect
-
+from django.forms import modelformset_factory
 
 from .models import CreateBeamRequestModel, IonSpecies, Energys #, BeamModel
 from .forms import CreateBeamRequestForm #, BeamForm
@@ -25,15 +25,18 @@ def beam_request_home_page(request):
 def beam_request_create_page(request):
     page_title = 'Create new Request'
     template_name = 'request/create.html'
+#    DifbeamsFormset = modelformset_factory(IonSpecies, fields=('Name',))
 
     if request.method == 'POST':
         form = CreateBeamRequestForm(request.POST)
+#        formset = DifbeamsFormset(request.POST, request.FILES)
 #        beam = BeamForm(request.POST)
 
 #        if form.is_valid()# and beam.is_valid():
-        if form.is_valid():
+        if form.is_valid() and formset.is_valid():
             print("all validation passed")
             form = form.save()
+#            formset = formset.save()
 #            beam = beam.save()
 #        form = CreateBeamRequestForm()
 #        beam = BeamForm()
@@ -41,10 +44,12 @@ def beam_request_create_page(request):
             print ("failed")
     else:
         form = CreateBeamRequestForm()
+#        formset = DifbeamsFormset()
 #        beam = BeamForm()
 
     return render(request, template_name, {
         'form': form,
+#        'formset': formset,
 #        'beam': beam,
 })
 #    context = {"title": page_title, "form": form, "beam": beam}
@@ -107,4 +112,29 @@ def beam_request_delete_page(request, Project_Code):
     context = {'object': obj}
     return render(request, template_name, context)
 
+def beam_request_dif_beams(request):
+    DifbeamsFormset = modelformset_factory(IonSpecies, Energys, fields=('name', 'name'))
+    if request.method == 'POST':
+        formset = DifbeamsFormset(request.POST, request.FILES)
+        if formset.is_valid():
+            formset.save()
 
+        else:
+            formset = DifbeamsFormset()
+        return render(request, 'template_name', {'formset': formset})
+
+
+#from django.forms import modelformset_factory
+#from django.shortcuts import render
+#from myapp.models import Author
+
+#def manage_authors(request):
+#    AuthorFormSet = modelformset_factory(Author, fields=('name', 'title'))
+#    if request.method == 'POST':
+#        formset = AuthorFormSet(request.POST, request.FILES)
+#        if formset.is_valid():
+#            formset.save()
+#            # do something.
+#    else:
+#        formset = AuthorFormSet()
+#    return render(request, 'manage_authors.html', {'formset': formset})

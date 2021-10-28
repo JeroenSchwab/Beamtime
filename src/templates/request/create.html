@@ -107,18 +107,19 @@
 			 {{ form.End_Date|as_crispy_field }}
 			</div>
 		</div>
-		<div class="justify-content-center">
+		<div class="row justify-content-center">
 			<div class="col-6">
-  				{#{ form.Different_Beams|as_crispy_field }#}
+  				{{ form.Different_Beams|as_crispy_field }}
  			</div>
 		</div>
 		<div class="row justify-content-center">
 			<!--<div id="hidden1">-->
 				<div class="col-6">
-	  			{{ form.Hours|as_crispy_field }}
-		  		{{ form.Ion_Species|as_crispy_field }}
+	  			{{ form.Ion_Species|as_crispy_field }}
 				{{ form.Energy|as_crispy_field }}
 				{{ form.Flux|as_crispy_field }}
+				{{ form.Hours|as_crispy_field }}
+				{{ form.Beam_Note|as_crispy_field }}
 				</div>
 			<!--</div>
 			<div id="hidden2">
@@ -145,6 +146,9 @@
 				{#{ beam.Flux|as_crispy_field }#}
 				</div>
 			</div>-->
+			<div>
+				{{ formset }}
+			</div>
 		</div>
 		<div class="row justify-content-center">
 		  {{ form.Requiered_Equipment|as_crispy_field }}

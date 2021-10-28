@@ -34,6 +34,6 @@ urlpatterns = [
     path('documentation/', include('documentation.urls')),
    #path('login/', login_page, name='login'),
    #for debugging
-    path('__debug__/', include(debug_toolbar.urls)),
+   # path('__debug__/', include(debug_toolbar.urls)),
 
    ]
