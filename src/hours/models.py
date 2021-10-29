@@ -36,12 +36,10 @@ def current_week():
 # Create your models here.
 class HourRegistrationModel(models.Model):
 
-
-
 	#week choices (1 to 52)
 	WEEK_CHOICES = [tuple([x,x]) for x in range(1,53)]
 
-	# day choices (1 to 31)
+	# month choices (1 to 12)
 	MONTH_CHOICES = [tuple([x,x]) for x in range(1,13)]
 
 	# day choices (1 to 31)
@@ -54,7 +52,7 @@ class HourRegistrationModel(models.Model):
 	day = models.IntegerField(choices=DAY_CHOICES, default=current_day())
 	project_code = models.ForeignKey(CreateBeamRequestModel, on_delete=models.CASCADE, blank = True, null=True)
 	hours_requested = models.CharField(max_length=20, blank = True, null=True)
-	hours_deliverd =models.PositiveIntegerField(default=0, blank=True, null=True)
+	hours_deliverd = models.PositiveIntegerField(default=0, blank=True, null=True)
 	woak = models.PositiveIntegerField(blank=True, null=True)
 	planned = models.PositiveIntegerField(blank=True, null=True)
 	unused = models.PositiveIntegerField(blank=True, null=True)
@@ -69,7 +67,8 @@ class HourRegistrationModel(models.Model):
 	notes = models.TextField(blank=True, null=True)
 
 #	def __str__(self):
-#		return self.Week
+#		return self.week
+
 
 
 	#Spent Time choices

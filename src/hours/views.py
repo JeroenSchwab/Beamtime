@@ -51,7 +51,12 @@ class ProjectCodeListView(ListView):
 def hours_create_page(request):
     page_title = 'Hour registration'
     template_name = 'hours/create.html'
-    projectcode = CreateBeamRequestModel.objects.all()
+
+    data = CreateBeamRequestModel.objects.all()
+    projectcode = {"Project_Code": data}
+#    projectcode = CreateBeamRequestModel.objects.all()
+    hours_requested = {"Hours": data}
+
 #    operators = Operators.objects.all()
   
     if request.method == 'POST': # If the form has been submitted...
@@ -72,7 +77,7 @@ def hours_create_page(request):
     return render(request, 'hours/create.html', {
         'form': hourregistration_form,
         'projectcode': projectcode,
-        
+        'hours_requested': hours_requested,
         })
 
 

@@ -35,7 +35,10 @@
       {{ form.hours_deliverd|as_crispy_field }}
     </div>
     <div class="col-2">
-      of {{ form.hours_requested|as_crispy_field }} hours requested
+      {% for hours_requested in Hours %}
+      of {{ hours_requested.Hours|as_crispy_field }} hours requested
+      }
+      {% endfor %}
     </div>
     <div class="col-2">
       
