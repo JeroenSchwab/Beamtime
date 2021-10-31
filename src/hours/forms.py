@@ -14,7 +14,7 @@ from .models import HourRegistrationModel
 #creating a form
 class HourRegistrationForm(forms.ModelForm):
 
-	hours_requested = forms.CharField(widget=forms.TextInput, label='')
+#	hours_requested = forms.CharField(widget=forms.TextInput, label='')
 
 	# create meta class
 	class Meta:
@@ -29,7 +29,7 @@ class HourRegistrationForm(forms.ModelForm):
 			'week',
 			'day',
 			'project_code',
-			'hours_requested',
+#			'hours_requested',
 			'hours_deliverd',
 			'woak',
 			'planned',
@@ -46,5 +46,5 @@ class HourRegistrationForm(forms.ModelForm):
 
 		]
 		widgets = {
-			'hours_requested':forms.Textarea(attrs={'class':'form-control','placeholder':'requested'}),
+#			'hours_requested':forms.Textarea(attrs={'class':'form-control','placeholder':'requested'}),
 		}

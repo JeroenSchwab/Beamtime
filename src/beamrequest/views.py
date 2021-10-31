@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 
-from django.http import Http404, HttpResponse
+from django.http import Http404, HttpResponse, HttpResponseRedirect
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.forms import modelformset_factory
@@ -33,9 +33,11 @@ def beam_request_create_page(request):
 #        beam = BeamForm(request.POST)
 
 #        if form.is_valid()# and beam.is_valid():
-        if form.is_valid() and formset.is_valid():
+        if form.is_valid(): # and formset.is_valid():
             print("all validation passed")
             form = form.save()
+
+            return HttpResponseRedirect("/beamrequest/home")
 #            formset = formset.save()
 #            beam = beam.save()
 #        form = CreateBeamRequestForm()

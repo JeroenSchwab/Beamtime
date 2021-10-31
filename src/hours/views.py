@@ -43,42 +43,41 @@ def hours_home_page(request):
     
 #    return render(request, template_name, context)
 
-class ProjectCodeListView(ListView):
-    model = HourRegistrationModel
-    project_code = 'project_code'
+#class ProjectCodeListView(ListView):
+#    model = HourRegistrationModel
+#    project_code = 'project_code'
 
 @staff_member_required
 def hours_create_page(request):
     page_title = 'Hour registration'
     template_name = 'hours/create.html'
 
-    data = CreateBeamRequestModel.objects.all()
-    projectcode = {"Project_Code": data}
+#    data = CreateBeamRequestModel.objects.all()
+#    projectcode = {"Project_Code": data}
 #    projectcode = CreateBeamRequestModel.objects.all()
-    hours_requested = {"Hours": data}
+#    hours_requested = {"Hours": data}
 
 #    operators = Operators.objects.all()
   
     if request.method == 'POST': # If the form has been submitted...
-            hourregistration_form = HourRegistrationForm(request.POST, prefix = "hourregistration")
+            form = HourRegistrationForm(request.POST)
             
-            if hourregistration_form.is_valid():
-                    print ("all validation passed")
-                    hourregistration = hourregistration_form.save()
+            if form.is_valid():
+                print ("all validation passed")
+                form = form.save()
 
-                    return HttpResponseRedirect("/hours/home")
+                return HttpResponseRedirect("/hours/home")
 #                    return HttpResponseRedirect("/viewer/%s/" % (hourregistration.name))
             else:
-                    print ("failed")
-
+                print ("failed")
     else:
-        hourregistration_form = HourRegistrationForm(prefix = "hourregistration")
+        form = HourRegistrationForm()
         
-    return render(request, 'hours/create.html', {
-        'form': hourregistration_form,
-        'projectcode': projectcode,
-        'hours_requested': hours_requested,
-        })
+    return render(request, template_name, {
+        'form': form,
+#        'project_code': projectcode,
+#        'hours': hours_requested,
+})
 
 
 #  cities = [obj.city for obj in YourModel.objects.all()]

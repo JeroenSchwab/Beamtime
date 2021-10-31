@@ -5,8 +5,8 @@
 {% if user.is_authenticated %}
   <p>Welcome <b>{{ user.username }}</b> what would you like to do?</p><br>
 
-<p><a href="/hours/create/" class="btn btn-success">Register new hours</a></p><br>
-<p><a href="/search/" class="btn btn-primary">Edit week x</a></p><br>
+<p><a href="/hours/create/" class="btn btn-success">New hours for ID</a></p><br>
+<p><a href="/search/" class="btn btn-primary">Edit hours for ID</a></p><br>
 <p><a href="/search/" class="btn btn-danger">Delete Hours</a></p><br>
 {% else %}
   <p>You are not logged in</p>
