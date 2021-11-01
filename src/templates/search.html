@@ -5,6 +5,7 @@
 <form action="{% url 'search_page' %}" method="GET" value="{{request.GET.q}}">{#% url 'search_results' %#}
   <input name="q" type="text" value="{{request.GET.q}}" placeholder="Search...">
   <input type="hidden" name="act" value="{{ request.GET.act }}">
+  <input type="hidden" name="page" value="{{ request.GET.page }}">
   <button type="submit" value="Search" name="submit" class="btn btn-success">Search</button>
 </form>
 

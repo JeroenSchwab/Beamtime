@@ -80,6 +80,18 @@ def hours_create_page(request):
         'hours_requested': hours_requested,
         })
 
+#Update view
+@staff_member_required
+def hours_update_page(request, projectcode):
+    obj = get_object_or_404(HourRegistrationModel, projectcode = projectcode)
+    form = hourRegistrationForm(request.POST or None, instance=obj)
+    if form.is_valid():
+        print(form.cleaned_data)
+        form.save()
+        return redirect('/hours/home/')
+    template_name = 'hours/update.html'
+    context = {"title": f"Update {obj.projectcode}", 'form': form }
+    return render(request, template_name, context)
 
 #  cities = [obj.city for obj in YourModel.objects.all()]
 #    return render(request, 'cities_template.html', {'cities': cities})

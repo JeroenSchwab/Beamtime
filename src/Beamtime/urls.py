@@ -30,6 +30,8 @@ urlpatterns = [
     path('', home_page, name='home'),
 #    path('<str:action>/search/', search_page.as_view(), name='search_page'),
     path('search/', search_page, name='search_page'),
+
+#    path('search/', search_page, name='search_page'),
     path('hours/', include('hours.urls')),
     path('documentation/', include('documentation.urls')),
    #path('login/', login_page, name='login'),

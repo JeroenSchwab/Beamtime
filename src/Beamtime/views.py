@@ -42,10 +42,12 @@ def search_page(request):
     page_title = 'Search page'
     template_name = 'search.html'
     act = request.GET.get('act')#'update'
+    page = request.GET.get('page')
 
     if request.method == 'GET':
       query = request.GET.get('q')
       act = request.GET.get('act')
+      page = request.GET.get('page')
       submitbutton = request.GET.get('submit')
 
       if query is not None:
@@ -56,13 +58,13 @@ def search_page(request):
 #        ) # queryset -> list of python objects
 
 #        context = {'title': page_title, 'object_list': object_list, 'submitbutton': submitbutton }
-        context = {'title': page_title, 'results': results, 'submitbutton': submitbutton, "action": act}
+        context = {'title': page_title, 'results': results, 'submitbutton': submitbutton, "action": act, "page": page} #, 'page': page
         return render(request, template_name, context)
       else:
-        context = {'title': page_title}
+        context = {'title': page_title} #, 'page': page
         return render(request, template_name, context)
     else:
-        context = {'title': page_title}
+        context = {'title': page_title}#, 'page': page
         return render(request, template_name, context)
 
 
