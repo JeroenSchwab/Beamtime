@@ -3,6 +3,12 @@
 
 {% load crispy_forms_tags %}
 
+{% block extrahead %}
+  
+{% endblock %}
+
+{% block title %}{{ title }}{% endblock %}
+
 {% block content %}
 {% if user.is_authenticated %}
 <form method="post" novalidate=true>

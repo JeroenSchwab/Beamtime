@@ -27,26 +27,6 @@ def hours_home_page(request):
     return render(request, template_name, context)
 
 
-#create page    
-#@staff_member_required
-#def hours_create_page(request):
-#    page_title = 'Hour registration'
-#    template_name = 'hours/create.html'
-#    qs = Operators.objects.all()
-
-#    form = HourRegistrationForm(request.POST or None)
-#    if form.is_valid():
-#        print(form.cleaned_data)
-#        form.save()
-#        form = HourRegistrationForm()
-#    context = {"title": page_title, "form": form, 'object_list': qs}
-    
-#    return render(request, template_name, context)
-
-#class ProjectCodeListView(ListView):
-#    model = HourRegistrationModel
-#    project_code = 'project_code'
-
 @staff_member_required
 def hours_create_page(request):
     page_title = 'Hour registration'
@@ -79,61 +59,21 @@ def hours_create_page(request):
 #        'hours': hours_requested,
 })
 
+
 #Update view
 @staff_member_required
-def hours_update_page(request, projectcode):
-    obj = get_object_or_404(HourRegistrationModel, projectcode = projectcode)
-    form = hourRegistrationForm(request.POST or None, instance=obj)
+def hours_update_page(request, project_code):
+#    obj = get_object_or_404(CreateBeamRequestModel, Project_Code = project_code)
+    pc_id = CreateBeamRequestModel.objects.get(Project_Code = project_code)
+    h_id = pc_id.id
+#    form = HourRegistrationForm(request.POST or None, instance=obj)
+    form = HourRegistrationForm(request.POST or None, instance=h_id)
     if form.is_valid():
         print(form.cleaned_data)
         form.save()
         return redirect('/hours/home/')
     template_name = 'hours/update.html'
-    context = {"title": f"Update {obj.projectcode}", 'form': form }
+    #context = {"title": f"Update {obj.Project_Code}", 'form': form }
+    context = {"title": f"Update {pc_id}", 'form': form }
     return render(request, template_name, context)
-
-#  cities = [obj.city for obj in YourModel.objects.all()]
-#    return render(request, 'cities_template.html', {'cities': cities})
-
-# class PrimaryForm(ModelForm):
-#        class Meta:
-#            model = Primary
-#
-#    class BForm(ModelForm):
-#        class Meta:
-#            model = B
-#            exclude = ('primary',)
-#
-#    class CForm(ModelForm):
-#         class Meta:
-#            model = C
-#            exclude = ('primary',)
-#
-#    def generateView(request):
-#        if request.method == 'POST': # If the form has been submitted...
-#            primary_form = PrimaryForm(request.POST, prefix = "primary")
-#            b_form = BForm(request.POST, prefix = "b")
-#            c_form = CForm(request.POST, prefix = "c")
-#            if primary_form.is_valid() and b_form.is_valid() and c_form.is_valid(): # All validation rules pass
-#                    print "all validation passed"
-#                    primary = primary_form.save()
-#                    b_form.cleaned_data["primary"] = primary
-#                    b = b_form.save()
-#                    c_form.cleaned_data["primary"] = primary
-#                    c = c_form.save()
-#                    return HttpResponseRedirect("/viewer/%s/" % (primary.name))
-#            else:
-#                    print "failed"
-#
-#        else:
-#            primary_form = PrimaryForm(prefix = "primary")
-#            b_form = BForm(prefix = "b")
-#            c_form = Form(prefix = "c")
-#     return render_to_response('multi_model.html', {
-#     'primary_form': primary_form,
-#     'b_form': b_form,
-#     'c_form': c_form,
-#      })
-
-
 

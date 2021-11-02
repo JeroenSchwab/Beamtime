@@ -67,7 +67,7 @@ class HourRegistrationModel(models.Model):
 	notes = models.TextField(blank=True, null=True)
 
 #	def __str__(self):
-#		return self.week
+#		return self.project_code
 
 
 
