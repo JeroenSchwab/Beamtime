@@ -5,7 +5,7 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-<form method="post" novalidate=true>
+<form method="post" novalidate=falses>
 {% csrf_token %}
 
   <div class="row justify-content-center">
@@ -35,10 +35,9 @@
       {{ form.hours_deliverd|as_crispy_field }}
     </div>
     <div class="col-2">
-      {% for hours_requested in Hours %}
-      of {{ hours_requested.Hours|as_crispy_field }} hours requested
-      }
-      {% endfor %}
+      {#% for hours in hours_request %#}
+      of {#{ hours_requested.Hours|as_crispy_field }#} hours requested
+      {#% endfor %#}
     </div>
     <div class="col-2">
       
