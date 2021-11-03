@@ -65,15 +65,17 @@ def hours_create_page(request):
 def hours_update_page(request, project_code):
 #    obj = get_object_or_404(CreateBeamRequestModel, Project_Code = project_code)
     pc_id = CreateBeamRequestModel.objects.get(Project_Code = project_code)
-    h_id = pc_id.id
+    print(pc_id)
+    h_id = pc_id
+    print(h_id)
 #    form = HourRegistrationForm(request.POST or None, instance=obj)
-    form = HourRegistrationForm(request.POST or None, instance=h_id)
+    form = HourRegistrationForm(request.POST or None, instance=pc_id)
     if form.is_valid():
         print(form.cleaned_data)
         form.save()
         return redirect('/hours/home/')
     template_name = 'hours/update.html'
     #context = {"title": f"Update {obj.Project_Code}", 'form': form }
-    context = {"title": f"Update {pc_id}", 'form': form }
+    context = {"title": f"Update {project_code}", 'form': form }
     return render(request, template_name, context)
 
