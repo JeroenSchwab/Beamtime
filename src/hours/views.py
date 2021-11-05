@@ -64,12 +64,14 @@ def hours_create_page(request):
 @staff_member_required
 def hours_update_page(request, project_code):
     obj = get_object_or_404(CreateBeamRequestModel, Project_Code = project_code)
-#    for pc_id in CreateBeamRequestModel.objects.raw('SELECT id FROM beamrequest_createbeamrequestmodel WHERE Project_code = %s', [project_code]):
-#    pc_id = CreateBeamRequestModel.objects.filter(Project_Code = project_code).values('id')
-#|    print(pc_id.id)
-#    h_id = pc_id
-#    print(h_id)
-    form = HourRegistrationForm(request.POST or None, instance=obj)
+#    obj = CreateBeamRequestModel.objects.get(Project_Code = project_code)
+    pc_id = obj.id
+    #    for pc_id in CreateBeamRequestModel.objects.raw('SELECT id FROM beamrequest_createbeamrequestmodel WHERE Project_code = %s', [project_code]):
+#    pc_id = CreateBeamRequestModel.objects.get(Project_Code = project_code)
+    print(pc_id)
+    h_id = HourRegistrationModel.objects.get(project_code = pc_id)
+    print(h_id)
+    form = HourRegistrationForm(request.POST or None, instance=h_id)
 #    form = HourRegistrationForm(request.POST or None, instance=pc_id)
     if form.is_valid():
         print(form.cleaned_data)

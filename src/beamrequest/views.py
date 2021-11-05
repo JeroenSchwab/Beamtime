@@ -93,6 +93,7 @@ def beam_request_detail_page(request, Project_Code):
 @staff_member_required
 def beam_request_update_page(request, Project_Code):
     obj = get_object_or_404(CreateBeamRequestModel, Project_Code = Project_Code)
+#    print(obj)
     form = CreateBeamRequestForm(request.POST or None, instance=obj)
     if form.is_valid():
         print(form.cleaned_data)
