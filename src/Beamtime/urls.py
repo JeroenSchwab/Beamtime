@@ -35,6 +35,7 @@ urlpatterns = [
 #    path('search/', search_page, name='search_page'),
     path('hours/', include('hours.urls')),
     path('documentation/', include('documentation.urls')),
+    path('summary/', include('summary.urls')),
    #path('login/', login_page, name='login'),
    #for debugging
    # path('__debug__/', include(debug_toolbar.urls)),

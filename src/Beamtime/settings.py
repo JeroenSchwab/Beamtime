@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-z8n!fh-^g=n9=c$^vt)-2%pkze83lg7v^9rup_cbbsf+x$d^(x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['www.yoloen.nl', '192.168.178.3', '94.214.163.62', '127.0.0.1']
+ALLOWED_HOSTS = ['www.yoloen.nl', '192.168.15.51', '94.214.163.62', '127.0.0.1']
 
 #for debugging
 INTERNAL_IPS = [
@@ -59,6 +59,8 @@ INSTALLED_APPS = [
     'beamrequest',
     'documentation',
     'hours',
+    'search',
+    'summary',
 ]
 
 #BOOTSTRAP settings
