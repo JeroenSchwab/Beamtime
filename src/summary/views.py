@@ -57,8 +57,7 @@ def pie_chart(request):
 def bar_chart(request):
     labels = []
     data = []
-
-    labels1 = []
+#    labels1 = []
     data1 = []
 
     queryset = CreateBeamRequestModel.objects.values('id', 'Project_Code').annotate(Hours_total=Sum('Hours')).order_by('Project_Code')
@@ -80,12 +79,12 @@ def bar_chart(request):
 #            hour_del = entry1['hours_deliverd']
 
 #        hour = entry['Hours']
-        Project_Code = entry['Project_Code']
-        print(Project_Code)
+#        Project_Code = entry['Project_Code']
+#        print(Project_Code)
 #        print(hour)
-        project_code = entry['id']
+#        project_code = entry['id']
 
-        print(project_code)
+#        print(project_code)
 #        print(hour_del)
 
     return JsonResponse(data={
