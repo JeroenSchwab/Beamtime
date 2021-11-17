@@ -1,0 +1,13 @@
+# in vertual env do:
+
+#Install Django
+python -m pip install Django
+
+#install django-bootstrap x
+pip install django-bootstrap4
+
+#install bootstrap-datepicker-plus
+pip install django-bootstrap-datepicker-plus
+
+#install django-crispy-forms
+pip install django-crispy-forms
