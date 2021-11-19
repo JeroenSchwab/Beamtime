@@ -9,6 +9,7 @@ from django.forms import modelformset_factory
 from .models import CreateBeamRequestModel, IonSpecies, Energys #, BeamModel
 from .forms import CreateBeamRequestForm #, BeamForm
 
+from hours.forms import HourRegistrationModel
 # Create your views here.
 
 #home page
@@ -29,6 +30,7 @@ def beam_request_create_page(request):
 
     if request.method == 'POST':
         form = CreateBeamRequestForm(request.POST)
+#        hours = HourRegistrationModel()
 #        formset = DifbeamsFormset(request.POST, request.FILES)
 #        beam = BeamForm(request.POST)
 
@@ -36,7 +38,9 @@ def beam_request_create_page(request):
         if form.is_valid(): # and formset.is_valid():
             print("all validation passed")
             form = form.save()
-
+#            pc_id = CreateBeamRequestModel.objects.latest('id')
+#            print('pc_id')
+#            hours = hours.save(project_code == pc_id)
             return HttpResponseRedirect("/beamrequest/home")
 #            formset = formset.save()
 #            beam = beam.save()

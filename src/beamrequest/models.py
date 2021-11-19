@@ -13,7 +13,7 @@ class IonSpecies(models.Model):
 
 class Energys(models.Model):
 	Ion_Species = models.ForeignKey(IonSpecies, on_delete=models.CASCADE)
-	Name = models.CharField(max_length=50)
+	Name = models.CharField(max_length=10)
 
 	def __str__(self):
 #		return self.energy
