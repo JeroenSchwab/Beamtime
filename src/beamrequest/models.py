@@ -104,3 +104,5 @@ class CreateBeamRequestModel(models.Model):
 		return f"{{self.get_absolute_url}}/delete/"
 
 
+#Ion_Species = models.ForeignKey(IonSpecies, on_delete=models.CASCADE)
+#    Energy = ChainedForeignKey(Energys, chained_field="Ion_Species", chained_model_field="Ion_Species", show_all=False, auto_choose=True)

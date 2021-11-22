@@ -10,6 +10,7 @@ from .models import CreateBeamRequestModel, IonSpecies, Energys #, BeamModel
 from .forms import CreateBeamRequestForm #, BeamForm
 
 from hours.forms import HourRegistrationModel
+
 # Create your views here.
 
 #home page
