@@ -55,7 +55,7 @@ class CreateBeamRequestForm(forms.ModelForm):
 			'Collaborator_Name',
 			'Collaborator_Nationality',
 			'Collaborator_Home_Institute',
-			'Different_Beams',
+#			'Different_Beams',
 #			'Shifts',
 			'Beam_Note',
 			'Hours',

@@ -27,11 +27,12 @@ def beam_request_home_page(request):
 def beam_request_create_page(request):
     page_title = 'Create new Request'
     template_name = 'request/create.html'
+    project_code = ''
 #    DifbeamsFormset = modelformset_factory(IonSpecies, fields=('Name',))
 
     if request.method == 'POST':
         form = CreateBeamRequestForm(request.POST)
-#        hours = HourRegistrationModel()
+        hours = HourRegistrationModel(project_code)
 #        formset = DifbeamsFormset(request.POST, request.FILES)
 #        beam = BeamForm(request.POST)
 
@@ -39,9 +40,9 @@ def beam_request_create_page(request):
         if form.is_valid(): # and formset.is_valid():
             print("all validation passed")
             form = form.save()
-#            pc_id = CreateBeamRequestModel.objects.latest('id')
-#            print('pc_id')
-#            hours = hours.save(project_code == pc_id)
+            pc_id = CreateBeamRequestModel.objects.latest('pk')
+            print('id: ', pc_id)
+            hours = hours.save(pc_id)
             return HttpResponseRedirect("/beamrequest/home")
 #            formset = formset.save()
 #            beam = beam.save()

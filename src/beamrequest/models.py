@@ -6,7 +6,6 @@ class IonSpecies(models.Model):
 #	ionspecie = models.CharField(max_length=10)
 	Name = models.CharField(max_length=10)
 
-
 	def __str__(self):
 #		return self.ionspecie
 		return self.Name
@@ -74,7 +73,7 @@ class CreateBeamRequestModel(models.Model):
 	Collaborator_Name = models.TextField(blank = True)
 	Collaborator_Nationality = models.TextField(blank = True)
 	Collaborator_Home_Institute = models.TextField(blank = True)
-	Different_Beams = models.IntegerField(choices=DIFBEAMS_CHOICES, default='1')
+#	Different_Beams = models.IntegerField(choices=DIFBEAMS_CHOICES, default='1')
 #	Shifts = models.IntegerField(choices=SHIFTS_CHOICES, default='1')
 	Beam_Note = models.TextField(blank = True)
 	Hours = models.IntegerField(default='1')
