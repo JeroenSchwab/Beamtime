@@ -40,9 +40,9 @@ def beam_request_create_page(request):
         if form.is_valid(): # and formset.is_valid():
             print("all validation passed")
             form = form.save()
-            pc_id = CreateBeamRequestModel.objects.latest('pk')
-            print('id: ', pc_id)
-            hours = hours.save(pc_id)
+            pc = CreateBeamRequestModel.objects.latest('Project_Code')
+            print('id: ', pc)
+            hours = hours.save(pc)
             return HttpResponseRedirect("/beamrequest/home")
 #            formset = formset.save()
 #            beam = beam.save()
