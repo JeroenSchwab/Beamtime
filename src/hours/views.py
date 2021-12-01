@@ -18,7 +18,7 @@ from beamrequest.forms import CreateBeamRequestForm
 
 # Create your views here.
 
-#home page
+#Hours home page
 def hours_home_page(request):
     page_title = 'Hour registration'
     template_name = 'hours/home.html'

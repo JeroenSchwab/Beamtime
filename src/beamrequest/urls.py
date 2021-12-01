@@ -6,6 +6,7 @@ from .views import (
     beam_request_detail_page,
     beam_request_update_page,
     beam_request_delete_page,
+    hours_create_page,
 )
 
 urlpatterns = [
@@ -14,4 +15,5 @@ urlpatterns = [
    path('<str:Project_Code>/detail/', beam_request_detail_page, name='detail'),
    path('<str:Project_Code>/update/', beam_request_update_page, name='update'),
    path('<str:Project_Code>/delete/', beam_request_delete_page, name='delete'),
+   path('hours/', hours_create_page, name='create_hours'),
 ]

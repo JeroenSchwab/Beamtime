@@ -9,7 +9,8 @@ from django.forms import modelformset_factory
 from .models import CreateBeamRequestModel, IonSpecies, Energys #, BeamModel
 from .forms import CreateBeamRequestForm #, BeamForm
 
-from hours.forms import HourRegistrationModel
+#from hours.forms import HourRegistrationForm
+#from hours.models import HourRegistrationModel
 
 # Create your views here.
 
@@ -32,7 +33,7 @@ def beam_request_create_page(request):
 
     if request.method == 'POST':
         form = CreateBeamRequestForm(request.POST)
-        hours = HourRegistrationModel(project_code)
+#        hours = HourRegistrationModel(project_code)
 #        formset = DifbeamsFormset(request.POST, request.FILES)
 #        beam = BeamForm(request.POST)
 
@@ -40,9 +41,9 @@ def beam_request_create_page(request):
         if form.is_valid(): # and formset.is_valid():
             print("all validation passed")
             form = form.save()
-            pc = CreateBeamRequestModel.objects.latest('Project_Code')
-            print('id: ', pc)
-            hours = hours.save(pc)
+#            pc = CreateBeamRequestModel.objects.latest('Project_Code')
+#            print('id: ', pc)
+#            hours = hours.save(pc)
             return HttpResponseRedirect("/beamrequest/home")
 #            formset = formset.save()
 #            beam = beam.save()
@@ -147,3 +148,38 @@ def beam_request_dif_beams(request):
 #    else:
 #        formset = AuthorFormSet()
 #    return render(request, 'manage_authors.html', {'formset': formset})
+
+
+#hours registration
+
+@staff_member_required
+def hours_create_page(request):
+    page_title = 'Hour registration'
+    template_name = 'hours/create.html'
+
+#    data = CreateBeamRequestModel.objects.all()
+#    projectcode = {"Project_Code": data}
+#    projectcode = CreateBeamRequestModel.objects.all()
+#    hours_requested = {"Hours": data}
+
+#    operators = Operators.objects.all()
+  
+    if request.method == 'POST': # If the form has been submitted...
+            form = HourRegistrationForm(request.POST)
+            
+            if form.is_valid():
+                print ("all validation passed")
+                form = form.save()
+
+                return HttpResponseRedirect("/hours/home")
+#                    return HttpResponseRedirect("/viewer/%s/" % (hourregistration.name))
+            else:
+                print ("failed")
+    else:
+        form = HourRegistrationForm()
+        
+    return render(request, template_name, {
+        'form': form,
+#        'project_code': projectcode,
+#        'hours': hours_requested,
+})
