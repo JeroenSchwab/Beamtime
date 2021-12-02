@@ -116,10 +116,10 @@ class CreateBeamRequestModel(models.Model):
 	funded = models.TextField(blank = True)
 	summary = models.TextField(blank = True)
 
-	year = models.PositiveIntegerField(default=current_year(), validators=[MinValueValidator(2020), max_value_current_year])
-	month = models.IntegerField(choices=MONTH_CHOICES, default=current_month())
-	week = models.IntegerField(choices=WEEK_CHOICES, default=current_week())
-	day = models.IntegerField(choices=DAY_CHOICES, default=current_day())
+#	year = models.PositiveIntegerField(default=current_year(), validators=[MinValueValidator(2020), max_value_current_year])
+#	month = models.IntegerField(choices=MONTH_CHOICES, default=current_month())
+#	week = models.IntegerField(choices=WEEK_CHOICES, default=current_week())
+#	day = models.IntegerField(choices=DAY_CHOICES, default=current_day())
 	hours_deliverd = models.PositiveIntegerField(default='0')#, blank=True, null=True
 	woak = models.PositiveIntegerField(default='0')
 	planned = models.PositiveIntegerField(default='0')
