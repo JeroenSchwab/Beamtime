@@ -6,8 +6,8 @@ from django.http import Http404, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.forms import modelformset_factory
 
-from .models import CreateBeamRequestModel, IonSpecies, Energys #, BeamModel
-from .forms import CreateBeamRequestForm #, BeamForm
+from .models import BeamRequestModel, IonSpecies, Energys #, BeamModel
+from .forms import BeamRequestForm #, BeamForm
 
 from hours.forms import HourRegistrationModel
 
@@ -25,14 +25,14 @@ def beam_request_home_page(request):
 #Create view
 @staff_member_required
 def beam_request_create_page(request):
-    page_title = 'Create new Request'
+    page_title = 'Add request'
     template_name = 'request/create.html'
     project_code = ''
 #    DifbeamsFormset = modelformset_factory(IonSpecies, fields=('Name',))
 
     if request.method == 'POST':
-        form = CreateBeamRequestForm(request.POST)
-        hours = HourRegistrationModel(project_code)
+        form = BeamRequestForm(request.POST)
+#        hours = HourRegistrationModel(project_code)
 #        formset = DifbeamsFormset(request.POST, request.FILES)
 #        beam = BeamForm(request.POST)
 
@@ -40,9 +40,9 @@ def beam_request_create_page(request):
         if form.is_valid(): # and formset.is_valid():
             print("all validation passed")
             form = form.save()
-            pc = CreateBeamRequestModel.objects.latest('Project_Code')
-            print('id: ', pc)
-            hours = hours.save(pc)
+#            pc = BeamRequestModel.objects.latest('project_code')
+#            print('id: ', pc)
+#            hours = hours.save(pc)
             return HttpResponseRedirect("/beamrequest/home")
 #            formset = formset.save()
 #            beam = beam.save()
@@ -51,18 +51,17 @@ def beam_request_create_page(request):
         else:
             print ("failed")
     else:
-        form = CreateBeamRequestForm()
+        form = BeamRequestForm()
 #        formset = DifbeamsFormset()
 #        beam = BeamForm()
 
-    return render(request, template_name, {
-        'form': form,
-#        'formset': formset,
-#        'beam': beam,
-})
-#    context = {"title": page_title, "form": form, "beam": beam}
+#    return render(request, template_name, {
+#        'form': form,
+
+#})
+    context = {"title": page_title, "form": form}
            
-#    return render(request, template_name, context)
+    return render(request, template_name, context)
 
 #    def generatescripts(request):
 #    if request.method == 'POST':
@@ -87,9 +86,9 @@ def beam_request_create_page(request):
 
 #Retrieve view show 1 object/details
 @staff_member_required
-def beam_request_detail_page(request, Project_Code):
+def beam_request_detail_page(request, project_code):
     page_title = 'Detail page'
-    qs = CreateBeamRequestModel.objects.filter(Project_Code = Project_Code)
+    qs = BeamRequestModel.objects.filter(project_code = project_code)
     template_name = 'request/detail.html'
 
     context = {'title': page_title, 'object_list': qs}
@@ -97,22 +96,22 @@ def beam_request_detail_page(request, Project_Code):
 
 #Update view
 @staff_member_required
-def beam_request_update_page(request, Project_Code):
-    obj = get_object_or_404(CreateBeamRequestModel, Project_Code = Project_Code)
+def beam_request_update_page(request, project_code):
+    obj = get_object_or_404(BeamRequestModel, project_code = project_code)
 #    print(obj)
-    form = CreateBeamRequestForm(request.POST or None, instance=obj)
+    form = BeamRequestForm(request.POST or None, instance=obj)
     if form.is_valid():
         print(form.cleaned_data)
         form.save()
         return redirect('/beamrequest/home/')
     template_name = 'request/update.html'
-    context = {"title": f"Update {obj.Project_Code}", 'form': form }
+    context = {"title": f"Update {obj.project_code}", 'form': form }
     return render(request, template_name, context)
 
 #Delete view
 @staff_member_required
-def beam_request_delete_page(request, Project_Code):
-    obj = get_object_or_404(CreateBeamRequestModel, Project_Code = Project_Code)
+def beam_request_delete_page(request, project_code):
+    obj = get_object_or_404(BeamRequestModel, project_code = project_code)
     page_title = 'Delete Request'
     template_name = 'request/delete.html'
     if request.method == "POST":

@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.views.generic import TemplateView, ListView
 
 
-from beamrequest.models import CreateBeamRequestModel
+from beamrequest.models import BeamRequestModel
 # Create your views here.
 
 #home page
@@ -51,8 +51,8 @@ def search_page(request):
       submitbutton = request.GET.get('submit')
 
       if query is not None:
-        lookups = Q(Project_Code__icontains=query) | Q(Project_Title__icontains=query) | Q(Spokesperson_Name__icontains=query)
-        results = CreateBeamRequestModel.objects.filter(lookups).distinct()
+        lookups = Q(project_code__icontains=query) | Q(project_title__icontains=query) | Q(spokesperson_name__icontains=query)
+        results = BeamRequestModel.objects.filter(lookups).distinct()
 #        object_list = CreateBeamRequestModel.objects.filter(
 #           Q(Project_Code__icontains=query) | Q(Project_Title__icontains=query) | Q(Spokesperson_Name__icontains=query)
 #        ) # queryset -> list of python objects

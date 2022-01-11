@@ -8,7 +8,7 @@ from django.core.exceptions import ValidationError
 from bootstrap_datepicker_plus import DatePickerInput, DateTimePickerInput
 
 #import my models
-from .models import CreateBeamRequestModel, IonSpecies, Energys #, BeamModel
+from .models import BeamRequestModel, IonSpecies, Energys #, BeamModel
 
 #class BeamForm(forms.ModelForm):
 #	class Meta:
@@ -31,69 +31,70 @@ from .models import CreateBeamRequestModel, IonSpecies, Energys #, BeamModel
 #		}
 
 #creating a form
-class CreateBeamRequestForm(forms.ModelForm):
+class BeamRequestForm(forms.ModelForm):
 
 	# create meta class
 	class Meta:
 
 		# specify model to be used
-		model = CreateBeamRequestModel
+		model = BeamRequestModel
 
 		# specify fields to be used
 		fields = [
-			'Project_Code',
-			'Pac_Rate',
-			'Partrec_Contact_Name',
-			'Partrec_Contact_Email',
-			'Previous_Experiment',
-			'Status',
-			'Project_Title',
-			'Spokesperson_Name',
-			'Spokesperson_Adress',
-			'Spokesperson_Phonenumber',
-			'Spokesperson_Email',
-			'Collaborator_Name',
-			'Collaborator_Nationality',
-			'Collaborator_Home_Institute',
-#			'Different_Beams',
+			'project_code',
+			'pac_rate',
+			'partrec_contact_name',
+			'partrec_contact_email',
+			'previous_experiment',
+			'status',
+			'project_title',
+			'spokesperson_name',
+			'spokesperson_adress',
+			'spokesperson_phonenumber',
+			'spokesperson_email',
+			'collaborator_name',
+			'collaborator_nationality',
+			'collaborator_home_institute',
+			'Different_Beams',
 #			'Shifts',
-			'Beam_Note',
-			'Hours',
-			'Ion_Species',
-			'Energy',
-			'Flux',
-			'Start_Date',
-			'End_Date',
-			'Requiered_Equipment',
-			'Special_Requirements',
-			'Special_Safety_Procedures',
-			'Lab_Support_Requirements',
-			'Funded',
-			'Summary',
+			'beam_note',
+			'hours_requested',
+			'hours_deliverd',
+			'ion_species',
+			'energy',
+			'flux',
+			'start_date',
+			'end_date',
+			'requiered_equipment',
+			'special_requirements',
+			'special_safety_procedures',
+			'lab_support_requirements',
+			'funded',
+			'summary',
 		]
 		widgets = {
-			'Project_Code':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter Project code'}),
-			'Partrec_Contact_Name':forms.TextInput(attrs={'class':'form-control','placeholder':'Name of contact at Partrec'}),
-			'Partrec_Contact_Email':forms.TextInput(attrs={'class':'form-control','placeholder':'E-mail of contact at Partrec'}),
-			'Previous_Experiment':forms.TextInput(attrs={'class':'form-control','placeholder':'The name of the previous experiment if any'}),
-			'Project_Title':forms.TextInput(attrs={'class':'form-control','placeholder':'The name of the project/experiment'}),
-			'Spokesperson_Name':forms.TextInput(attrs={'class':'form-control','placeholder':'The name of the Spokesperson'}),
-			'Spokesperson_Adress':forms.TextInput(attrs={'class':'form-control','placeholder':'The adress of the Spokesperson'}),
-			'Spokesperson_Phonenumber':forms.TextInput(attrs={'class':'form-control','placeholder':'The phonenumber of the Spokesperson'}),
-			'Spokesperson_Email':forms.TextInput(attrs={'class':'form-control','placeholder':'The e-mail adress of the Spokesperson'}),
-			'Collaborator_Name':forms.TextInput(attrs={'class':'form-control','placeholder':'The name(s) of the collaborator(s)'}),
-			'Collaborator_Nationality':forms.TextInput(attrs={'class':'form-control','placeholder':'The nationality of the collaborator(s)'}),
-			'Collaborator_Home_Institute':forms.TextInput(attrs={'class':'form-control','placeholder':'The institute of the collaborator(s)'}),
-			'Beam_Note':forms.TextInput(attrs={'class':'form-control','placeholder':'Which beams if there are several?'}),
-			'Flux':forms.TextInput(attrs={'class':'form-control','placeholder':'The flux needed'}),
-			'Requiered_Equipment':forms.Textarea(attrs={'rows':5, 'cols':500, 'class':'form-control','placeholder':'Is there any extra equipment requiered for the experiment?'}),
-			'Special_Requirements':forms.Textarea(attrs={'rows':5, 'cols':500, 'class':'form-control','placeholder':'Are there any special requierements needed?'}),
-			'Special_Safety_Procedures':forms.Textarea(attrs={'rows':5, 'cols':500, 'class':'form-control','placeholder':'Are there any special safety procedures that we should know?'}),
-			'Lab_Support_Requirements':forms.Textarea(attrs={'rows':5, 'cols':500, 'class':'form-control','placeholder':'Is there any lab support requiered?'}),
-			'Funded':forms.Textarea(attrs={'rows':5, 'cols':500, 'class':'form-control','placeholder':'How is this experiment funded?'}),
-			'Summary':forms.Textarea(attrs={'rows':5, 'cols':500, 'class':'form-control','placeholder':'What are the steps in this experiment?'}),
+			'project_code':forms.TextInput(attrs={'class':'form-control','placeholder':'Enter Project code'}),
+			'partrec_contact_name':forms.TextInput(attrs={'class':'form-control','placeholder':'Name of contact at Partrec'}),
+			'partrec_contact_email':forms.TextInput(attrs={'class':'form-control','placeholder':'E-mail of contact at Partrec'}),
+			'previous_experiment':forms.TextInput(attrs={'class':'form-control','placeholder':'The name of the previous experiment if any'}),
+			'project_title':forms.TextInput(attrs={'class':'form-control','placeholder':'The name of the project/experiment'}),
+			'spokesperson_name':forms.TextInput(attrs={'class':'form-control','placeholder':'The name of the Spokesperson'}),
+			'spokesperson_adress':forms.TextInput(attrs={'class':'form-control','placeholder':'The adress of the Spokesperson'}),
+			'spokesperson_phonenumber':forms.TextInput(attrs={'class':'form-control','placeholder':'The phonenumber of the Spokesperson'}),
+			'spokesperson_email':forms.TextInput(attrs={'class':'form-control','placeholder':'The e-mail adress of the Spokesperson'}),
+			'collaborator_name':forms.TextInput(attrs={'class':'form-control','placeholder':'The name(s) of the collaborator(s)'}),
+			'collaborator_nationality':forms.TextInput(attrs={'class':'form-control','placeholder':'The nationality of the collaborator(s)'}),
+			'collaborator_home_institute':forms.TextInput(attrs={'class':'form-control','placeholder':'The institute of the collaborator(s)'}),
+			'beam_note':forms.Textarea(attrs={'rows':5, 'cols':500, 'class':'form-control','placeholder':'Which beams if there are several?'}),
+			'flux':forms.TextInput(attrs={'class':'form-control','placeholder':'The flux needed'}),
+			'requiered_equipment':forms.Textarea(attrs={'rows':5, 'cols':500, 'class':'form-control','placeholder':'Is there any extra equipment requiered for the experiment?'}),
+			'special_Requirements':forms.Textarea(attrs={'rows':5, 'cols':500, 'class':'form-control','placeholder':'Are there any special requierements needed?'}),
+			'special_safety_procedures':forms.Textarea(attrs={'rows':5, 'cols':500, 'class':'form-control','placeholder':'Are there any special safety procedures that we should know?'}),
+			'lab_support_requirements':forms.Textarea(attrs={'rows':5, 'cols':500, 'class':'form-control','placeholder':'Is there any lab support requiered?'}),
+			'funded':forms.Textarea(attrs={'rows':5, 'cols':500, 'class':'form-control','placeholder':'How is this experiment funded?'}),
+			'summary':forms.Textarea(attrs={'rows':5, 'cols':500, 'class':'form-control','placeholder':'What are the steps in this experiment?'}),
 
-			'Start_Date': DateTimePickerInput(
+			'start_date': DateTimePickerInput(
 				options = {
 		          "format": "YYYY-MM-DD HH:mm", #date-time format
 		          "showClose": True,
@@ -103,7 +104,7 @@ class CreateBeamRequestForm(forms.ModelForm):
         }
         ),
 
-			'End_Date': DateTimePickerInput(
+			'end_date': DateTimePickerInput(
 				options = {
 					"format": "YYYY-MM-DD HH:mm", #date-time format
 					"showClose": True,
@@ -120,8 +121,8 @@ class CreateBeamRequestForm(forms.ModelForm):
 		cleaned_data = super().clean()
 #		print(dir(self))
 #		print(cleaned_data)
-		start_date = cleaned_data.get("Start_Date")
-		end_date = cleaned_data.get("End_Date")
+		start_date = cleaned_data.get("start_date")
+		end_date = cleaned_data.get("end_date")
 #		print(start_date)
 #		print(end_date)
 		if end_date < start_date:

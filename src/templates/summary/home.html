@@ -3,11 +3,46 @@
 
 {% block title %}{{ title }}{% endblock %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 {% if user.is_authenticated %}
-This is the summary page.<br><br>
-<!-- <div id="container"></div> -->
-<div id="container" style="width: 75%;">
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.statuscheckbox').click(function() {
+      var txt="";
+          $('.statuscheckbox:checked').each(function(){
+            txt+=$(this).val()+","
+          })
+          $('#statusvalue').val(txt);
+    })
+  })
+
+</script>
+<br><br>
+<script type="text/javascript">
+  function update(status, bar){
+  $.ajax({
+    url: 'summary/home/',
+    data : {
+        'status': foo,
+        'bar': bar
+    },
+    success: function (data) {
+        
+    }
+});
+}
+</script>
+<form method="post" action="" novalidate>
+  {% csrf_token %}
+<!--
+  $("#idImg").html(data); stond hier boven
+  <div id="container" style="width: 75%;">
     <canvas id="pie-chart" data-url="{% url 'pie-chart' %}"></canvas>
   </div>
 
@@ -37,14 +72,27 @@ This is the summary page.<br><br>
     };
 
   </script>
-  
+-->
+  <div class="row justify-content-center">
+    Show chart based on: <input type="text" name="status" id="statusvalue" size="30">
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <!--Status <input type="checkbox" value="The status" class="statuscheckbox">-->
+      {{ form.status }}
+    </div>
+    <div class="col-2">
+      Requested hours <input type="checkbox" value="requested" class="requested-checkbox">
+    </div>
+    <div class="col-2">
+      Deliverd hours <input type="checkbox" value="deliverd" class="deliverd-checkbox">
+    </div>
+  </div>
 
-<div id="container" style="width: 75%;">
+  <div id="container" style="width: 85%;">
     <canvas id="bar-chart" data-url="{% url 'bar-chart' %}"></canvas>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
   <script>
 
     $(function () {
@@ -127,7 +175,13 @@ This is the summary page.<br><br>
         Highcharts.chart("container", data);
       }
     });
-  </script> -->
+  </script>--> 
+<!--  <script type="text/javascript">
+  <p><a href="" onclick="update(status, bar)" class="btn btn-success">Update page</a></p>-->
+  <input type="submit" id="update_button" value="Update page" class="btn btn-success">
+<!--    <button onclick="change(foo, bar)"> Update page </button>
+  </script>-->
+</form>
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">Log In</a>

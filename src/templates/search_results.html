@@ -7,7 +7,7 @@
   <br><br>
    {% for result in results %}
 <!--    <li><a href="/beamrequest/{{ result.Project_Code}}/{{ action }}/">Id: {{ result.Project_Code }} - Title: {{ result.Project_Title }} - Spokesperson: {{ result.Spokesperson_Name }}</a></li> -->
-    <li><a href="/{{ page }}/{{ result.Project_Code}}/{{ action }}/">Id: {{ result.Project_Code }} - Title: {{ result.Project_Title }} - Spokesperson: {{ result.Spokesperson_Name }}</a></li>
+    <li><a href="/{{ page }}/{{ result.project_code}}/{{ action }}/">Id: {{ result.project_code }} - Title: {{ result.project_title }} - Spokesperson: {{ result.spokesperson_name }}</a></li>
   
   {% endfor %}
 {% else %}

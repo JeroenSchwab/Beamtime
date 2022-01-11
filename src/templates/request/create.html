@@ -20,81 +20,75 @@
     			{{ error }}
 			{% endfor %}
 		</div>
+
 		<br><br>
 		<b>Internal contact information</b>
 		<hr class="divider"></hr>
 
 		<div class="row">
 			<div class="col-6">
-			 {{ form.Project_Code|as_crispy_field }}
+			 {{ form.project_code|as_crispy_field }}
 			</div>
 			<div class="col-6">
-			 {{ form.Partrec_Contact_Name|as_crispy_field }}
-		 </div>
+			 {{ form.partrec_contact_name|as_crispy_field }}
+			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-6">
-			 {{ form.Pac_Rate|as_crispy_field }}
+			 {{ form.pac_rate|as_crispy_field }}
 			</div>
 			<div class="col-6">
-			 {{ form.Partrec_Contact_Email|as_crispy_field }}
-		 </div>
+			 {{ form.partrec_contact_email|as_crispy_field }}
+			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-6">
-			 {{ form.Previous_Experiment|as_crispy_field }}
+			 {{ form.previous_experiment|as_crispy_field }}
 			</div>
 			<div class="col-6">
-			 
+			 {{ form.status|as_crispy_field }}
 		 </div>
 		</div>
 
-		<div class="row">
-			<div class="col-6">
-			 {{ form.Status|as_crispy_field }}
-			</div>
-			<div class="col-6">
-			 
-		 </div>
-		</div>
+
 		<br><br>
 		<b>External contact information</b>
 		<hr class="divider"></hr>
 
 		<div class="row justify-content-center">
 		 <div class="col-6">
-			{{ form.Project_Title|as_crispy_field }}
+			{{ form.project_title|as_crispy_field }}
 		 </div>
 		</div>
 
 		<div class="row">
 		 <div class="col-6">
-			{{ form.Spokesperson_Name|as_crispy_field }}
+			{{ form.spokesperson_name|as_crispy_field }}
 		 </div>
 		 <div class="col-6">
-			{{ form.Spokesperson_Adress|as_crispy_field }}
+			{{ form.spokesperson_adress|as_crispy_field }}
 		 </div>
 		</div>
 
 		<div class="row">
 		 <div class="col-6">
-			{{ form.Spokesperson_Phonenumber|as_crispy_field }}
+			{{ form.spokesperson_phonenumber|as_crispy_field }}
 		 </div>
 		 <div class="col-6">
-			{{ form.Spokesperson_Email|as_crispy_field }}
+			{{ form.spokesperson_email|as_crispy_field }}
 		 </div>
 		</div>
 		<div class="row">
 		 <div class="col-4">
-			{{ form.Collaborator_Name|as_crispy_field }}
+			{{ form.collaborator_name|as_crispy_field }}
 		 </div>
 		 <div class="col-4">
-			{{ form.Collaborator_Nationality|as_crispy_field }}
+			{{ form.collaborator_nationality|as_crispy_field }}
 		 </div>
 		 <div class="col-4">
-			{{ form.Collaborator_Home_Institute|as_crispy_field }}
+			{{ form.collaborator_home_institute|as_crispy_field }}
 		 </div>
 		</div>
 		 <br><br>
@@ -103,26 +97,39 @@
 
 		<div class="row">
 			<div class="col-6">
-			 {{ form.Start_Date|as_crispy_field }}
+			 {{ form.start_date|as_crispy_field }}
 			</div>
 		    <div class="col-6">
-			 {{ form.End_Date|as_crispy_field }}
+			 {{ form.end_date|as_crispy_field }}
 			</div>
 		</div>
 		<div class="row justify-content-center">
 			<div class="col-6">
-  				{#{ form.Different_Beams|as_crispy_field }#}
+  				{{ form.Different_Beams|as_crispy_field }}
  			</div>
 		</div>
 		<div class="row justify-content-center">
 			<!--<div id="hidden1">-->
-				<div class="col-6">
-	  			{{ form.Ion_Species|as_crispy_field }}
-				{{ form.Energy|as_crispy_field }}
-				{{ form.Flux|as_crispy_field }}
-				{{ form.Hours|as_crispy_field }}
-				{{ form.Beam_Note|as_crispy_field }}
-				</div>
+			<div class="col-6">
+	  			{{ form.ion_species|as_crispy_field }}
+	  		</div>
+	  		<div class="col-6">
+				{{ form.energy|as_crispy_field }}
+			</div>
+	  		<div class="col-6">
+				{{ form.flux|as_crispy_field }}
+			</div>
+	  		<div class="col-6">
+	  		</div>
+	  		<div class="col-6">
+				{{ form.hours_requested|as_crispy_field }}
+			</div>
+	  		<div class="col-6">
+				{{ form.hours_deliverd|as_crispy_field }}
+			</div>
+	  		<div class="col-12">
+				{{ form.beam_note|as_crispy_field }}
+			</div>
 			<!--</div>
 			<div id="hidden2">
 				<div class="col-6">
@@ -153,13 +160,16 @@
 			</div>
 		</div>
 		<div class="row justify-content-center">
-		  {{ form.Requiered_Equipment|as_crispy_field }}
-		  {{ form.Special_Requirements|as_crispy_field }}
-		  {{ form.Special_Safety_Procedures|as_crispy_field }}
-		  {{ form.Lab_Support_Requirements|as_crispy_field }}
-		  {{ form.Funded|as_crispy_field }}
-		  {{ form.Summary|as_crispy_field }}
+  		<div class="col-12">
+		  {{ form.requiered_equipment|as_crispy_field }}
+		  {{ form.special_requirements|as_crispy_field }}
+		  {{ form.special_safety_procedures|as_crispy_field }}
+		  {{ form.lab_support_requirements|as_crispy_field }}
+		  {{ form.funded|as_crispy_field }}
+		  {{ form.summary|as_crispy_field }}
 		</div>
+		</div>
+		
 		<div class="row justify-content-center">
 			<button type="submit" class="btn btn-success">Save New Request</button>
 		</div>

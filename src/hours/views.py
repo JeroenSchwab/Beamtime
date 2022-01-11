@@ -11,8 +11,8 @@ from .models import HourRegistrationModel
 from .forms import HourRegistrationForm
 
 from django.forms import modelformset_factory
-from beamrequest.models import CreateBeamRequestModel
-from beamrequest.forms import CreateBeamRequestForm
+from beamrequest.models import BeamRequestModel
+from beamrequest.forms import BeamRequestForm
 
 #from .forms import CreateBeamRequestForm
 
@@ -29,7 +29,7 @@ def hours_home_page(request):
 
 @staff_member_required
 def hours_create_page(request):
-    page_title = 'Hour registration'
+    page_title = 'Add hours'
     template_name = 'hours/create.html'
 
 #    data = CreateBeamRequestModel.objects.all()
@@ -38,13 +38,19 @@ def hours_create_page(request):
 #    hours_requested = {"Hours": data}
 
 #    operators = Operators.objects.all()
-  
+#####  act = request.GET.get('act')
     if request.method == 'POST': # If the form has been submitted...
+#            obj = get_object_or_404(BeamRequestModel, project_code = form.project_code)
             form = HourRegistrationForm(request.POST)
+#            beamrequest = BeamRequestForm(request.POST)
             
-            if form.is_valid():
+            if form.is_valid():# and beamrequest.is_valid():
                 print ("all validation passed")
+#                project_code = form.GET.get('project_code')
                 form = form.save()
+#                obj = get_object_or_404(BeamRequestModel, project_code = project_code)
+#                beamrequest = BeamRequestForm(request.POST or None, instance=obj)
+#                beamrequest = beamrequest.save()
 
                 return HttpResponseRedirect("/hours/home")
 #                    return HttpResponseRedirect("/viewer/%s/" % (hourregistration.name))
@@ -52,18 +58,26 @@ def hours_create_page(request):
                 print ("failed")
     else:
         form = HourRegistrationForm()
-        
-    return render(request, template_name, {
-        'form': form,
+#        beamrequest = BeamRequestForm()
+
+    context = {"title": page_title, "form": form}
+           
+    return render(request, template_name, context)
+#    return render(request, template_name, {
+#        'form': form,
+#        'beamrequest': beamrequest,
 #        'project_code': projectcode,
 #        'hours': hours_requested,
-})
+#})
 
 
 #Update view
 @staff_member_required
 def hours_update_page(request, project_code):
-    obj = get_object_or_404(CreateBeamRequestModel, Project_Code = project_code)
+    page_title = 'Update hours'
+    template_name = 'hours/update.html'
+
+    obj = get_object_or_404(BeamRequestModel, project_code = project_code)
 #    obj = CreateBeamRequestModel.objects.get(Project_Code = project_code)
     pc_id = obj.id
     #    for pc_id in CreateBeamRequestModel.objects.raw('SELECT id FROM beamrequest_createbeamrequestmodel WHERE Project_code = %s', [project_code]):
@@ -77,7 +91,7 @@ def hours_update_page(request, project_code):
         print(form.cleaned_data)
         form.save()
         return redirect('/hours/home/')
-    template_name = 'hours/update.html'
+#    template_name = 'hours/update.html'
     #context = {"title": f"Update {obj.Project_Code}", 'form': form }
     context = {"title": f"Update {project_code}", 'form': form }
     return render(request, template_name, context)

@@ -1,9 +1,9 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import CreateBeamRequestModel, IonSpecies, Energys
+from .models import BeamRequestModel, IonSpecies, Energys
 
-admin.site.register(CreateBeamRequestModel)
+admin.site.register(BeamRequestModel)
 admin.site.register(IonSpecies)
 admin.site.register(Energys)
 

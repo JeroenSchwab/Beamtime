@@ -15,7 +15,7 @@
 {% if user.is_authenticated %}
 <form method="post" novalidate=true>
 {% csrf_token %}
-
+<br><br>
   <div class="row justify-content-center">
     <div class="col-2">
       {{ form.year|as_crispy_field }}
@@ -30,21 +30,21 @@
       {{ form.day|as_crispy_field }}
     </div>
   </div>
-
+<!--
     <br><br>
     <b>Hours delivered</b>
     <hr class="divider"></hr>
 
   <div class="row justify-content-center">
     <div class="col-2">
-      {{ form.project_code|as_crispy_field }}
+      {#{ form.project_code|as_crispy_field }#}
     </div>
     <div class="col-2">
-      {{ form.hours_deliverd|as_crispy_field }}
+      {#{ form.hours_deliverd|as_crispy_field }#}
     </div>
     <div class="col-2">
       {% for hours_requested in Hours %}
-      of {{ hours_requested.Hours|as_crispy_field }} hours requested
+      of {#{ hours_requested.Hours|as_crispy_field }#} hours requested
       }
       {% endfor %}
     </div>
@@ -52,7 +52,7 @@
       
     </div>
   </div>
-
+-->
     <br><br>
     <b>Hours spend different</b>
     <hr class="divider"></hr>
