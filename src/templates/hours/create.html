@@ -25,28 +25,6 @@
     </div>
   </div>
 
-    <!--
-    <br><br>
-    <b>Hours delivered</b>
-    <hr class="divider"></hr>
-
-  <div class="row justify-content-center">
-    <div class="col-2">
-      {#{ form.project_code|as_crispy_field }#}
-    </div>
-    <div class="col-2">
-      {#{ form.hours_deliverd|as_crispy_field }#}
-    </div>
-    <div class="col-2">
-      {#% for hours in hours_request %#}
-      of {#{ hours_requested.Hours|as_crispy_field }#} hours requested
-      {#% endfor %#}
-    </div>
-    <div class="col-2">
-      
-    </div>
-  </div>
--->
     <br><br>
     <b>Hours</b>
     <hr class="divider"></hr>
@@ -90,8 +68,9 @@
       {{ form.other_error|as_crispy_field }}
     </div>
     <div class="col-2">
-      
+      {{ form.hours_deliverd|as_crispy_field }}
     </div>
+
   </div>
   <div class="row justify-content-center">
     <div class="col-8">

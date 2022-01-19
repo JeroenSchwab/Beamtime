@@ -5,51 +5,39 @@
 
 {% load crispy_forms_tags %}
 
-{% block extrahead %}
-  
-{% endblock %}
-
-{#% block title %#}{#{ title }#}{#% endblock %#}
-
 {% block content %}
 {% if user.is_authenticated %}
+<br><br>
+<form action="{% url 'update' %}" method="GET" value="{{request.GET.q}}">
+  <div class="row justify-content-center">
+    <div class="col-2">
+      <label>
+        Choose a date:
+        <input type="date" name="date" value="{{request.GET.date}}" min="2020-01-01" max="2050-01-01" required>
+        <span class="validity"></span>
+      </label>
+    </div>
+    <div class="col-2">
+      <button type="submit" value="Select" name="submit" class="btn btn-success">Select</button>
+    </div>
+  </div>
+</form>
+
 <form method="post" novalidate=true>
 {% csrf_token %}
 <br><br>
+
+
+<!--
   <div class="row justify-content-center">
     <div class="col-2">
       {{ form.year|as_crispy_field }}
-    </div>
-    <div class="col-2">
-      {{ form.month|as_crispy_field }}
     </div>
     <div class="col-2">
       {{ form.week|as_crispy_field }}
     </div>
     <div class="col-2">
       {{ form.day|as_crispy_field }}
-    </div>
-  </div>
-<!--
-    <br><br>
-    <b>Hours delivered</b>
-    <hr class="divider"></hr>
-
-  <div class="row justify-content-center">
-    <div class="col-2">
-      {#{ form.project_code|as_crispy_field }#}
-    </div>
-    <div class="col-2">
-      {#{ form.hours_deliverd|as_crispy_field }#}
-    </div>
-    <div class="col-2">
-      {% for hours_requested in Hours %}
-      of {#{ hours_requested.Hours|as_crispy_field }#} hours requested
-      }
-      {% endfor %}
-    </div>
-    <div class="col-2">
-      
     </div>
   </div>
 -->
@@ -68,7 +56,7 @@
       {{ form.unused|as_crispy_field }}
     </div>
     <div class="col-2">
-      {{ form.defelopment|as_crispy_field }}
+      {{ form.development|as_crispy_field }}
     </div>
   </div>
   <div class="row justify-content-center">
@@ -96,7 +84,7 @@
       {{ form.other_error|as_crispy_field }}
     </div>
     <div class="col-2">
-      
+      {{ form.hours_deliverd|as_crispy_field }}
     </div>
   </div>
   <div class="row justify-content-center">

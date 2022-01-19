@@ -67,15 +67,15 @@ class HourRegistrationModel(models.Model):
 	# day choices (1 to 31)
 #	DAY_CHOICES = [tuple([x,x]) for x in range(1,32)]
 
-	project_code = models.ForeignKey(BeamRequestModel, on_delete=models.CASCADE, blank=True, null=True)
-	#Year = models.IntegerField(('year'), validators=[MinValueValidator(2020), max_value_current_year]) #models.DateField(blank = True, null=True)
+#	project_code = models.ForeignKey(BeamRequestModel, on_delete=models.CASCADE, blank=True, null=True)
+#	Year = models.IntegerField(('year'), validators=[MinValueValidator(2020), max_value_current_year]) #models.DateField(blank = True, null=True)
 	year = models.PositiveIntegerField(default=current_year(), validators=[MinValueValidator(2020), max_value_current_year])
 #	month = models.IntegerField(choices=MONTH_CHOICES, default=current_month())
 	week = models.IntegerField(choices=WEEK_CHOICES, default=current_week())
 #	day = models.IntegerField(choices=DAY_CHOICES, default=current_day())
 	day = models.CharField(max_length=25, choices=DAY_CHOICES, default='SELECT')
 #	hours_requested = models.ForeignKey(CreateBeamRequestModel, on_delete=models.CASCADE, blank=True, null=True)
-#	hours_deliverd = models.PositiveIntegerField(default='0')#, blank=True, null=True
+	hours_deliverd = models.PositiveIntegerField(default='0')
 #	hours_deliverd = models.ForeignKey(BeamRequestModel, on_delete=models.CASCADE, blank=True, null=True)
 	woak = models.PositiveIntegerField(default='0')
 	planned = models.PositiveIntegerField(default='0')

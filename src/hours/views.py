@@ -32,13 +32,6 @@ def hours_create_page(request):
     page_title = 'Add hours'
     template_name = 'hours/create.html'
 
-#    data = CreateBeamRequestModel.objects.all()
-#    projectcode = {"Project_Code": data}
-#    projectcode = CreateBeamRequestModel.objects.all()
-#    hours_requested = {"Hours": data}
-
-#    operators = Operators.objects.all()
-#####  act = request.GET.get('act')
     if request.method == 'POST': # If the form has been submitted...
 #            obj = get_object_or_404(BeamRequestModel, project_code = form.project_code)
             form = HourRegistrationForm(request.POST)
@@ -73,26 +66,41 @@ def hours_create_page(request):
 
 #Update view
 @staff_member_required
-def hours_update_page(request, project_code):
+def hours_update_page(request):
     page_title = 'Update hours'
     template_name = 'hours/update.html'
 
-    obj = get_object_or_404(BeamRequestModel, project_code = project_code)
+    obj = get_object_or_404(HourRegistrationModel, year = "2022")
 #    obj = CreateBeamRequestModel.objects.get(Project_Code = project_code)
-    pc_id = obj.id
+#    pc_id = obj.id
     #    for pc_id in CreateBeamRequestModel.objects.raw('SELECT id FROM beamrequest_createbeamrequestmodel WHERE Project_code = %s', [project_code]):
 #    pc_id = CreateBeamRequestModel.objects.get(Project_Code = project_code)
-    print(pc_id)
-    h_id = HourRegistrationModel.objects.get(project_code = pc_id)
-    print(h_id)
-    form = HourRegistrationForm(request.POST or None, instance=h_id)
+    print(obj)
+#    print(obj.id)
+#    h_id = HourRegistrationModel.objects.get(project_code = pc_id)
+#    print(h_id)
+    form = HourRegistrationForm(request.POST or None, instance=obj)
 #    form = HourRegistrationForm(request.POST or None, instance=pc_id)
     if form.is_valid():
         print(form.cleaned_data)
         form.save()
         return redirect('/hours/home/')
-#    template_name = 'hours/update.html'
-    #context = {"title": f"Update {obj.Project_Code}", 'form': form }
-    context = {"title": f"Update {project_code}", 'form': form }
+
+    context = {"title": f"Update {obj.year}", 'form': form }
+#    context = {"title": page_title, 'form': form }
+
     return render(request, template_name, context)
 
+#Update view
+@staff_member_required
+def beam_request_update_page(request, project_code):
+    obj = get_object_or_404(BeamRequestModel, project_code = project_code)
+#    print(obj)
+    form = BeamRequestForm(request.POST or None, instance=obj)
+    if form.is_valid():
+        print(form.cleaned_data)
+        form.save()
+        return redirect('/beamrequest/home/')
+    template_name = 'request/update.html'
+    context = {"title": f"Update {obj.project_code}", 'form': form }
+    return render(request, template_name, context)

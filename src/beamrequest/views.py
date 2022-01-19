@@ -97,6 +97,7 @@ def beam_request_detail_page(request, project_code):
 #Update view
 @staff_member_required
 def beam_request_update_page(request, project_code):
+    template_name = 'request/update.html'
     obj = get_object_or_404(BeamRequestModel, project_code = project_code)
 #    print(obj)
     form = BeamRequestForm(request.POST or None, instance=obj)
@@ -104,7 +105,7 @@ def beam_request_update_page(request, project_code):
         print(form.cleaned_data)
         form.save()
         return redirect('/beamrequest/home/')
-    template_name = 'request/update.html'
+
     context = {"title": f"Update {obj.project_code}", 'form': form }
     return render(request, template_name, context)
 
