@@ -68,25 +68,25 @@ def hours_create_page(request):
 @staff_member_required
 def hours_update_page(request):
     page_title = 'Update hours'
-    template_name = 'hours/update.html'
+    template_name = 'hours/select_date.html'
 
-    obj = get_object_or_404(HourRegistrationModel, year = "2022")
+#    obj = get_object_or_404(HourRegistrationModel, year = "2022")
 #    obj = CreateBeamRequestModel.objects.get(Project_Code = project_code)
 #    pc_id = obj.id
     #    for pc_id in CreateBeamRequestModel.objects.raw('SELECT id FROM beamrequest_createbeamrequestmodel WHERE Project_code = %s', [project_code]):
 #    pc_id = CreateBeamRequestModel.objects.get(Project_Code = project_code)
-    print(obj)
+#    print(obj)
 #    print(obj.id)
 #    h_id = HourRegistrationModel.objects.get(project_code = pc_id)
 #    print(h_id)
-    form = HourRegistrationForm(request.POST or None, instance=obj)
+    form = HourRegistrationForm(request.POST or None)
 #    form = HourRegistrationForm(request.POST or None, instance=pc_id)
     if form.is_valid():
         print(form.cleaned_data)
         form.save()
         return redirect('/hours/home/')
 
-    context = {"title": f"Update {obj.year}", 'form': form }
+    context = {"title": page_title, 'form': form }
 #    context = {"title": page_title, 'form': form }
 
     return render(request, template_name, context)
@@ -104,3 +104,33 @@ def beam_request_update_page(request, project_code):
     template_name = 'request/update.html'
     context = {"title": f"Update {obj.project_code}", 'form': form }
     return render(request, template_name, context)
+
+@staff_member_required
+def hbsdagourss_update_page(request):
+    page_title = 'Search page'
+    template_name = 'select_date.html'
+    act = request.GET.get('act')#'update'
+    page = request.GET.get('page')
+
+    if request.method == 'GET':
+      query = request.GET.get('q')
+      act = request.GET.get('act')
+      page = request.GET.get('page')
+      submitbutton = request.GET.get('submit')
+
+      if query is not None:
+        lookups = Q(project_code__icontains=query) | Q(project_title__icontains=query) | Q(spokesperson_name__icontains=query)
+        results = BeamRequestModel.objects.filter(lookups).distinct()
+#        object_list = CreateBeamRequestModel.objects.filter(
+#           Q(Project_Code__icontains=query) | Q(Project_Title__icontains=query) | Q(Spokesperson_Name__icontains=query)
+#        ) # queryset -> list of python objects
+
+#        context = {'title': page_title, 'object_list': object_list, 'submitbutton': submitbutton }
+        context = {'title': page_title, 'results': results, 'submitbutton': submitbutton, "action": act, "page": page} #, 'page': page
+        return render(request, template_name, context)
+      else:
+        context = {'title': page_title} #, 'page': page
+        return render(request, template_name, context)
+    else:
+        context = {'title': page_title}#, 'page': page
+        return render(request, template_name, context)

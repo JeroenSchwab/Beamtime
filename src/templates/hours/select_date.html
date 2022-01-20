@@ -1,0 +1,39 @@
+<!-- hours select_date.html -->
+{% extends "base.html" %}
+
+{% block title %}Edit Hours{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<br><br>
+<form action="{% url 'update' %}" method="GET" value="{{request.GET.q}}">
+  {% csrf_token %}
+  <!--<input name="q" type="text" value="{{request.GET.q}}" placeholder="Search...">-->
+  <input type="hidden" name="act" value="{{ request.GET.act }}">
+  <div class="row justify-content-center">
+    <div class="col-3">
+      {{ form.year|as_crispy_field }}
+    </div>
+    <div class="col-3">
+      {{ form.week|as_crispy_field }}
+    </div>
+    <div class="col-3">
+      {{ form.day|as_crispy_field }}
+    </div>
+    </div>
+    <div class="row justify-content-center">
+    <div class="col-2">
+      <button type="submit" value="Select" name="submit" class="btn btn-success">Select</button>
+    </div>
+  </div>
+    {% include 'hours/update.html' %}
+</form>
+
+
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %}
